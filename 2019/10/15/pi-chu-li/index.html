@@ -1,0 +1,1309 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="批处理笔记, 宅世界">
+    <meta name="description" content="记录一下批处理的一些知识点,方便后续查看">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>批处理笔记 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">批处理笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-10-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-03-04
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.7k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="用运行打开程序"><a href="#用运行打开程序" class="headerlink" title="用运行打开程序"></a>用<code>运行</code>打开程序</h2><ul>
+<li><p>calc : 打开计算器</p>
+</li>
+<li><p>appwiz.cpl : 程序和功能</p>
+</li>
+<li><p>certmgr.msc : 证书管理工具</p>
+</li>
+<li><p>cleanmgr : 磁盘清理工具</p>
+</li>
+<li><p>colorcpl : 颜色管理</p>
+</li>
+<li><p>compmgmt.msc : 计算机管理</p>
+</li>
+<li><p>control : 控制面板</p>
+</li>
+<li><p>devmgmt.msc : 设备管理器</p>
+</li>
+<li><p>desk.cpl : 显示控制选项</p>
+</li>
+<li><p>diskmgmt.msc : 磁盘管理</p>
+</li>
+<li><p>eventvwr : 事件查看器</p>
+</li>
+<li><p>explorer : 打开资源管理器</p>
+</li>
+<li><p>firewall.cpl : windows防火墙</p>
+</li>
+<li><p>gpedit.msc : 组策略</p>
+</li>
+<li><p>fsmgmt.msc : 共享文件夹管理器</p>
+</li>
+<li><p>hdwwiz.cpl : 设备管理器</p>
+</li>
+<li><p>inetcpl.cpl : Internet 属性</p>
+</li>
+<li><p>intl.cpl : 区域时间设置</p>
+</li>
+<li><p>iexpress : 程序打包软件</p>
+</li>
+<li><p>logoff :  注销</p>
+</li>
+<li><p>lusrmgr.msc : 本机用户和组</p>
+</li>
+<li><p>mmsys.cpl : 声音</p>
+</li>
+<li><p>magnify : 放大镜实用程序</p>
+</li>
+<li><p>mdsched : Windows内存诊断程序(需要重启电脑)</p>
+</li>
+<li><p>mmc : 打开控制台</p>
+</li>
+<li><p>msinfo32 : 系统信息</p>
+</li>
+<li><p>ncpa.cpl : 网络连接</p>
+</li>
+<li><p>netplwiz : 高级用户账户控制面板</p>
+</li>
+<li><p>optionalfeatures : 打开或关闭Windows功能</p>
+</li>
+<li><p>osk : 屏幕键盘</p>
+</li>
+<li><p>perfmon.msc : 计算机性能监视器</p>
+</li>
+<li><p>powercfg.cpl : 电源选项</p>
+</li>
+<li><p>psr : 问题步骤记录器</p>
+</li>
+<li><p>resmon : 资源监视器</p>
+</li>
+<li><p>sigverif : 文件签名验证程序</p>
+</li>
+<li><p>slui : windows激活信息</p>
+</li>
+<li><p>slmgr.vbs -dlv : 显示详细的许可证信息</p>
+</li>
+<li><p>snippingtool : 截图工具</p>
+</li>
+<li><p>taskschd.msc  : 任务计划程序</p>
+</li>
+<li><p>timedate.cpl : 日期和时间</p>
+</li>
+<li><p>wf.msc : 高级安全Windows防火墙</p>
+</li>
+<li><p>winver : 关于Windows</p>
+</li>
+<li><p>taskschd.msc : 计划任务</p>
+<h2 id="命令行语法项"><a href="#命令行语法项" class="headerlink" title="命令行语法项"></a>命令行语法项</h2><table>
+<thead>
+<tr>
+<th>图解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不带方括号或大括号的文本</td>
+<td>必须按如下所示键入项</td>
+</tr>
+<tr>
+<td>&lt;尖括号内的文本&gt;</td>
+<td>必须为其提供值的占位符</td>
+</tr>
+<tr>
+<td>[方括号内的文本]</td>
+<td>可选项</td>
+</tr>
+<tr>
+<td>{大括号内的文本}</td>
+<td>一组必需的项,选择其中一个</td>
+</tr>
+<tr>
+<td>竖线</td>
+<td>互斥项的分隔符,选择其中一个</td>
+</tr>
+<tr>
+<td>省略号(…)</td>
+<td>可以重复的项</td>
+</tr>
+</tbody></table>
+<p>详情参见 </p>
+<blockquote>
+<p><a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/command-line-syntax-key" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/command-line-syntax-key</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h2><ul>
+<li><p>tree 以图形显示驱动器或路径的文件夹结构</p>
+</li>
+<li><p>rd 删除一个目录</p>
+</li>
+<li><p>md 创建目录</p>
+</li>
+<li><p>xcopy 复制文件和目录树</p>
+</li>
+<li><p>ren 重命名文件</p>
+</li>
+<li><p>replace 替换文件</p>
+</li>
+<li><p>find 搜索字符串</p>
+</li>
+<li><p>attrib 显示或更改文件属性</p>
+</li>
+<li><p>fc 比较两个文件或两个文件集并显示它们之间的不同</p>
+</li>
+<li><p>at 安排在特定日期和时间运行命令和程序</p>
+</li>
+<li><p>taskkill 结束进程</p>
+</li>
+<li><p>tasklist 显示进程列表</p>
+</li>
+<li><p>cls 清屏</p>
+</li>
+<li><p>type  显示文件内容</p>
+</li>
+<li><p>pause 暂停命令</p>
+</li>
+<li><p>rem 和 :    注释命令</p>
+</li>
+<li><p>more 逐屏显示</p>
+</li>
+<li><p>tree 显示目录结构</p>
+</li>
+<li><p>&amp;  顺序执行多条命令，而不管命令是否执行成功</p>
+</li>
+<li><p>&amp;&amp;  顺序执行多条命令，当碰到执行出错的命令后将不执行后面的命令</p>
+</li>
+<li><p>||  顺序执行多条命令，当碰到执行正确的命令后将不执行后面的命令 </p>
+</li>
+<li><p>| 管道命令</p>
+</li>
+<li><p>set  设置变量 (引用变量可以在名字前后加%, 即 %变量名%</p>
+</li>
+<li><p>^ 转义符</p>
+</li>
+<li><p>copy<br> copy 1.txt + 2.txt  3.txt<br> 合并 1.txt 和 2.txt 的内容，保存为 3.txt 文件 如果不指定 3.txt ，则保存到 1.txt</p>
+<p>con 代表屏幕 , prn 代表打印机 , nul 代表空设备</p>
+</li>
+</ul>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>“关闭回显”是指运行批处理文件时，不显示文件里的每条命令，只显示运行结果.批处理开始和结束时，系统都会自动打开回显</p>
+<pre><code>@                    #关闭单行回显
+echo off             #从下一行开始关闭回显
+@echo off            #从本行开始关闭回显。一般批处理第一行都是这个
+echo on              #从下一行开始打开回显
+echo                 #显示当前是 echo off 状态还是 echo on 状态
+echo.                #输出一个&quot;回车换行&quot;，一般就是指空白行
+echo hello world     #输出hello world</code></pre><p>echo %errorlevel% : 每个命令运行结束,可以用这个查看命令是否执行成功,默认为0.一般执行出错会返回 1.</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><pre><code>set                    #显示目前所有可用的变量，包括系统变量和自定义的变量
+echo %SystemDrive%     #显示系统盘盘符。系统变量可以直接引用
+set p                  #显示所有以p开头的变量，要是一个也没有就设errorlevel=1
+set p=aa1bb1aa2bb2     #设置变量p，并赋值为 = 后面的字符串，即aa1bb1aa2bb2
+echo %p%               #显示变量p代表的字符串，即aa1bb1aa2bb2
+echo %p:~6%            #显示变量p中第6个字符以后的所有字符，即aa2bb2
+echo %p:~6,3%          #显示第6个字符以后的3个字符，即aa2
+echo %p:~0,3%          #显示前3个字符，即aa1
+echo %p:~-2%           #显示最后面的2个字符，即b2
+echo %p:~0,-2%         #显示除了最后2个字符以外的其它字符，即aa1bb1aa2b
+echo %p:aa=c%          #用c替换变量p中所有的aa，即显示c1bb1c2bb2
+echo %p:aa=%           #将变量p中的所有aa字符串置换为空，即显示1bb12bb2
+echo %p:*bb=c%         #第一个bb及其之前的所有字符被替换为c，即显示c1aa2bb2
+set p=%p:*bb=c%        #设置变量p，赋值为 %p:*bb=c% ，即c1aa2bb2
+set /a p=39            #设置p为数值型变量，值为39
+set /a p=39/10         #支持运算符，有小数时用去尾法，39/10=3.9，去尾得3，p=3set /a p=p/10
+                        #用 /a 参数时，在 = 后面的变量可以不加%直接引用set /a p=&quot;1&amp;0&quot;
+                        #&quot;与&quot;运算，要加引号。其它支持的运算符参见set/?
+set p=                 #取消p变量
+set /p p=              请输入屏幕上显示&quot;请输入&quot;，并会将输入的字符串赋值给变量p注意这条可以用来取代 choice 命令</code></pre><blockquote>
+<p><a href="http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html" target="_blank" rel="noopener">http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html</a></p>
+</blockquote>
+<h2 id="xcopy"><a href="#xcopy" class="headerlink" title="xcopy"></a>xcopy</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code>xcopy \\raspberrypi\pishare\test d:\xcopytest2\test2\</code></pre><p><strong>如果复制到目的位置的文件夹不存在, xcopy会自动创建,多级目录也一样</strong><br>(例如上面的,<code>d:\xcopytest2\test2\</code> . 如果这个文件夹不存在,则会创建)</p>
+<p><strong>默认复制源头文件夹下面的文件,而不是整个文件夹</strong><br>(例如上面的,<code>\\raspberrypi\pishare\test</code>. 会copy <code>test</code> 文件夹下面的文件, 而不是 <code>test</code> 这个文件夹)</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre><code>/i
+如果“Source”是一个目录或包含通配符，而“Destination”不存在，“xcopy”会假定“destination”指定目录名并创建一个新目录。然后，“xcopy”会将所有指定文件复制到新目录中。默认情况下，“xcopy”将提示您指定“Destination”是文件还是目录。
+
+/s
+复制非空的目录和子目录。如果省略“/s”，则“xcopy”将在单个目录中工作。
+
+/e
+复制所有子目录，包括空目录。将“/e”与“/s”和“/t”命令行选项一起使用。
+
+/t
+只复制子目录结构（即目录树），不复制文件。要复制空目录，必须包含“/e”命令行选项。
+
+/y
+禁止提示确认要覆盖已存在的目标文件。
+
+/-y
+提示您确认要覆盖已存在的目标文件。
+
+/cdehikvy
+常用的参数组合,能增量,断点续传
+</code></pre>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../vbs-ru-men/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="VBS 入门">
+                        
+                        <span class="card-title">VBS 入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些基本的语法，进阶可以看本博客的 "VBS 实战"
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../sysinternals-gong-ju-xi-lie/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="SysInternals 工具系列">
+                        
+                        <span class="card-title">SysInternals 工具系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            微软的系统工具(sysinternals)使用介绍,着重 psexec
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

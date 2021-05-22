@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- saved from url=(0018)https://myheod.cn/ -->
+<html lang="zh-cn">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Windows更新中</title>
+
+        <style>
+        @keyframes bgcolor {
+        /* main code
+            0%   {background-color: #000000;  }
+            10%  {background-color: #4080c4;  }
+            20%  {background-color: #4040c4;  }
+            30%  {  background-color: #8040c4; }
+            40%  { background-color: #c44080;}
+            50%  {background-color: #c44040;  }
+            60%  { background-color: #c48040;  }
+            70%  { background-color: #80c440;}
+            80%  {background-color: #40c440; }
+            90%  { background-color: #40c480;   }
+            100% {background-color: #000000;  }
+        */
+            0%   {background-color: #000000;  }
+            50%  {background-color: #4080c4;  }
+            100% {background-color: #000000;  }
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            animation-delay: 0s;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+            animation-name: bgcolor;
+            background-color: #FFFFFF;
+            color: white;
+            font-family: "Segoe UI", "Microsoft Yahei UI";
+            height: 100%;
+            margin: 0px;
+            cursor: none; /*禁止鼠标光标*/
+            
+            /*禁止选中文字*/
+            -moz-user-select:none; /*火狐*/
+            -webkit-user-select:none; /*webkit浏览器*/
+            -ms-user-select:none; /*IE10*/
+            -khtml-user-select:none; /*早期浏览器*/
+            user-select:none;
+        }
+        @font-face {
+            font-family: "Windows 8 Boot";
+            src: url("Win8Boot.woff");
+        }
+        .content {
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+        #animation {
+            font-family: "Windows 8 Boot";
+            font-size: 32pt;
+        }
+        #description {
+            margin-top: 18pt;
+            font-size: 18pt;
+        }
+        </style>
+    <meta name="generator" content="Hexo 4.2.1"></head>
+        <body>
+
+            <div class="content">
+                <div id="animation"></div>
+                <div id="description">正在更新您的Windows<br>请不要关闭系统</div>
+            </div>
+            <script language="javascript">
+                const firstCode = 0xe052;
+                const lastCode = 0xe0cc;
+                const frameRate = 30;
+                const startTime = new Date()
+                const updateFrame = () => {
+                    const getCode = () => (new Date()-startTime)*frameRate/1000%(lastCode-firstCode)+firstCode;
+                    document.getElementById("animation").innerText = String.fromCharCode(getCode())
+                    requestAnimationFrame(updateFrame)
+                }
+                updateFrame()
+            </script>
+
+            <script type="text/javascript"> /*禁止鼠标右键*/
+                document.oncontextmenu = function(){
+                    return false;
+                }
+            </script>
+        </body>
+</html>

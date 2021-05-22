@@ -1,0 +1,1191 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PVE使用总结, 宅世界">
+    <meta name="description" content="这里总结使用PVE后，遇到的一些问题解决方法。总体来说，这个软件我觉得用来替换Vmware workstation 还是不错的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PVE使用总结 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PVE使用总结</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/PVE/">
+                                <span class="chip bg-color">PVE</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                                <span class="chip bg-color">虚拟化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-02-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.2k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>这里总结我使用PVE的一些坑</p>
+<h2 id="集群创建"><a href="#集群创建" class="headerlink" title="集群创建"></a>集群创建</h2><ol>
+<li><p>首先在三台实体机上安装pve</p>
+</li>
+<li><p>安装完成后，在其中一台创建集群。登陆PVE的网页管理界面</p>
+</li>
+</ol>
+<p><img src="pics/1.png" alt=""></p>
+<ol start="3">
+<li>接下来，在其他2个pve节点，执行</li>
+</ol>
+<blockquote>
+<p># pvecm add 10.0.77.170   ;其中10.0.77.170是上面创建集群的实体机的ip地址</p>
+</blockquote>
+<p>加入完成之后，可以通过命令在任何一个节点上查看集群情况</p>
+<blockquote>
+<p># pvecm status </p>
+</blockquote>
+<p>如果要查看集群日志，可以看文件 /var/log/daemon.log</p>
+<p>集群建立完成之后，任何一个pve节点的web管理界面视图都可以管理整个集群</p>
+<h2 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h2><blockquote>
+<p># pvecm delnode pve</p>
+</blockquote>
+<h2 id="降低Cluster"><a href="#降低Cluster" class="headerlink" title="降低Cluster"></a>降低Cluster</h2><p>有时候，集群出现错误，比如某些节点发生故障，或网络错误。这时候，一些操作无法完成，<strong>甚至虚拟机无法开启</strong></p>
+<pre><code>Cluster 中節點數量低於 2 時， Cluster 就會被鎖住，會陷入「no quorum」的狀態</code></pre><p>暫時把 Cluster 的期待數量從 2 降低為 1</p>
+<blockquote>
+<p># pvecm expected 1</p>
+</blockquote>
+<p>重新啟動 Proxmox VE Cluster</p>
+<blockquote>
+<p># service pve-cluster restart</p>
+</blockquote>
+<p>参考资料</p>
+<blockquote>
+<p><a href="http://blog.ilc.edu.tw/blog/index.php?op=printView&amp;articleId=689007&amp;blogId=25793" target="_blank" rel="noopener">http://blog.ilc.edu.tw/blog/index.php?op=printView&amp;articleId=689007&amp;blogId=25793</a></p>
+</blockquote>
+<h2 id="迁移或复制没有节点"><a href="#迁移或复制没有节点" class="headerlink" title="迁移或复制没有节点"></a>迁移或复制没有节点</h2><p>如果你想迁移虚拟机到其他节点，但是迁移并没有其他节点的选项，那</p>
+<p>在每个节点的shell输入</p>
+<blockquote>
+<p># pvecm updatecerts -f</p>
+</blockquote>
+<h2 id="迁移过程中出现如下报错"><a href="#迁移过程中出现如下报错" class="headerlink" title="迁移过程中出现如下报错"></a>迁移过程中出现如下报错</h2><pre><code> found local disk &#39;local:iso/cn_windows_server_2012_r2_vl_with_update_x64_dvd_6052729.iso&#39; (referenced by snapshot(s))</code></pre><p> 说明要迁移的虚拟机上面有挂载 iso 光盘镜像，需要先移除，包括快照里面的iso，也要移除</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/weixin_34185560/article/details/91830209" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34185560/article/details/91830209</a></p>
+</blockquote>
+<h2 id="克隆备份"><a href="#克隆备份" class="headerlink" title="克隆备份"></a>克隆备份</h2><p> 克隆：两个节点直接复制虚拟机，不需要重复创建虚拟机<br> 备份：将虚拟机备份到一个文件，如果重装了PVE ，可以直接使用备份文件恢复虚拟机</p>
+<h2 id="PVE-克隆不能克隆到其他节点"><a href="#PVE-克隆不能克隆到其他节点" class="headerlink" title="PVE 克隆不能克隆到其他节点"></a>PVE 克隆不能克隆到其他节点</h2><p> 解决方法：先克隆到本节点，然后迁移</p>
+<h2 id="vmware-虚拟机迁移到-pve-Beta"><a href="#vmware-虚拟机迁移到-pve-Beta" class="headerlink" title="vmware 虚拟机迁移到  pve (Beta)"></a>vmware 虚拟机迁移到  pve (Beta)</h2><p> <strong>这个了解即可，我实验失败了，可用的迁移方式见另一个文档</strong></p>
+<ol>
+<li><p>导出vmware 虚拟机  </p>
+<p><img src="pics/2.png" alt=""></p>
+</li>
+<li><p>将刚才导出的vmdk文档迁移到pve节点上</p>
+</li>
+<li><p>执行 格式转换</p>
+<p>qemu-img是專門虛擬磁盤映像文件的qemu命令行工具</p>
+<blockquote>
+<p># qemu-img convert -f vmdk -O 原始映象檔名稱.vmdk 新虛擬機名稱.qcow2 </p>
+</blockquote>
+<p>參數說明：convert 將磁盤文件轉換為指定格式的文件<br>-f 指定需要轉換文件的文件格式<br>-O 指定要轉換的目標格式</p>
+</li>
+</ol>
+<p>轉換完成後，將新生產一個目標映像文件，原文件仍保存。</p>
+<h2 id="附加"><a href="#附加" class="headerlink" title="附加"></a>附加</h2><p>raw轉qcow2</p>
+<blockquote>
+<p># qemu-img convert -f raw centos.img -O qcow2 centos.qcow2 </p>
+</blockquote>
+<p>上传ISO镜像，通过sftp上传到以下目录/var/lib/vz/template/iso，但这里上传的iso只能本机显示，如果要让集群中其它的主机也能共享iso，那就要用到共享存储，比如NFS</p>
+<h2 id="PVE-qm-命令"><a href="#PVE-qm-命令" class="headerlink" title="PVE  qm 命令"></a>PVE  qm 命令</h2><p>过命令“qm importdisk”来实现，qm是QEMU/KVM虚拟机的管理工具，可以将指定的磁盘映像导入到指定的虚拟机的存储中，后面要加所需的命令和参数，具体的格式如下：</p>
+<blockquote>
+<p># qm importdisk <vmid> <source> <storage></p>
+</blockquote>
+<p>下面是一个具体的实例：</p>
+<blockquote>
+<p># qm importdisk 201 vm-201-disk-1.qcow2   local-lvm</p>
+</blockquote>
+<p>其中，VM的ID为201，磁盘文件为“vm-201-disk-1.qcow2”，存储为“local-lvm”。</p>
+<blockquote>
+<p># qemu-img convert -f vmdk /mnt/usb/windows-server/windows-server.vmdk -O qcow2 /var/lib/vz/images/100/windows-server.qcow2</p>
+</blockquote>
+<h2 id="PVE-虚拟机无法拍摄快照"><a href="#PVE-虚拟机无法拍摄快照" class="headerlink" title="PVE 虚拟机无法拍摄快照"></a>PVE 虚拟机无法拍摄快照</h2><p> 如果你的虚拟机里的磁盘格式不支持快照，也就无法做快照</p>
+<p> 下面的PVE官方的说明</p>
+<blockquote>
+<p><a href="https://pve.proxmox.com/wiki/Storage" target="_blank" rel="noopener">https://pve.proxmox.com/wiki/Storage</a></p>
+</blockquote>
+<p> <img src="pics/3.png" alt=""></p>
+<p> 要拍快照，可以先把不支持的磁盘卸载掉，然后再做快照</p>
+<p>  <img src="pics/4.png" alt=""></p>
+<h2 id="为-local-lvm-增加容量"><a href="#为-local-lvm-增加容量" class="headerlink" title="为 local-lvm 增加容量"></a>为 local-lvm 增加容量</h2><p> local-lvm 这个地方一般放置虚拟系统的磁盘文件，很容易爆满，因此。有时，我们需要增加硬盘</p>
+<p> 进入PVE的后台操作：</p>
+<p> 首先，停止系统，将固态硬盘接入。然后启动系统</p>
+<p> 进入系统查看情况</p>
+<pre><code> # lsblk 
+ # fdisk /dev/sd?
+</code></pre><p> <img src="pics/5.png" alt=""></p>
+<p>我新添加的硬盘是sdb，并且为它分了一个sdb1的主分区</p>
+<p>然后</p>
+<blockquote>
+<p>pvcreate /dev/sdb1</p>
+</blockquote>
+<p>proxmox里面默认只有一个卷组，名字叫<code>pve</code>，可以通过执行下面命令查看</p>
+<blockquote>
+<p>vgs </p>
+</blockquote>
+<p>我们将添加的硬盘加入到<code>pve</code>这个卷组中去</p>
+<blockquote>
+<p>vgextend pve /dev/sdb1</p>
+</blockquote>
+<p> <img src="pics/7.png" alt=""></p>
+<p> 这一步完成后，我们去网页前台，可以看到已经添加成功，但是还没有生效</p>
+<p><img src="pics/8.png" alt=""> </p>
+<p>之后我们查看一下逻辑卷组，其中，<code>data</code>就是我们需要添加容量的逻辑卷</p>
+<blockquote>
+<p>lvs </p>
+</blockquote>
+<p> <img src="pics/6.png" alt=""></p>
+<p> 之后，开始扩展容量</p>
+<blockquote>
+<p>lvresize –size +50G pve/data</p>
+</blockquote>
+<p> pve 是卷组， data是逻辑卷</p>
+<p> <img src="pics/9.png" alt=""></p>
+<p> 可以看到，data逻辑卷已经扩容</p>
+<p> 我们返回前台，容量已经用到了</p>
+<p>  <img src="pics/10.png" alt=""></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/PVE/">
+                                    <span class="chip bg-color">PVE</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                                    <span class="chip bg-color">虚拟化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../hua-wei-san-ceng-jiao-huan-ji-bei-fen-hui-fu-pei-zhi-wen-jian/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="华为三层交换机备份恢复配置文件">
+                        
+                        <span class="card-title">华为三层交换机备份恢复配置文件</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、使用Console进行配置首次使用此交换机，必须通过console口配置，完成后才可以使用WEB页面进行进一步的配置操作
+使用上图的线分别连接电脑的usb口和交换机的CONSOLE口
+然后，查看电脑是否已经安装好驱动，如下图所示。如果显
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%A1%AC%E4%BB%B6/">
+                        <span class="chip bg-color">硬件</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="chip bg-color">交换机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../zheng-ze-biao-da-shi-bi-ji/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="正则表达式笔记">
+                        
+                        <span class="card-title">正则表达式笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            总结一下正则表达式的使用方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

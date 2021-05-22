@@ -1,0 +1,1411 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="OneNote逃离2, 宅世界">
+    <meta name="description" content="Linux篇">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>OneNote逃离2 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/35.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">OneNote逃离2</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-13
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-06-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.3k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h2><h3 id="新安装-无法联网"><a href="#新安装-无法联网" class="headerlink" title="新安装 无法联网"></a>新安装 无法联网</h3><p>今天在VMware虚拟机中安装好centos7后，发现centos默认是不联网的，联网修改设置如下：<br>进入目录：</p>
+<pre><code>cd /etc/sysconfig/network-scripts/</code></pre><p>找到网卡配置文件名，这个网卡配置文件可以通过ifconfig命令查看，我虚拟机的网卡名称为ens3</p>
+<p>编辑ifcfg-ens33文件的最后一行，将 ONBOOT=no 改为 <code>ONBOOT=yes</code></p>
+<p>保存并退出，再重启一下network：<br>service network restart<br>搞定</p>
+<h3 id="更改启动模式"><a href="#更改启动模式" class="headerlink" title="更改启动模式"></a>更改启动模式</h3><p>命令行中：vi /etc/inittab<br>centos仍然只有两种启动模式<br>multi-user.target: analogous to runlevel 3 #命令行模式<br>graphical.target: analogous to runlevel 5 #图形模式</p>
+<p> 通过systemctl get-default 命令获取当前模式：<br>（注意：这里是：systemctl 是字母“l”,不是数字1）</p>
+<p>由上面结果可知，当前为命令行模式<br>通过systemctl set-default graphical.target 命令，修改启动模式<br>前提是：你安装了图形界面</p>
+<p>作者：NicholasZhen<br>链接：<a href="https://www.jianshu.com/p/65bda1fcae52" target="_blank" rel="noopener">https://www.jianshu.com/p/65bda1fcae52</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="centos-防火墙"><a href="#centos-防火墙" class="headerlink" title="centos 防火墙"></a>centos 防火墙</h3><p>现在centos用的是 firewall-cmd, iptables 貌似淘汰了</p>
+<h4 id="firewall-cmd"><a href="#firewall-cmd" class="headerlink" title="firewall-cmd"></a>firewall-cmd</h4><pre><code>查看防火墙状态
+firewall-cmd --state
+
+停止
+systemctl stop firewalld.service
+
+禁止 firewall 开机启动
+systemctl disable firewalld.service
+
+查看已经开放的端口
+firewall-cmd --list-ports
+
+开启端口
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+--zone # 作用域
+--permanent # 永久生效，没有此参数重启后失效
+
+重启防火墙
+firewall-cmd --reload
+
+firewall-cmd --remove-port=9998/udp --permanent
+</code></pre><p>来自 <a href="https://blog.csdn.net/zj_jim/article/details/53841516" target="_blank" rel="noopener">https://blog.csdn.net/zj_jim/article/details/53841516</a> </p>
+<h4 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h4><p>查看是否安装<br>rpm qa | grep iptables</p>
+<p>查看是否运行<br>service iptables status</p>
+<p>停止iptables 服务<br>/etc/init.d/iptables stop<br>service iptables start</p>
+<p>列出iptables 规则<br>iptables -L</p>
+<p>检查iptables 开机自启情况<br>chkconfig | grep iptables</p>
+<p>关闭 自启服务<br>chkconfig iptables off</p>
+<p>删除 自启服务<br>chkconfig –del iptables<br>再次检查<br>chkconfig | grep iptables</p>
+<p>清除 iptables 规则<br>iptables -F</p>
+<p>删除某条iptables 规则， 输入 iptables -d  xxxx</p>
+<p><a href="https://jingyan.baidu.com/article/8cdccae946963f315413cdef.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/8cdccae946963f315413cdef.html</a></p>
+<p><a href="https://blog.csdn.net/banqgg/article/details/78297790" target="_blank" rel="noopener">https://blog.csdn.net/banqgg/article/details/78297790</a></p>
+<h3 id="rpm-用法"><a href="#rpm-用法" class="headerlink" title="rpm 用法"></a>rpm 用法</h3><p>Rpm -q  :  参看 包 的完整名称</p>
+<p>1）查询系统中已经安装的软件<br>rpm -qa </p>
+<p>2）查询一个已经安装的文件属于哪个软件包；<br>rpm -qf 文件名的绝对路径</p>
+<p>3）查询已安装软件包都安装到何处；<br>软件名定义是:rpm包去除平台信息和后缀后的信息<br>rpm -ql 软件名</p>
+<p>4）查询一个已安装软件包的信息<br>rpm  -qi 软件名</p>
+<p>5）查看一下已安装软件的配置文件；<br>rpm -qc 软件名</p>
+<p>6）查看一个已经安装软件的文档安装位置：<br>rpm -qd 软件名</p>
+<p>7）查看一下已安装软件所依赖的软件包及文件；<br>rpm -qR 软件名</p>
+<p>•  对于未安装的软件包信息查询<br>    1）查看一个软件包的用途、版本等信息；<br>    rpm -qpi rpm文件</p>
+<pre><code>2）查看一件软件包所包含的文件；
+rpm -qpl rpm文件
+
+3）查看软件包的文档所在的位置；
+rpm -qpd rpm文件
+
+4）查看一个软件包的配置文件；
+rpm -qpc rpm文件
+
+5）查看一个软件包的依赖关系
+rpm -qpR rpm文件</code></pre><p>• 软件包的安装、升级、删除等<br>    1)安装或者升级一个rpm包<br>    rpm -ivh rpm文件【安装】<br>    rpm -Uvh rpm文件【更新】</p>
+<pre><code>2)删除一个rpm 包
+rpm -e 软件名
+如何需要不管依赖问题，强制删除软件，在如上命令其后加上 --nodeps</code></pre><p>• 签名导入<br>rpm –import 签名文件 rpm –import RPM-GPG-KEY</p>
+<p>来自 <a href="http://blog.csdn.net/iamhuanggua/article/details/60140867" target="_blank" rel="noopener">http://blog.csdn.net/iamhuanggua/article/details/60140867</a> </p>
+<h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><p>yum命令是在Fedora和RedHat以及SUSE中基于rpm的软件包管理器，它可以使系统管理人员交互和自动化地更细与管理RPM软件包，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。<br>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。<br>语法<br>yum(选项)(参数)<br>选项<br>    -h：显示帮助信息；<br>    -y：对所有的提问都回答“yes”；<br>    -c：指定配置文件；<br>    -q：安静模式；<br>    -v：详细模式；<br>    -d：设置调试等级（0-10）；<br>    -e：设置错误等级（0-10）；<br>    -R：设置yum处理一个命令的最大等待时间；<br>    -C：完全从缓存中运行，而不去下载或者更新任何头文件。<br>参数<br>    install：安装rpm软件包；<br>    update：更新rpm软件包；<br>    check-update：检查是否有可用的更新rpm软件包；<br>    remove：删除指定的rpm软件包；<br>    list：显示软件包的信息；<br>    search：检查软件包的信息；<br>    info：显示指定的rpm软件包的描述信息和概要信息；<br>    clean：清理yum过期的缓存；<br>    shell：进入yum的shell提示符；<br>    resolvedep：显示rpm软件包的依赖关系；<br>    localinstall：安装本地的rpm软件包；<br>    localupdate：显示本地rpm软件包进行更新；<br>    deplist：显示rpm软件包的所有依赖关系。<br>实例</p>
+<p>部分常用的命令包括：<br>    • 自动搜索最快镜像插件：yum install yum-fastestmirror<br>    • 安装yum图形窗口插件：yum install yumex<br>    • 查看可能批量安装的列表：yum grouplist </p>
+<p>安装<br>yum install              #全部安装<br>yum install package1     #安装指定的安装包package1<br>yum groupinsall group1   #安装程序组group1</p>
+<p>更新和升级<br>yum update               #全部更新<br>yum update package1      #更新指定程序包package1<br>yum check-update         #检查可更新的程序<br>yum upgrade package1     #升级指定程序包package1<br>yum groupupdate group1   #升级程序组group1</p>
+<p>查找和显示<br>yum info package1      #显示安装包信息package1<br>yum list               #显示所有已经安装和可以安装的程序包<br>yum list package1      #显示指定程序包安装情况package1<br>yum groupinfo group1   #显示程序组group1信息yum search string 根据关键字string查找安装包</p>
+<p>删除程序<br>yum remove &#124; erase package1   #删除程序包package1<br>yum groupremove group1             #删除程序组group1<br>yum deplist package1               #查看程序package1依赖情况</p>
+<p>清除缓存<br>yum clean packages       #清除缓存目录下的软件包<br>yum clean headers        #清除缓存目录下的 headers<br>yum clean oldheaders     #清除缓存目录下旧的 headers</p>
+<p>来自 <a href="http://man.linuxde.net/yum" target="_blank" rel="noopener">http://man.linuxde.net/yum</a> </p>
+<h3 id="无线网卡"><a href="#无线网卡" class="headerlink" title="无线网卡"></a>无线网卡</h3><p>iwlist wifi-name  scanning<br>wifi-name : 无线网卡 名字 </p>
+<p>显示出来的ESSID项的值即为无线网络的名字</p>
+<p>来自 <a href="http://blog.csdn.net/qq_21949217/article/details/42642449" target="_blank" rel="noopener">http://blog.csdn.net/qq_21949217/article/details/42642449</a> </p>
+<p>ip  link set &lt;设备名&gt;  up</p>
+<p>• iw - 仅支持 nl80211 标准，不支持老的 WEXT (Wireless EXTentions) 标准。如果 iw 没有显示网卡，可能是这个原因。<br>• wireless_tools - 已经过时，但是依然广泛使用。WEXT 设备使用此工具。<br>• wpa_supplicant - 提供 WPA/WPA2 加密支持，同时支持 nl80211 和 WEXT。</p>
+<p>来自 <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a> </p>
+<table>
+<thead>
+<tr>
+<th>iw命令</th>
+<th>wireless_tools命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iw dev wlan0 link</td>
+<td>iwconfig wlan0</td>
+<td>获取连接状态</td>
+</tr>
+<tr>
+<td>iw dev wlan0 scan</td>
+<td>iwlist wlan0 scan</td>
+<td>扫描可用热点</td>
+</tr>
+<tr>
+<td>iw dev wlan0 set type ibss</td>
+<td>iwconfig wlan0 mode ad-hoc</td>
+<td>设置操作模式为 ad-hoc</td>
+</tr>
+<tr>
+<td>iw dev wlan0 connect your_essid</td>
+<td>iwconfig wlan0 essid your_essid</td>
+<td>连接到开放网络</td>
+</tr>
+<tr>
+<td>iw dev wlan0 connect your_essid 2432</td>
+<td>iwconfig wlan0 essid your_essid freq 2432M</td>
+<td>连接到开放网络的一个频道</td>
+</tr>
+<tr>
+<td>iw dev wlan0 connect your_essid key 0:your_key</td>
+<td>iwconfig wlan0 essid your_essid key your_key</td>
+<td>用16进制加密密码访问 WEP 加密网络</td>
+</tr>
+<tr>
+<td>iw dev wlan0 connect your_essid key 0:your_key</td>
+<td>iwconfig wlan0 essid your_essid key s:your_key</td>
+<td>用 ASCII 密码访问 WEP 加密网络</td>
+</tr>
+<tr>
+<td>iw dev wlan0 set power_save on</td>
+<td>iwconfig wlan0 power on</td>
+<td>启用省电模式</td>
+</tr>
+</tbody></table>
+<p>来自 <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
+<p>• WPA/WPA2</p>
+<pre><code> wpa_supplicant -i interface -c &lt;(wpa_passphrase your_SSID your_key)</code></pre><p>来自 <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
+<p>获取 IP 地址</p>
+<pre><code>使用 DHCP：
+# dhcpcd wlan0
+静态 IP：
+# ip addr add 192.168.0.2/24 dev wlan0
+# ip route add default via 192.168.0.1</code></pre><p>来自 <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a> </p>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>netstat可以查看linux系统中正在使用的服务和端口情况<br>netstat [-选项]<br>netstat各选项参数说明：<br>-a : 列出所有连接，服务监听，Socket信息<br>-c : 持续列出网络状态 #每隔一秒输出网络信息<br>-t : 显示TCP端口<br>-u : 显示UDP端口<br>-l : 列出当前监听服务，只显示监听端口<br>-p : 显示PID（进程号）和进程名称<br>-n : 直接使用ip地址，而不通过域名服务器(加速输出，因为不用进行比对查询)<br>-s : 显示网络工作信息统计表<br>-r : 显示路由表信息</p>
+<p>From <a href="https://blog.csdn.net/xuemeilu/article/details/52329671" target="_blank" rel="noopener">https://blog.csdn.net/xuemeilu/article/details/52329671</a> </p>
+<p>netstat -ntlp  //查看当前所有tcp 端口<br>netstat -ntulp | grep 80   //查看所有80 端口使用情况<br>netstat -an | grep 3305   // 查看所有3306 端口使用情况\</p>
+<p>安装  netstat<br>yum install net-tools</p>
+<h3 id="解决CentOS-7上yum-update时出现的Error-Multilib-version-problems-found"><a href="#解决CentOS-7上yum-update时出现的Error-Multilib-version-problems-found" class="headerlink" title="解决CentOS 7上yum update时出现的Error: Multilib version problems found."></a>解决CentOS 7上yum update时出现的Error: Multilib version problems found.</h3><p>查看更新出错的提示 是哪个 组件重复<br>rpm -q  组件名称  #查询有多少个，以及多余那个<br>yum remove 组件全称   # 移除多余的那个</p>
+<h3 id="yum-安装找不到软件的解决方法"><a href="#yum-安装找不到软件的解决方法" class="headerlink" title="yum 安装找不到软件的解决方法"></a>yum 安装找不到软件的解决方法</h3><ol>
+<li><p>查看是否安装EPEL, 如果没有安装，请安装<br> yum -y install epel-release<br> （ EPEL 是yum的一个软件源,里面包含了许多基本源里没有的软件）<br> 安装后，在/etc/yum.repos.d/ 文件中会出现  epel.repo 和 epel-testing.repo 文件</p>
+</li>
+<li><p>安装了，还是不能下载，请移除目前的 epel ，然后重新下载安装</p>
+</li>
+<li><p>接下来更新源<br> yum clean all &amp;&amp; yum makecache</p>
+</li>
+</ol>
+<p>From <a href="https://blog.csdn.net/w670328683/article/details/51673757" target="_blank" rel="noopener">https://blog.csdn.net/w670328683/article/details/51673757</a> </p>
+<h3 id="Centos-7-禁用fastestmirror-插件"><a href="#Centos-7-禁用fastestmirror-插件" class="headerlink" title="Centos 7 禁用fastestmirror 插件"></a>Centos 7 禁用fastestmirror 插件</h3><p>vi  /etc/yum/pluginconf.d/fastestmirror.conf<br>enable = 1  //   1  改為0 ，禁用插件</p>
+<h3 id="Linux-后台不间断运行进程"><a href="#Linux-后台不间断运行进程" class="headerlink" title="Linux 后台不间断运行进程"></a>Linux 后台不间断运行进程</h3><p>命令  ＆<br>退出终端后，  后台进程也失效</p>
+<p>nohup  命令  ＆<br>退出终端后， 不失效</p>
+<p>yum install  screen  -y</p>
+<h3 id="开启ssh"><a href="#开启ssh" class="headerlink" title="开启ssh"></a>开启ssh</h3><p>1 切换到 ／etc／ssh ， 找到配置文件sshd＿config， 将文件中的监听端口，监听地址前面的＃号去掉</p>
+<p>2。 允许远程登陆  permitRootlogin yes</p>
+<p>3。 开启用户名密码认证登陆   PasswordAuthentication yes</p>
+<p>4。 service sshd start</p>
+<p>5。开机自启   systemctl enable sshd.service</p>
+<h2 id="树莓派"><a href="#树莓派" class="headerlink" title="树莓派"></a>树莓派</h2><h3 id="树莓派静态ip"><a href="#树莓派静态ip" class="headerlink" title="树莓派静态ip"></a>树莓派静态ip</h3><p>1、使用ssh登陆，使用以下命令设置静态ip。<br>sudo nano /etc/dhcpcd.conf<br>2、在dhcpcd.conf后添加以下内容：<br>interface eth0<br>static ip_address=10.12.8.124/24<br>static routers=10.12.8.1<br>static domain_name_servers=202.102.152.3 114.114.114.114<br>3、保存后重启树莓派。<br>sudo reboot</p>
+<p>作者：科技爱好者<br>链接：<a href="https://www.jianshu.com/p/b0e6d066d6b6" target="_blank" rel="noopener">https://www.jianshu.com/p/b0e6d066d6b6</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="WiFi-静态IP"><a href="#WiFi-静态IP" class="headerlink" title="WiFi 静态IP"></a>WiFi 静态IP</h3><p>1.确认wlan0 网卡是否激活, 如果没有激活,即使配置了wifi也不能连上网.</p>
+<p>1.1 扫描wifi: sudo iwlist wlan0 scan</p>
+<pre><code>wlan0 Interface doesn&#39;t support scanning : Network is down
+
+如果显示这样表示你的网卡处于关闭状态
+此时需激活网卡 sudo ifconfig wlan0 up</code></pre><p>如果出现以下错误：<br> sudo ifconfig wlan0 up SIOCSIFFLAGS: Operation not possible due to RF-kill </p>
+<p>sudo rfkill unblock wifi; sudo rfkill unblock all<br>sudo rfkill list</p>
+<p>1.2 再次扫描wifi 此时应该能收到wifi<br>2.设置wifi名称及密码</p>
+<p>sudo nano /etc/wpa_supplicant/wpa_supplicant.conf<br>WiFi 名称 密码等信息</p>
+<p>sudo nano /etc/dhcpcd.conf<br>设置静态消息</p>
+<p>interface eth0 设置的是有线静态ip<br>interface wlan0 设置的是无线静态ip</p>
+<p><a href="https://askubuntu.com/questions/62166/siocsifflags-operation-not-possible-due-to-rf-kill" target="_blank" rel="noopener">https://askubuntu.com/questions/62166/siocsifflags-operation-not-possible-due-to-rf-kill</a></p>
+<p><a href="https://www.jianshu.com/p/b437558dd028" target="_blank" rel="noopener">https://www.jianshu.com/p/b437558dd028</a></p>
+<h3 id="WiFi-连接-操作"><a href="#WiFi-连接-操作" class="headerlink" title="WiFi 连接 操作"></a>WiFi 连接 操作</h3><p><a href="https://www.jianshu.com/p/e22331d62a16" target="_blank" rel="noopener">https://www.jianshu.com/p/e22331d62a16</a></p>
+<p>iwconfig</p>
+<p>如果出现了wlan0，那说明网卡已经正常工作了。</p>
+<p>如果这里的显示不正常，请安装连接wifi必要的包</p>
+<p>sudo apt-get install wireless-tools wpasupplicant firmware-realtek</p>
+<p>设置wifi</p>
+<p>输入如下命令可以搜索附近所有可连接的Wifi AP：</p>
+<p>pi@raspberrypi:~ $ iwlist wlan0 scan | grep SSID</p>
+<p>确定树莓派可以检测到你建立的Wifi AP之后，按照如下方法配置</p>
+<p>使用如下命令获得wifi设置 wpa_passphrase SSID名称 密码 回显如下</p>
+<p>pi@raspberrypi:~$ wpa_passphrase SSID password<br>network={<br>        ssid=”SSID”<br>        #psk=”password”<br>        psk=2f6a0beddf2f0588ee426b0c3a0e3d9a523bb07a05cb857f85d826da80fa75c4<br>}</p>
+<p>复制这段回显并保存到自己的配置文件中</p>
+<pre><code>pi@raspberrypi:~$ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf      
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+#ap_scan=1
+
+network={
+       ssid=&quot;ssid&quot;
+       scan_ssid=1
+       psk=&quot;密码&quot;
+       priority=5
+}
+network={
+       ssid=&quot;ssid&quot;
+       psk=&quot;密码&quot;
+       priority=1
+}
+</code></pre><pre><code>ap_scan:1是默认值，因此我注掉了
+    1：这个模式下总是先连接可见的WiFi，如果扫描完所有可见的网络之后都没有连接上，则开始连接隐藏WiFi。
+    2：会按照network定义的顺序连接WiFi网络，遇到隐藏的将立刻开始连接，因此在这个模式下连接顺序不受priority影响
+ctrl_interface:这个文件夹里面存的是一个当前使用的interface的socket文件，可以供其他程序使用读取WiFi状态信息
+network：是一个连接一个WiFi网络的配置，可以有多个，wpa_supplicant会按照priority指定的优先级（数字越大越先连接）来连接，当然，在这个列表里面隐藏WiFi不受priority的影响，隐藏WiFi总是在可见WiFi不能连接时才开始连接。
+    ssid:网络的ssid
+    psk:密码
+    priority:连接优先级，越大越优先
+    scan_ssid:连接隐藏WiFi时需要指定该值为1</code></pre><p>修改完成后，使用以下命令重启网络</p>
+<p>pi@raspberrypi:<del>$ sudo systemctl restart networking  #重启网卡<br>pi@raspberrypi:</del>$ sudo ifdown wlan0<br>pi@raspberrypi:<del>$ sudo ifup wlan0<br>pi@raspberrypi:</del>$ wpa_cli status      #查看连接状态</p>
+<h3 id="检查网络情况"><a href="#检查网络情况" class="headerlink" title="检查网络情况"></a>检查网络情况</h3><p>路由表:<br>netstat -r</p>
+<p>查看DNS:<br>cat /etc/resolv.conf</p>
+<p>网关:<br>traceroute baidu.com<br>第一行就是自己的网关</p>
+<h2 id="Debian"><a href="#Debian" class="headerlink" title="Debian"></a>Debian</h2><h3 id="debian中查找已安装软件及卸载软件"><a href="#debian中查找已安装软件及卸载软件" class="headerlink" title="debian中查找已安装软件及卸载软件"></a>debian中查找已安装软件及卸载软件</h3><p>dpkg -l | grep -i name<br>apt-get remove name</p>
+<p>autoremove——告诉 apt-get 我们所要做的操作是移除软件<br>–purge——注意这前面是两个短划线，这个参数是告诉他们要完整的干净的彻底的移除</p>
+<p>sudo apt-get autoremove –purge</p>
+<p>From <a href="https://blog.csdn.net/sinat_30603081/article/details/69389188" target="_blank" rel="noopener">https://blog.csdn.net/sinat_30603081/article/details/69389188</a> </p>
+<h3 id="使用apt-cache-policy列出软件的所有来源"><a href="#使用apt-cache-policy列出软件的所有来源" class="headerlink" title="使用apt-cache policy列出软件的所有来源"></a>使用apt-cache policy列出软件的所有来源</h3><p>policy列出的信息比policy详细一点。</p>
+<blockquote>
+<p>apt-cache policy vim</p>
+</blockquote>
+<p>vim:<br>  Installed: 2:7.4.1689-3ubuntu1.2<br>  Candidate: 2:7.4.1689-3ubuntu1.2<br>  Version table:<br> *** 2:7.4.1689-3ubuntu1.2 100<br>        100 /var/lib/dpkg/status<br>     2:7.3.547-7 500<br>        500 <a href="http://mirrors.163.com/debian" target="_blank" rel="noopener">http://mirrors.163.com/debian</a> wheezy/main amd64 Packages12345678910</p>
+<p>policy是一个apt-cache子命令，可以通过man apt-cache查询更多用法。</p>
+<h3 id="移动硬盘部分ntfs分区无法打开"><a href="#移动硬盘部分ntfs分区无法打开" class="headerlink" title="移动硬盘部分ntfs分区无法打开"></a>移动硬盘部分ntfs分区无法打开</h3><p>使用指令进行修复：<br>sudo ntfsfix /dev/sdaX(无法挂载的硬盘分区)</p>
+<p>From <a href="https://blog.csdn.net/u014157776/article/details/79621063" target="_blank" rel="noopener">https://blog.csdn.net/u014157776/article/details/79621063</a> </p>
+<h3 id="开启-SSH"><a href="#开启-SSH" class="headerlink" title="开启 SSH"></a>开启 SSH</h3><ol>
+<li>修改sshd_config 文件</li>
+<li>启动 SSH 服务  ， 命令为  /etc/init.d/ssh start  或 service ssh start</li>
+<li>验证SSH 服务状态 ， 命令为 ： /etc/init.d/ssh status </li>
+<li>添加开机自启动  ： update-rc.d ssh enable </li>
+</ol>
+<p>关闭则为 ： update-rc ssh disabled</p>
+<h3 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h3><pre><code>aptitude install locales（没有aptitude的话可以先安装apt-get insall aptitude ）
+dpkg-reconfigure locales 进入选择： zh_CN GB2312 zh_CN.GBK GBK ;zh_CN.UTF-8 UTF-8  ; en_US.UF8 
+vim /etc/default/locale 设置:LANG=en_US.UTF-8</code></pre><p>安装中文字库：<br>sudo apt-get install ttf-wqy-zenhei</p>
+<p>安装基于Fcitx输入法框架的google拼音输入法：</p>
+<p>sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</p>
+<p>From <a href="https://www.immortalt.com/archives/271" target="_blank" rel="noopener">https://www.immortalt.com/archives/271</a> </p>
+<p>之后  打开  fcitx configuration  , 设置相关输入法的顺序，（可能需要重启一下）（打开的方法是在软件列表内打开）</p>
+<p>Debian 9  将图标隐藏在左下角下面的收</p>
+<h3 id="安全移除移动硬盘"><a href="#安全移除移动硬盘" class="headerlink" title="安全移除移动硬盘"></a>安全移除移动硬盘</h3><p>首先卸载所有挂载点<br>Umount  /media/bingfeng/*  （后面路径为移动硬盘分区挂载点)</p>
+<p>之后断掉硬盘的电<br>Udisksctl power-off -b /dev/sd?</p>
+<h3 id="重新命名网卡的名称"><a href="#重新命名网卡的名称" class="headerlink" title="重新命名网卡的名称"></a>重新命名网卡的名称</h3><blockquote>
+<p>ip link set enp4s0f1 down //关闭网卡</p>
+<blockquote>
+<p>ip link set enp4s0f1 name eth0 //重命名为eth0<br>ip link set eth0 up //启用eth0<br>你可以使用ifconfig或者ip link show来查看修改后的结果</p>
+</blockquote>
+</blockquote>
+<p>作者：小星星<br>链接：<a href="https://www.zhihu.com/question/45796677/answer/316701878" target="_blank" rel="noopener">https://www.zhihu.com/question/45796677/answer/316701878</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="Debian安装-cpu-温控"><a href="#Debian安装-cpu-温控" class="headerlink" title="Debian安装 cpu 温控"></a>Debian安装 cpu 温控</h3><p>Apt-get install lm-sensors<br>Sensors-detect<br>Service kmod start<br>Sensors<br>然后一路yes</p>
+<h3 id="添加用户到某个组"><a href="#添加用户到某个组" class="headerlink" title="添加用户到某个组"></a>添加用户到某个组</h3><p>Usermod -g root bingfeng<br>添加bingfeng 这个用户到root 组</p>
+<p>Id bingfeng 查看 bingfeng这个用户的权限<br>Who  查看当前用户</p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>/n<br>/r/n</p>
+<p>\r就是”回到行首”，\n就是”到下一行”<br>即:\r是回车，\n是换行，前者使光标到行首，后者使光标下移一格。<br>通常用的Enter是两个加起来的，即\r\n<br>• Unix系统里，每行结尾只有“&lt;换行&gt;”，即“\n”；<br>• Windows系统里面，每行结尾是“&lt;换行&gt;&lt;回车&gt;”，即“\n\r”；<br>• Mac系统里，每行结尾是“&lt;回车&gt;”。</p>
+<p>/n   enter<br>/r return</p>
+<p>一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</p>
+<p>From <a href="https://www.jianshu.com/p/23804b0b03c8" target="_blank" rel="noopener">https://www.jianshu.com/p/23804b0b03c8</a> </p>
+<h3 id="连接蓝牙"><a href="#连接蓝牙" class="headerlink" title="连接蓝牙"></a>连接蓝牙</h3><p>配置文件位置<br>/etc/bluetooth</p>
+<p>/etc/init.d/bluetooth stop<br>/etc/init.d/bluetooth start</p>
+<p>Hciconfig</p>
+<p>Hciconfig hci0 up</p>
+<p>Hcitool scan</p>
+<h3 id="Terminal-中-使用代理"><a href="#Terminal-中-使用代理" class="headerlink" title="Terminal 中 使用代理"></a>Terminal 中 使用代理</h3><p>export ALL_PROXY=socks5://127.0.0.1:1080<br>在  .bashrc  文件中写入 上面内容</p>
+<p>或</p>
+<p>Export http_proxy=”<a href="http://localhost:port”">http://localhost:port”</a><br>Exprot https_proxy=”<a href="https://localhost:port&quot;">https://localhost:port&quot;</a></p>
+<p>退出之后执行<br>source ~/.bashrc</p>
+<p>From <a href="https://zhuanlan.zhihu.com/p/46973701" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46973701</a> </p>
+<h3 id="Apt-update-出错"><a href="#Apt-update-出错" class="headerlink" title="Apt update 出错"></a>Apt update 出错</h3><p>gpg error signatures couldn’t be verified</p>
+<p>gpg: keyserver receive failed: No dirmngr</p>
+<p>From <a href="https://unix.stackexchange.com/questions/401547/gpg-keyserver-receive-failed-no-dirmngr" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/401547/gpg-keyserver-receive-failed-no-dirmngr</a> </p>
+<p>解决方法：<br>apt-get install  dirmngr</p>
+<p>Sudo apt-key adv –keyserver keyserver.ubuntu.com –recv-keys KEYNUMBER</p>
+<p><a href="https://chrisjean.com/fix-apt-get-update-the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-available/" target="_blank" rel="noopener">https://chrisjean.com/fix-apt-get-update-the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-available/</a></p>
+<h3 id="如何在-Linux-系统中添加桌面图标"><a href="#如何在-Linux-系统中添加桌面图标" class="headerlink" title="如何在 Linux 系统中添加桌面图标"></a>如何在 Linux 系统中添加桌面图标</h3><p>在 /usr/shared/applications/ 目录下，添加 xxx.desktop 文件（xxx为应用程序名），填写相关信息，保存即可。以 eclipse.desktop 为例说明：</p>
+<p>[Desktop Entry]<br>Version=1.0<br>Name=eclipse<br>Exec=/home/root/soft/eclipse/eclipse<br>Icon=/home/root/soft/eclipse/icon.xpm<br>Terminal=false<br>Type=Application<br>Categories=Development</p>
+<p><a href="https://blog.csdn.net/lu_embedded/article/details/52224442" target="_blank" rel="noopener">https://blog.csdn.net/lu_embedded/article/details/52224442</a></p>
+<h3 id="删除软件"><a href="#删除软件" class="headerlink" title="删除软件"></a>删除软件</h3><p>apt-get的卸载相关的命令有remove/purge/autoremove/clean/autoclean等。具体来说：</p>
+<p>apt-get purge / apt-get –purge remove<br>删除已安装包（不保留配置文件)。<br>如软件包a，依赖软件包b，则执行该命令会删除a，而且不保留配置文件</p>
+<p>apt-get autoremove<br>删除为了满足依赖而安装的，但现在不再需要的软件包（包括已安装包），保留配置文件。</p>
+<p>apt-get remove<br>删除已安装的软件包（保留配置文件），不会删除依赖软件包，且保留配置文件。</p>
+<p>apt-get autoclean<br>APT的底层包是dpkg, 而dpkg 安装Package时, 会将 *.deb 放在 /var/cache/apt/archives/中，apt-get autoclean 只会删除 /var/cache/apt/archives/ 已经过期的deb。</p>
+<p>apt-get clean<br>使用 apt-get clean 会将 /var/cache/apt/archives/ 的 所有 deb 删掉，可以理解为 rm /var/cache/apt/archives/*.deb。</p>
+<p>那么如何彻底卸载软件呢？<br>具体来说可以运行如下命令：</p>
+<p>删除软件及其配置文件<br>apt-get –purge remove <package></p>
+<p>删除没用的依赖包<br>apt-get autoremove <package></p>
+<p>此时dpkg的列表中有“rc”状态的软件包，可以执行如下命令做最后清理：<br>dpkg -l |grep ^rc|awk ‘{print $2}’ |sudo xargs dpkg -P</p>
+<hr>
+<p>作者：享学IT<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/get_set/article/details/51276609" target="_blank" rel="noopener">https://blog.csdn.net/get_set/article/details/51276609</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<h3 id="debian-命令行-配置网络"><a href="#debian-命令行-配置网络" class="headerlink" title="debian 命令行 配置网络"></a>debian 命令行 配置网络</h3><ul>
+<li>/etc/network/interfaces （设置网卡和IP地址等）</li>
+</ul>
+<pre><code># The loopback network interface
+auto lo                   #网卡开机自动挂载 
+iface lo inet loopback
+auto eth0                 #网卡开机自动挂载，连接网络
+iface eth0 inet static    #static表示使用静态/固定ip（需两条用于设  置）,dhcp表示使用动态ip（忽略以下两条）
+address 192.168.0.123     #设置ip地址
+netmask 255.255.255.0     #设置子网掩码
+gateway 192.168.0.1       #设置网关
+dns-nameservers 8.8.8.8   #设置DNS
+
+
+还可以设置第二个虚拟IP地址
+
+auto eth0:1
+iface eth0:1 inet static
+address  x.x.x.x
+netmask  x.x.x.x
+network x.x.x.x
+broadcast x.x.x.x 
+gateway x.x.x.x 
+
+
+
+/etc/resolv.conf （设置DNS服务器）
+nameserver x.x.x.x # 首选DNS
+nameserver x.x.x.x # 备选DNS
+sortlist #对返回的域名进行排序
+</code></pre><ul>
+<li>/etc/hosts （设置域名解析的IP）<br>设置IP和主机域名</li>
+</ul>
+<p>DNS生效顺序：hosts文件 &gt; interfaces中DNS &gt; resolv.conf中DNS<br>相关配置文件/etc/hosts.conf</p>
+<p>查看网卡驱动信息<br>$ ethool -i eth0 # eth0是网卡驱动名<br>    &gt; driver: igb<br>    &gt; version: xx<br>    &gt; firmware-version: xx<br>    &gt; bus-info: 0000:0a:00.0<br>$ dmesg |  grep  eth0<br>$ modinfo  igb # igb是上述命令中显示的的驱动名<br>$ lspci | grep Ethernet</p>
+<p>Linux驱动管理<br>$ lsmod | grep igb# 查看驱动<br>$ rmmod igb &amp;&amp; make clean modules</p>
+<p><a href="https://www.jianshu.com/p/334296e50fcc" target="_blank" rel="noopener">https://www.jianshu.com/p/334296e50fcc</a></p>
+<p>lspci |grep -i ‘eth’ 或 lspci | grep -i net命令：可列出每个pci总线上的设备，通过grep过滤后可得到网卡设备列表，</p>
+<p><a href="https://blog.csdn.net/willhuo/article/details/79610260" target="_blank" rel="noopener">https://blog.csdn.net/willhuo/article/details/79610260</a></p>
+<p>判断网卡 状态<br><a href="https://blog.csdn.net/xinew/article/details/4862231" target="_blank" rel="noopener">https://blog.csdn.net/xinew/article/details/4862231</a></p>
+<p>mii-tool<br>mii-tool -v</p>
+<p>link-ok<br>no-link</p>
+<h2 id="鸟哥的Linux"><a href="#鸟哥的Linux" class="headerlink" title="鸟哥的Linux"></a>鸟哥的Linux</h2><h3 id="查找资料"><a href="#查找资料" class="headerlink" title="查找资料"></a>查找资料</h3><p><a href="http://linux.vbird.org/linux_basic/0120howtolinux/0120howtolinux_1.php" target="_blank" rel="noopener">http://linux.vbird.org/linux_basic/0120howtolinux/0120howtolinux_1.php</a><br>网络的进修</p>
+<p>查找文档:<br>Linux 自己的文件数据库   : /usr/share/doc </p>
+<p>The Linux Documentation Project:<br><a href="http://www.tldp.org/" target="_blank" rel="noopener">http://www.tldp.org/</a><br>几乎列出了所有Linux上面可以看到的文献书籍. </p>
+<h3 id="硬件对应的文档"><a href="#硬件对应的文档" class="headerlink" title="硬件对应的文档"></a>硬件对应的文档</h3><p>/dev/sd[a-p]    SCSI / STAT /USB<br>/dev/vd[a-p]    虚拟机 中 的 硬盘 , 云端机器  的虚拟机 一般就是这种</p>
+<p>/dev/lp[0-2]      25 针打印机<br>/dev/usb/lp[0-15]    usb  界面  的打印机</p>
+<p>/dev/input/mouse[0-15]    通用 的鼠标<br>/dev/psaux       ps/2  鼠标<br>/dev/mouse    当前 鼠标</p>
+<p>/dev/scd[0-1]        通用 的 CD<br>/dev/sr[0-1]    通用  , centos  常见<br>/dev/cdrom   当前   CDrom</p>
+<p>/dev/ht0     磁带机   IDE  界面<br>/dev/st0    SATA /  SCSI  界面<br>/dev/tape    当前磁带</p>
+<p>/dev/hd[a-d]    IDE  磁盘</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../../10/08/samba/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/39.jpg" class="responsive-img" alt="Samba">
+                        
+                        <span class="card-title">Samba</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            好久没有写文章了，这个是我前几天踩到的一个巨坑，所以先把Samba的基本用法看了一遍，方便下次自己用。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../12/vmware-xi-lie/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="VMware系列">
+                        
+                        <span class="card-title">VMware系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些总结
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                        <span class="chip bg-color">虚拟化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

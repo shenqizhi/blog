@@ -1,0 +1,1289 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="VBS 入门, 宅世界">
+    <meta name="description" content="一些基本的语法，进阶可以看本博客的 &#34;VBS 实战&#34;">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>VBS 入门 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">VBS 入门</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-10-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-12-13
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="声明，注释"><a href="#声明，注释" class="headerlink" title="声明，注释"></a>声明，注释</h2><pre><code class="VB">REM 这里是注释，这是一些VBS基本的语法
+Dim name,msg &#39;用 Dim 声明 name 和 msg 两个变量
+msg = &quot;请输入你的名字：&quot; &#39;赋予字符串值给msg变量
+name = Inputbox(msg, &quot;名称&quot;)
+msgbox name</code></pre>
+<ul>
+<li><p>Dim用来声明一个变量，在VBS中，变量类型并不是那么重要，就是说VBS会帮你自动识别变量类型，而且变量在使用前<code>不一定</code>要先声明，程序会动态分配变量空间。如果要在声明的同时，赋予变量值，可以这么写。加一个冒号，然后声明即可</p>
+<pre><code class="VB">Dim sPathOutputFolder : sPathOutputFolder = &quot;&quot; </code></pre>
+</li>
+<li><p>Inputbox和Msgbox是VBS内建的函数，一个函数就相当于一个”黑箱”，有输入(参数)和输出(返回值)，一个函数可以有返回值也可以没有，可以有参数也可以没有。<code>Inputbox</code>的两个参数对应下面的两个箭头指向<br><img src="1.png" alt=""></p>
+</li>
+<li><p>声明其他</p>
+<pre><code class="VB">Dim arrAllProducts() &#39;声明Array，数组
+Dim dicFolders &#39;声明字典
+Const CSV = &quot;,&quot; &#39;声明常量</code></pre>
+</li>
+</ul>
+<p><strong>在变量声明后，但是不赋值，用IF判断时，可等于0</strong></p>
+<pre><code class="VB">dim test
+if test = 0 then msgbox &quot;0&quot; </code></pre>
+<h2 id="sub，function"><a href="#sub，function" class="headerlink" title="sub，function"></a>sub，function</h2><ul>
+<li>sub 不返回执行的结果</li>
+<li>function 可以返回函数执行的结果</li>
+</ul>
+<h3 id="局部或全局变量"><a href="#局部或全局变量" class="headerlink" title="局部或全局变量"></a>局部或全局变量</h3><p>在sub和function里面声明的变量，只在声明的函数里面起作用，如下的 iNum2<br>在函数外声明的为全局变量，所有的函数通用。</p>
+<pre><code class="VB">dim iNum1
+
+sTest
+msgbox iNum1 &#39;显示结果为 1
+msgbox iNum2 &#39;显示结果为空
+
+sub sTest()
+    dim iNum2 = 2
+    iNum1 = 1
+end sub 
+</code></pre>
+<h3 id="调用函数的一些规范（坑）"><a href="#调用函数的一些规范（坑）" class="headerlink" title="调用函数的一些规范（坑）"></a>调用函数的一些规范（坑）</h3><p>VBS 在调用函数的时候，是有一些坑的。</p>
+<ul>
+<li><p>如果函数<code>带有参数</code>，请参考如下例子：</p>
+<pre><code class="VB">  Today = &quot;Thusday&quot;
+  YourName = &quot;Bin&quot;
+
+  test YourName, Today &#39;可以
+  call test(YourName, Today) &#39;可以
+
+  call test YourName, Today &#39;错误格式，不允许
+  test(YourName, Today) &#39;错误格式，不允许
+
+  function test(Name,Day)
+      msgbox &quot;Hi, &quot; &amp; Name &amp; &quot;. Today is &quot; &amp; Day
+  end function </code></pre>
+<p>  报错的提醒：<br>  <img src="2.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>调用函数做布尔判断等操作时候，请用用这种格式：</p>
+<pre><code class="VB">  If RegEnumValues (hDefKey, sSubKeyName, arrNames, arrTypes) Then 
+  &#39;RegEnumValues 是一个函数，括号中是它的参数</code></pre>
+</li>
+<li><p>如果函数<code>没有参数</code>，那调用的方法随意</p>
+<pre><code class="VB">  call test &#39;可以
+  test &#39;可以
+  test() &#39;可以
+  call test()&#39;可以
+
+  function test
+      msgbox &quot;Hi&quot;
+  end function </code></pre>
+</li>
+</ul>
+<h2 id="内置函数方法"><a href="#内置函数方法" class="headerlink" title="内置函数方法"></a>内置函数方法</h2><h3 id="UCase-Mid-Len"><a href="#UCase-Mid-Len" class="headerlink" title="UCase Mid Len"></a>UCase Mid Len</h3><pre><code class="VB">fCScript = (UCase(Mid(Wscript.FullName, Len(Wscript.Path) + 2, 1)) = &quot;C&quot;) </code></pre>
+<ul>
+<li>UCase: 把文字转成大写，对应LCase（转成小写）。用法 <code>UCase(string)</code></li>
+<li>Mid: 提取一部分数据。用法 <code>Mid(String, Start, Length)</code>。类似的还有 Left，Right 方法<pre><code class="VB">  test = &quot;How are you?&quot;
+  test2 = mid(test,1,4) &#39;从第一个字符开始，抓取4个字符(包括空格)
+  msgbox test2 &#39;显示 How </code></pre>
+</li>
+<li>Len： 统计一段文本的长度</li>
+<li>注意：这小段代码其实是一个布尔判断，fCScript 的结果 为 <code>true</code> 或 <code>false</code>。解释下作用把，就是判断当前的环境是CStript还是WSript</li>
+</ul>
+<h3 id="Left-Instr"><a href="#Left-Instr" class="headerlink" title="Left Instr"></a>Left Instr</h3><pre><code class="VB">f64 = Instr(Left(oItem.SystemType, 3), &quot;64&quot;) &gt; 0 </code></pre>
+<ul>
+<li><p>Left：从左边第一个字符开始，抓取3个字符</p>
+</li>
+<li><p>Instr：用法 <code>InStr(Start, String, Substring, Compare)</code>。Start，Compare 是可选的。返回找到<code>第一个</code>找到的位置<br> Compare 值：</p>
+<ul>
+<li><p>0     Binary comparison (case sensitive)</p>
+</li>
+<li><p>1     Text Comparison (case insensitive)</p>
+</li>
+<li><p>2     Compare information inside database</p>
+<pre><code class="VB">InStr(&quot;ABCDE ABCDE&quot;, &quot;C&quot;) 
+Output: 3 &#39;后面的c就不管了
+
+InStr(4, &quot;ABCDE ABCDE&quot;, &quot;C&quot;) 
+Output: 9
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>这小段代码是一个布尔判断，判断系统是否为64位</p>
+</li>
+</ul>
+<pre><code class="VB">Set oMsi = CreateObject(&quot;WindowsInstaller.Installer&quot;)
+msgbox oMsi.Version &#39; output 5.0.17763.557
+msgbox (Instr(oMsi.Version, &quot;.&quot;) - 1) &#39;output 1
+iWiVersionMajor = Left(oMsi.Version, Instr(oMsi.Version, &quot;.&quot;) - 1) &#39;output 5
+</code></pre>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p><code>Replace(String, FindSubstring, ReplaceSubstring, Start, Count, Compare)</code></p>
+<ul>
+<li><p>String<br>  The String argument is the string to be searched.</p>
+</li>
+<li><p>FindSubstring<br>  The FindSubstring argument is the substring you are searching for inside the string.</p>
+</li>
+<li><p>ReplaceSubstring<br>  The ReplaceSubstring argument is the the new substring string that you wish to insert inside the string.</p>
+</li>
+<li><p>Start<br>  The optional Start argument specifies the position number, counting from the left, where you wish to start the search. </p>
+</li>
+<li><p>Count<br>  The optional Count argument specifies how many times to replace the substring.</p>
+</li>
+<li><p>Compare<br>  The optional Compare argument must only use either a constant or value from the Comparison Constants table.</p>
+<table>
+<thead>
+<tr>
+<th>CONSTANT</th>
+<th>VALUE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VBBinaryCompare</td>
+<td>0</td>
+<td>Binary comparison</td>
+</tr>
+<tr>
+<td>VBTextCompare</td>
+<td>1</td>
+<td>Text Comparison</td>
+</tr>
+<tr>
+<td>VBDataBaseCompare</td>
+<td>2</td>
+<td>Compare information inside database</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<pre><code>Replace(&quot;How now brown cow?&quot;, &quot;brown&quot;, &quot;purple&quot;) 
+
+Output:
+How now purple cow?</code></pre><h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p><code>Join(Array, Delimiter)</code></p>
+<p>将 Array 组合成 String，与它相反的 Split</p>
+<p>The optional Delimiter argument specifies the characters (including blanks) you wish to place between each element. If this argument is not specified, the default is to place a blank space between each element. If you wish to have no spaces, use a double quote, “”, for the argument.</p>
+<pre><code class="VB"> Dim cowarray(10) 
+ cowarray(0) = &quot;How&quot; 
+ cowarray(1) = &quot;now&quot; 
+ cowarray(2) = &quot;brown&quot; 
+ cowarray(3) = &quot;cow?&quot; 
+ Join(cowarray) 
+
+Output:
+How now brown cow?</code></pre>
+<h2 id="循环或判断"><a href="#循环或判断" class="headerlink" title="循环或判断"></a>循环或判断</h2><p>我觉得这个很有用，就来作为例子吧</p>
+<pre><code class="VB">For i = 1 To 4  &#39;从1循环到4
+        Select Case i  &#39;Case 选择，变相相当于 if 判断
+        Case 1 : lAccPermLevel = KEY_QUERY_VALUE 
+        Case 2 : lAccPermLevel = KEY_SET_VALUE 
+        Case 3 : lAccPermLevel = KEY_CREATE_SUB_KEY 
+        Case 4 : lAccPermLevel = DELETE 
+        End Select &#39;注意要结束Case
+        &#39;Not，非。
+        If Not RegCheckAccess(hDefKey, sSubKeyName, lAccPermLevel) Then 
+            fIsAdmin = False 
+            Exit for &#39;马上退出循环，不在执行剩下的循环
+        End If 
+Next &#39;i &#39;用 Next 结束 For 循环</code></pre>
+<p>这个是单行的IF判断语句，不需要结束符号</p>
+<pre><code class="VB">If sPathOutputFolder = &quot;&quot; Then sPathOutputFolder = &quot;%TEMP%&quot; </code></pre>
+<p>在不知道数组的大小情况下，遍历整个数组的方法，重点在 <code>UBound</code></p>
+<pre><code class="VB">For iValueName = 0 To UBound(arrNames) </code></pre>
+<h2 id="判断变量类型"><a href="#判断变量类型" class="headerlink" title="判断变量类型"></a>判断变量类型</h2><p>IsArray(varName)<br>IsDate(varName)<br>IsEmpty(varName)<br>IsNull(varName)<br>IsNumeric(varName)<br>IsObject(varName)</p>
+<p>VarType(Varname):<br>返回的值：</p>
+<p>CONSTANT         VALUE     DESCRIPTION<br>VBEmpty         0         Uninitialized<br>VBNull             1         Contains no valid data<br>VBInteger         2         Integer subtype<br>VBLong             3         Long subtype<br>VBSingle         4         Single subtype<br>VBDouble         5         Double subtype<br>VBCurrency         6         Currency subtype<br>VBDate             7         Date subtype<br>VBString         8         String subtype<br>VBObject         9         Object<br>VBError         10         Error subtype<br>VBBoolean         11         Boolean subtype<br>VBVariant         12         Variant (only use for arrays of variants)<br>VBDataObject             13     Data access object<br>VBDecimal         14         Decimal subtype<br>VBByte             17         Byte subtype<br>VBArray         8192    Array</p>
+<pre><code class="VB">whatsubtype=&quot;This is a string subtype&quot; 
+VarType(whatsubtype) 
+
+Output:
+8</code></pre>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>更多属性，方法请查看：</p>
+<blockquote>
+<p><a href="https://www.devguru.com/content/technologies/vbscript/objects-dictionary.html" target="_blank" rel="noopener">https://www.devguru.com/content/technologies/vbscript/objects-dictionary.html</a></p>
+</blockquote>
+<pre><code class="VB">Dim cars
+Set cars = CreateObject(&quot;Scripting.Dictionary&quot;) &#39;创建字典变量cars
+cars.Add &quot;a&quot;, &quot;Alvis&quot;
+cars.Add &quot;b&quot;, &quot;Buick&quot;
+cars.Add &quot;c&quot;, &quot;Cadillac&quot;
+
+msgbox cars.Item(&quot;b&quot;) &#39;查看 key b 的内容
+msgbox cars.count &#39;查看字典有多少keys
+</code></pre>
+<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>当加上<code>On Error Goto 0</code>语句后，如果后面的程序出现”运行时错误”时，会显示”出错信息”并停止程序的执行。<br>使用了<code>On Error Resume Next</code>之后，如果出错,那么<code>Err</code>对象中将放置最近一次出错的信息。</p>
+<p>Err对象重要的属性有三个：Number, Source, Description。分别是错误号，错误来源，错误描述。</p>
+<p>注意：<br>On Error Resume Next语句只作用于本级别的后续语句。不会作用于被调用的函数或子程序，同样也不会作用于父级别的程序段<br>On Error Resume Next语句如果出现在某个函数中，则只对本函数产生影响。对”主调函数”和”被调函数”均没有影响</p>
+<p>一个子程序中如果没有On Error Resume Next语句，那么当错误在子程序中出现时,将会中断这个子程序的运行,跳转到调用这个子程序的外层程序.如果这个外层程序在”出问题的函数调用”之前包含有On Error Resume Next语句，则会接着执行”函数调用”之后的语句。如果这个外层程序在”出问题的函数调用”之前没有On Error Resume Next语句，那么就跳向外层。这个过程一直重复,直到找到包含有On Error Resume Next语句的环境继续运行，如果最外层的程序也没有包含On Error Resume Next语句，那么将会使用缺省的错误处理器，也就是显示错误信息并停止运行。</p>
+<h3 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h3><pre><code class="VB">On Error Resume Next
+Err.Raise 22,&quot;VBS指令碼&quot;,&quot;溢位啦&quot;,&quot;c:\test.txt&quot; &#39;定義一個執行時的錯誤
+MsgBox &quot;錯誤：&quot; &amp; vbCrLf _
+        &amp; &quot;Number:&quot; &amp; Err.Number &amp; vbCrLf _
+        &amp; &quot;Source:&quot; &amp; Err.Source &amp; vbCrLf _
+        &amp; &quot;Description:&quot; &amp; Err.Description &amp; vbCrLf _
+        &amp; &quot;Helpfile:&quot; &amp; Err.HelpFile
+Err.Clear &#39;清除錯誤</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../../../2020/01/08/chang-yong-wang-luo-gong-ju-he-ji/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="常用网络工具合集">
+                        
+                        <span class="card-title">常用网络工具合集</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            包含netcat,netstat,traceroute以及Linux里的ip工具
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../pi-chu-li/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="批处理笔记">
+                        
+                        <span class="card-title">批处理笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            记录一下批处理的一些知识点,方便后续查看
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

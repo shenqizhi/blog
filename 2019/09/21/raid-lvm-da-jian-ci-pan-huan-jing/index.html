@@ -1,0 +1,1521 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Raid+LVM搭建磁盘环境, 宅世界">
+    <meta name="description" content="本来想用 Raid+LVM搭建一个可以动态扩容，并且允许磁盘损坏可替换的存储环境，但是遇到了问题。这个教程目前仅适合用来了解Raid 和 LVM 的一些概念和命令">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Raid+LVM搭建磁盘环境 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Raid+LVM搭建磁盘环境</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E5%AD%98%E5%82%A8/">
+                                <span class="chip bg-color">存储</span>
+                            </a>
+                        
+                            <a href="../../../../tags/Raid/">
+                                <span class="chip bg-color">Raid</span>
+                            </a>
+                        
+                            <a href="../../../../tags/LVM/">
+                                <span class="chip bg-color">LVM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-02-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.4k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>注意：这个教程目前已经作废，可以当作学习了解心得使用，但是不建议上正式环境</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之所以用这种方式部署，是计划购买一个新的服务器（性能较强），用于将目前的机房的一些实体机淘汰，统一托管到Proxmox上面管理。考虑到公司现在不可能做双机热备份，只能在一台机器上实现，因此磁盘数据的保护尤为重要</p>
+<p>现在设想是这样的，由若干块硬盘（大于4块）组建成<strong>RAID6</strong>阵列（禁止组建RAID5），其中需要1-2热备盘。在RAID阵列上，组建LVM，实现硬盘的可扩容。这是一个服务器基础的配置方向。可以根据需要，将固态硬盘和机械硬盘分开配置，不过这个不在今天的讨论范围内</p>
+<p><img src="pics/1.jpg" alt=""></p>
+<p><em>以下的模拟实验，基于Centos7。收集了5块真正的实体硬盘（不包括系统盘）（250G），用于实验（是不是很牛x)</em></p>
+<h2 id="搭建RAID6"><a href="#搭建RAID6" class="headerlink" title="搭建RAID6"></a>搭建RAID6</h2><h3 id="查看系统硬盘情况"><a href="#查看系统硬盘情况" class="headerlink" title="查看系统硬盘情况"></a>查看系统硬盘情况</h3><p>首先，在系统中，我们看一下目前的磁盘配置</p>
+<blockquote>
+<p># lsblk</p>
+</blockquote>
+<p><img src="pics/2.png" alt=""></p>
+<p>可以看到，我们有sd[b-f]五块硬盘，其中sda是我的系统，这里我们不要管它</p>
+<h3 id="创建硬盘分区"><a href="#创建硬盘分区" class="headerlink" title="创建硬盘分区"></a>创建硬盘分区</h3><p><strong>如果你的硬盘不是全新，有分区以及数据，请删除所有分区数据，这一步，你可以在Windows PE 下操作，当然，你会Linux也行</strong></p>
+<p>在全新硬盘下，我们执行如下操作</p>
+<blockquote>
+<p># fdisk /dev/sdb</p>
+</blockquote>
+<p><em>fdisk针对的是mbr等小容量的硬盘，如果硬盘容量超过2T的gpt，请使用gdisk这个命令，操作都是类似</em></p>
+<p><img src="pics/3.jpg" alt=""></p>
+<p>上面是针对 /dev/sdb 这个硬盘进行操作，后面我们对剩下的四个硬盘 （/dev/sd[c-f]）进行上面的操作。虽然有点枯燥，但是集中一点注意力，不要出错，不然就是自己给自己挖坑。。。。。</p>
+<p>下面是创建之后磁盘的情况</p>
+<p><img src="pics/4.png" alt=""></p>
+<p>之后，我们要检查一下磁盘是否存储有其他类型阵列的数据，这个很重要，如果有其他阵列的数据，这个磁盘是用不了的，我们必须清除这些数据后，才能将这个磁盘用于RAID的构建</p>
+<blockquote>
+<p># mdadm -E /dev/sd[b-f]1</p>
+</blockquote>
+<p>这里，我们使用了 mdadm  这个命令，这个就是 linux 内建的软阵列命令。这个命令适用于检查在<strong>硬盘分区</strong>是否存在其他阵列的信息<br>如果一切正常，则应如下显示</p>
+<p><img src="pics/5.png" alt=""></p>
+<p>同样的，我们对<strong>硬盘</strong>也检查一遍</p>
+<p><img src="pics/6.png" alt=""></p>
+<p><em>如果是上面的显示，我们可以继续往下面走，不是的话，请查看下面教程的【删除阵列】篇章，有具体的解决步骤</em></p>
+<h3 id="创建阵列"><a href="#创建阵列" class="headerlink" title="创建阵列"></a>创建阵列</h3><blockquote>
+<p># mdadm -C -v /dev/md0 -l6 -n4 /dev/sd[b-e]1 -x1 /dev/sdf1</p>
+</blockquote>
+<ul>
+<li><p>C : 创建阵列</p>
+</li>
+<li><p>v : 显示详细信息</p>
+</li>
+<li><p>/dev/md0 : 创建后阵列的磁盘文件</p>
+</li>
+<li><p>l : 创建RAID的等级，我们创建的RAID6 ，所以后面接数字6</p>
+</li>
+<li><p>n : 创建阵列磁盘的数量，RAID6阵列至少需要四个，所以这里为4</p>
+</li>
+<li><p>x : 创建阵列热备盘的数量，我们有五个盘，用了四个，所以，这里数量为1就行了</p>
+<p>注意：我们这里使用的磁盘的分区，而不是磁盘本身</p>
+</li>
+</ul>
+<p> <em>热备盘的作用：事先准备一个硬盘，让它处于准备的状态，在阵列的主硬盘坏了之后，热备盘迅速顶替上去，过程无需人工干预</em></p>
+<p> <img src="pics/7.png" alt=""></p>
+<h3 id="查看创建好的阵列"><a href="#查看创建好的阵列" class="headerlink" title="查看创建好的阵列"></a>查看创建好的阵列</h3><blockquote>
+<p># mdadm -D /dev/md0</p>
+</blockquote>
+<p> <img src="pics/8.png" alt=""></p>
+<h3 id="模拟阵列硬盘崩坏"><a href="#模拟阵列硬盘崩坏" class="headerlink" title="模拟阵列硬盘崩坏"></a>模拟阵列硬盘崩坏</h3><p>RAID6允许2块硬盘同时出错，在这里，我模拟一个硬盘出错，这里我让sdb这个硬盘出错</p>
+<blockquote>
+<p># mdadm /dev/md0 -f /dev/sdb1</p>
+</blockquote>
+<ul>
+<li><p>f : 指定出错的硬盘（模拟)</p>
+<p><img src="pics/9.png" alt=""></p>
+</li>
+</ul>
+<p>然后，我们运行命令，查看阵列目前的磁盘情况</p>
+<blockquote>
+<p># watch mdadm -D /dev/md0</p>
+</blockquote>
+<p>其中，watch 是一个定时刷新的命令，它刷新后面的mdadm ，我们要查看的就是下图的修复速度（“Rebuild Status”）</p>
+<p> <img src="pics/10.png" alt=""></p>
+<p>有关硬盘修复的信息：我们磁盘出错后，会被指定为“faulty”状态，不能再使用。这是，我们前面设置的热备盘就会自动替换上去，然后从其他硬盘计算需要恢复的数据。这是一个很耗时间和CPU资源的过程（特别针对企业动不动就上4T这些硬盘），因此在这个过程中，为了防止第二块硬盘出错，我们需要设置阵列为RAID6！<strong>不使用</strong>RAID5</p>
+<p>经过漫长的等待，我们的硬盘修复完成，阵列也正常了</p>
+<p> <img src="pics/11.png" alt=""></p>
+<p> 然后，我们可以移除这块损坏的硬盘，或者重启服务器</p>
+<blockquote>
+<p># mdadm /dev/md0 -r /dev/sdb1</p>
+</blockquote>
+<ul>
+<li><p>r : 移除硬盘</p>
+<p><img src="pics/12.png" alt=""></p>
+</li>
+</ul>
+<p>好了，到这里，我们数据就修复成功，可以看到，四块硬盘都是正常的，我们现在的阵列里面没有热备盘了，下面介绍如何为这个阵列添加热备盘</p>
+<h3 id="添加热备盘"><a href="#添加热备盘" class="headerlink" title="添加热备盘"></a>添加热备盘</h3><p>我们用刚才损坏的那块盘（sdb）为例，将它再次添加回来作为热备盘</p>
+<p>我们用 lsblk 命令 查看目前磁盘的情况，可以看到，sdb目前是存在的，但是已经不是阵列磁盘了（不存在md0)</p>
+<p>  <img src="pics/13.png" alt=""></p>
+<p>我们用如下命令检查一下它的磁盘信息情况</p>
+<blockquote>
+<p># mdadm -E /dev/sdb1</p>
+</blockquote>
+<p>   <img src="pics/14.png" alt=""></p>
+<p>可以看到，它存在阵列的信息，我们需要清除这些信息</p>
+<blockquote>
+<p># fdisk /dev/sdb</p>
+</blockquote>
+<p> <img src="pics/15.png" alt=""></p>
+<blockquote>
+<p># dd if=/dev/zero of=/dev/sdb bs=1M count=1024</p>
+</blockquote>
+<p>  这个命令是擦除磁盘信息用的</p>
+<p>   <img src="pics/16.png" alt=""></p>
+<p> 到这里，我们就可以使用这块硬盘了，初始化跟上面章节的步骤一样，<strong>先创建分区，转换为raid格式</strong>，然后执行下方命令，添加sdb作为热备盘</p>
+<blockquote>
+<p># mdadm /dev/md0 -a /dev/sdb1 </p>
+</blockquote>
+<p> <img src="pics/17.png" alt=""><br> <img src="pics/18.png" alt=""></p>
+<h3 id="保存阵列配置文件"><a href="#保存阵列配置文件" class="headerlink" title="保存阵列配置文件"></a>保存阵列配置文件</h3><p>这一步不是必须的，但是有备无患</p>
+<blockquote>
+<p>#  mdadm -D -s &gt;&gt; /etc/mdadm.conf</p>
+</blockquote>
+<h3 id="参考的资料"><a href="#参考的资料" class="headerlink" title="参考的资料"></a>参考的资料</h3><p>软RAID管理命令mdadm详解</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/GGxiaobai/article/details/59521459" target="_blank" rel="noopener">https://blog.csdn.net/GGxiaobai/article/details/59521459</a></p>
+</blockquote>
+<p>RAID磁盘阵列的部署(red hat 6.5)</p>
+<blockquote>
+<p><a href="https://blog.51cto.com/13643643/2095452" target="_blank" rel="noopener">https://blog.51cto.com/13643643/2095452</a></p>
+</blockquote>
+<p>RAID及LVM技术的实现</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/0aa305e1440e" target="_blank" rel="noopener">https://www.jianshu.com/p/0aa305e1440e</a></p>
+</blockquote>
+<hr>
+<p>好了，上面就是阵列的创建方法，如果是一般使用，只需要将/dev/md0 这个设备当作一个普通的硬盘，然后分区，挂载就行了。但是，我们的目标是星辰大海，在RAID的上面，我们需要再建一个LVM，下面介绍LVM的创建</p>
+<hr>
+<h2 id="RAID-上方创建-LVM"><a href="#RAID-上方创建-LVM" class="headerlink" title="RAID 上方创建 LVM"></a>RAID 上方创建 LVM</h2><p><strong>切记，后面我们针对的硬盘操作，都是 /dev/md0 这个RAID磁盘，而不是 /dev/sd[b-f]这几个真实的硬盘了</strong></p>
+<p>首先，需要自己先去了解LVM的一些基础知识，我这里就不介绍了，自己Google，很多教程的<br>譬如下面这个教程就很详细</p>
+<blockquote>
+<p><a href="https://huiliu.github.io/2016/01/19/lvm.html" target="_blank" rel="noopener">https://huiliu.github.io/2016/01/19/lvm.html</a></p>
+</blockquote>
+<p>还记得上面那张图吗？</p>
+<p><img src="pics/1.jpg" alt=""></p>
+<p>我们计划创建一个卷组（vg1) ，然后创建三个的逻辑卷（lv1，lv2，lv3），所用的物理卷是 /dev/md0 ，即我们上面创建的阵列RAID6</p>
+<h3 id="创建-物理卷-PV"><a href="#创建-物理卷-PV" class="headerlink" title="创建 物理卷(PV)"></a>创建 物理卷(PV)</h3><blockquote>
+<p>#  pvcreate /dev/md0</p>
+</blockquote>
+<p>将 /dev/md0 初始化为PV卷，这里我们没有为md0这个RAID创建分区</p>
+<blockquote>
+<p>#  pvdisplay</p>
+</blockquote>
+<p>显示创建PV的详情，请忽略上方那个，那个是创建Centos自动创建的</p>
+<br>
+
+<p><img src="pics/19.png" alt=""></p>
+<h3 id="创建-卷组-VG"><a href="#创建-卷组-VG" class="headerlink" title="创建  卷组(VG)"></a>创建  卷组(VG)</h3><blockquote>
+<p>#  vgcreate vg1 /dev/md0</p>
+</blockquote>
+<p>这里，我们指定一个名称为vg1的VG，使用md0这个PV</p>
+<blockquote>
+<p>#  vgdisplay</p>
+</blockquote>
+<p>显示创建VG的详细信息。请忽略下面那个c1，这个是Centos系统自建的</p>
+<p><img src="pics/20.png" alt=""></p>
+<h3 id="创建-逻辑卷-LV"><a href="#创建-逻辑卷-LV" class="headerlink" title="创建 逻辑卷(LV)"></a>创建 逻辑卷(LV)</h3><blockquote>
+<p># lvcreate -L 40G -n lv1 vg1</p>
+</blockquote>
+<p>在vg1的卷组上面创建一个名为lv1的逻辑卷，容量大小为40G， -L  后面接容量，单位可以是K，M，T，P，E ， -n 后面接LV的名称，最后是VG的名称</p>
+<blockquote>
+<p># lvdisplay</p>
+</blockquote>
+<p><img src="pics/21.png" alt=""></p>
+<p>然后，我们需要格式化这个逻辑卷lv1，逻辑卷相当于磁盘分区，怎么理解就行了</p>
+<blockquote>
+<p># mkfs.ext4 /dev/vg1/lv1</p>
+</blockquote>
+<p><img src="pics/22.png" alt=""></p>
+<p>这里我将lv1格式为ext4 格式作为测试。</p>
+<p><strong>注意，你创建一个VG后，在/dev目录下面，会有相应的VG名称，例如：我创建了vg1，你能找到/dev/vg1/这个目录，在这个目录下面，有你创建的LV文件。以后你的挂载等操作，都可以调用这些文件。这个体现了Linux万物皆文件的概念吧</strong></p>
+<p>然后挂载</p>
+<blockquote>
+<p># mount /dev/vg1/lv1 /mnt/lv1</p>
+</blockquote>
+<p><img src="pics/23.png" alt=""></p>
+<p>然后，我们重复上面的步骤，依次创建lv2,lv3 </p>
+<p>这是创建的结果</p>
+<p><img src="pics/24.png" alt=""></p>
+<hr>
+<p>到此，我们创建了一个lvm。</p>
+<hr>
+<h3 id="扩展逻辑卷"><a href="#扩展逻辑卷" class="headerlink" title="扩展逻辑卷"></a>扩展逻辑卷</h3><p>假设lv1的容量不够用了，我们要增加容量，这里我增加了20G的容量</p>
+<blockquote>
+<p># lvextend -L +20G /dev/vg1/lv1 </p>
+</blockquote>
+<p>扩展后，我们如下图命令查看，发现文件系统并没有识别出磁盘的扩容的部分，因此，运行“resize2fs”这个命令，之后再执行“df -hT”查看，可以看到文件系统是扩容的了</p>
+<blockquote>
+<p># resize2fs /dev/vg1/lv1</p>
+</blockquote>
+<p><img src="pics/25.png" alt=""></p>
+<p><em>如果系统提示需要先运行fsck检查文件系统，则执行如下命令”e2fsck -f       /dev/vg1/lv1”</em></p>
+<h3 id="扩展卷组"><a href="#扩展卷组" class="headerlink" title="扩展卷组"></a>扩展卷组</h3><p>如果哪天发现vg1这个卷组的空间不够用了，我们可以扩展卷组，扩展卷组意味着增加磁盘</p>
+<p>这里我再增加一块硬盘(/dev/sdg)（没错，我就硬盘多 ^_^)</p>
+<p><img src="pics/26.png" alt=""></p>
+<p>首先，我们检查一下这个硬盘</p>
+<p><img src="pics/27.png" alt=""></p>
+<p>这里不需要创建分区，然后执行如下命令</p>
+<blockquote>
+<p># pvcreate /dev/sdg</p>
+</blockquote>
+<p><img src="pics/28.png" alt=""></p>
+<p>将sdg加入到vg1这个卷组里面，命令一下，效果立现</p>
+<blockquote>
+<p># vgextend vg1 /dev/sdg</p>
+</blockquote>
+<p><img src="pics/29.png" alt=""></p>
+<p>卷组扩容后，我们就可以愉快的扩展逻辑卷了 </p>
+<h3 id="磁盘更换"><a href="#磁盘更换" class="headerlink" title="磁盘更换"></a>磁盘更换</h3><p>假设哪天，这个sdg的硬盘寿命快到了，我们如何保护里面的数据？</p>
+<p>我们可以将sdg的数据迁移到sdh。蛤！sdh哪来的？没错，我又加了一块硬盘！</p>
+<p>确保sdh无分区，然后</p>
+<blockquote>
+<p># pvcreate /dev/sdh</p>
+</blockquote>
+<p>然后将 /dev/sdh 加入到 vg1 这个卷组里面。<strong>注意，要迁移数据盘，两块硬盘必须在同一个卷组里面</strong></p>
+<blockquote>
+<p># vgextend vg1 /dev/sdh</p>
+</blockquote>
+<p><img src="pics/30.png" alt=""></p>
+<p>然后，执行下面的命令，将sdg的数据迁移到sdh</p>
+<blockquote>
+<p># pvmove /dev/sdg  /dev/sdh</p>
+</blockquote>
+<p>之后，使用如下命令将sdg从vg1移除</p>
+<blockquote>
+<p># vgreduce vg1 /dev/sdg</p>
+</blockquote>
+<p>然后，再将sdg从PV中移除</p>
+<blockquote>
+<p># pvremove /dev/sdg</p>
+</blockquote>
+<h3 id="LVM-快照"><a href="#LVM-快照" class="headerlink" title="LVM 快照"></a>LVM 快照</h3><p> 后续补充</p>
+<hr>
+<p>上面介绍了RAID和LVM的结合部署，那么问题来了，如果我的一个磁盘崩了，这个组合会怎样。这个问题困扰了我一周多，网上只有怎么创建，但是崩了，怎么修复，都找不到案例。。。。。<br>今天我就记录一下吧</p>
+<hr>
+<h2 id="RAID-LVM-硬盘崩坏修复"><a href="#RAID-LVM-硬盘崩坏修复" class="headerlink" title="RAID+LVM 硬盘崩坏修复"></a>RAID+LVM 硬盘崩坏修复</h2><p>现在实验环境如下</p>
+<p><img src="pics/31.jpg" alt=""></p>
+<p>然后我要再一次模拟sdb这块硬盘崩掉的情况，看一下，系统能不能自动修复</p>
+<p>在我设置阵列 f 参数之后，阵列会使用热备盘顶替，系统能够正常使用。</p>
+<p>但是，我说但是，只要重启系统之后，使用 pvs 命令，直接提示错误，那个md0的PV直接变成【unknown】。。。。。这个问题花了一个多星期，也没搞定，所以，弃坑！</p>
+<p><img src="pics/32.png" alt=""></p>
+<p>尽管有一个PV成了 unknown ，但是很神奇，上层的lv1，lv2等都能正常挂载使用，写入信息也可以，心中万马奔腾。。。。</p>
+<p>补充：后续还有一个离奇的事情，在还原清空硬盘时，我把所有的lv，vg，pv都删除了，还是不让我删除md0，说后台还在使用md0，卧槽。。。。而且，重启一次电脑之后，原本unknown的那个pv，竟然识别出来了，f*** ，而且挂载后，数据都在，这个让我说啥好呢。。。。。。<br>后续一定要去弄清除这个LVM的底细</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>鉴于上方出现那个pv成了unknown的情况，不打算继续研究下去，网上能找到的文档也很少，一开始我以为是我搜索姿势不对，后来我才了解到，RAID本身自带扩容功能，根本就不需要LVM辅助。果然，不对一个东西了解透彻，踩坑在所难免</p>
+<p>所以，这个RAID+LVM的方案搁置，除非能找到上面问题的解决方案，不然不上正式环境。</p>
+<p>后续的文章，开始实验RAID的扩容，这个应该比较简单了</p>
+<p>所以，本文章就当作了解 RAID 和 LVM 使用方法的教程，看看就行</p>
+<h2 id="将硬盘初始化"><a href="#将硬盘初始化" class="headerlink" title="将硬盘初始化"></a>将硬盘初始化</h2><p>经过上面的折腾，我们的硬盘已经写入了RAID+LVM 的信息，如果要重新实验折腾，就必须清空这些信息</p>
+<p>接下来，来了解怎么重(删)置(库)环(跑)境(路)</p>
+<h3 id="删除-LVM"><a href="#删除-LVM" class="headerlink" title="删除 LVM"></a>删除 LVM</h3><ol>
+<li>用umount卸载挂载的lv1，lv2，lv3 </li>
+</ol>
+<blockquote>
+<p># umount /dev/vg1/lv[1-3]</p>
+</blockquote>
+<ol start="2">
+<li>删除逻辑卷lv[1-3]</li>
+</ol>
+<blockquote>
+<p># lvremove /dev/vg1/lv[1-3]</p>
+</blockquote>
+<ol start="3">
+<li>删除卷组vg1</li>
+</ol>
+<blockquote>
+<p># vgremove vg1</p>
+</blockquote>
+<ol start="4">
+<li>删除PV</li>
+</ol>
+<blockquote>
+<p># pvremove /dev/md0</p>
+</blockquote>
+<p>到这里，我们成功将LVM删除了，后面，我们清空RAID阵列</p>
+<h3 id="删除-RAID"><a href="#删除-RAID" class="headerlink" title="删除 RAID"></a>删除 RAID</h3><ol>
+<li>如果挂载了md0，请先卸载</li>
+<li>先覆盖RAID的metadata </li>
+</ol>
+<blockquote>
+<p># dd if=/dev/zero of=/dev/md0 bs=1M count=50</p>
+</blockquote>
+<ol start="3">
+<li>停止md0</li>
+</ol>
+<blockquote>
+<p># mdadm -S /dev/md0</p>
+</blockquote>
+<ol start="4">
+<li>清除成员磁盘当中阵列的超级块信息，对所有磁盘也执行如下的命令</li>
+</ol>
+<blockquote>
+<p># dd if=/dev/zero of=/dev/sdb1 bs=1M count=50</p>
+</blockquote>
+<p>这里就不一一列举了</p>
+<ol start="5">
+<li>查看阵列的情况</li>
+</ol>
+<blockquote>
+<p># cat /proc/mdstat</p>
+</blockquote>
+<p>如果还是出现RAID的信息，重启一下服务器就行</p>
+<h3 id="参考的资料-1"><a href="#参考的资料-1" class="headerlink" title="参考的资料"></a>参考的资料</h3><p>Linux LVM学习总结——删除卷组VG</p>
+<blockquote>
+<p><a href="https://www.cnblogs.com/kerrycode/p/4569515.html" target="_blank" rel="noopener">https://www.cnblogs.com/kerrycode/p/4569515.html</a></p>
+</blockquote>
+<p>鸟哥 ，阵列知识</p>
+<blockquote>
+<p><a href="https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html</a></p>
+</blockquote>
+<h2 id="其他总结"><a href="#其他总结" class="headerlink" title="其他总结"></a>其他总结</h2><h3 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h3><ol>
+<li>重设逻辑卷大小，<strong>重置之后，需要同步一下文件系统大小，不然容量不会改变</strong></li>
+</ol>
+<blockquote>
+<p># lvresize -L 3G  /dev/vgname/lvname</p>
+</blockquote>
+<ol start="2">
+<li>为VG 添加新的PV</li>
+</ol>
+<p>用命令 vgextend</p>
+<ol start="3">
+<li>pvcreate 是提示“Device /dev/sdb not found (or ignored by filtering)”<br>可能 硬盘没有没有初始化</li>
+</ol>
+<blockquote>
+<p># dd if=/dev/urandom of=/dev/sdb bs=512 count=64</p>
+</blockquote>
+<ol start="4">
+<li>查看磁盘信息的一些命令</li>
+</ol>
+<p>blkid</p>
+<p>lsblk</p>
+<p>df -hT</p>
+<p>du </p>
+<p>fdisk -l</p>
+<ol start="4">
+<li>很详细的LVM说明教程</li>
+</ol>
+<blockquote>
+<p><a href="https://blog.csdn.net/cmzsteven/article/details/78476242" target="_blank" rel="noopener">https://blog.csdn.net/cmzsteven/article/details/78476242</a></p>
+</blockquote>
+<ol start="5">
+<li>RAID + LVM 的说明</li>
+</ol>
+<blockquote>
+<p><a href="https://blog.51cto.com/yinsuifeng/1916766" target="_blank" rel="noopener">https://blog.51cto.com/yinsuifeng/1916766</a></p>
+</blockquote>
+<ol start="6">
+<li>LVM 创建快照</li>
+</ol>
+<p>快照卷是对某逻辑卷进行的，因此必须跟目标逻辑卷在同一个卷组（VG）中；无需指明卷组</p>
+<blockquote>
+<p># lvcreate -s -L 200M -n snap_LV_name -p r  /dev/vg/lv  </p>
+</blockquote>
+<ul>
+<li>s ：创建快照卷</li>
+<li>p r ： 限制为只读访问</li>
+</ul>
+<p>执行完后，会创建一个LV ，把它挂载起来就可以用了</p>
+<pre><code>快照卷的容量必须等同于逻辑卷的容量；
+
+快照卷仅一次有效，一旦执行还原操作后则会被立即自动删除。</code></pre><p>删除快照</p>
+<p>lvremove /dev/vgroup/snap_LV_name</p>
+<h4 id="PE-和-LE"><a href="#PE-和-LE" class="headerlink" title="PE 和 LE"></a>PE 和 LE</h4><p>PE(Physical Extend)</p>
+<p>PE是VG中的存储单元。实际存储的数据都是存储在这里面的。</p>
+<p>LE(logical extent)</p>
+<p>PE是物理存储单元，而LE则是逻辑存储单元，也即为lv中的逻辑存储单元，和pe的大小是一样的。从vg中划分lv，实际上是从vg中划分vg中的pe，只不过划分lv后它不再称为pe，而是成为le。</p>
+<p>LVM之所以能够伸缩容量，其实现的方法就是将LV里空闲的PE移出，或向LV中添加空闲的PE。</p>
+<h4 id="LVM-写入模式"><a href="#LVM-写入模式" class="headerlink" title="LVM 写入模式"></a>LVM 写入模式</h4><blockquote>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7049233.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/7049233.html</a></p>
+</blockquote>
+<p>LV是从VG中划分出来的，LV中的PE很可能来自于多个PV。在向LV存储数据时，有多种存储机制，其中两种是：</p>
+<pre><code>线性模式(linear)：先写完来自于同一个PV的PE，再写来自于下一个PV的PE。
+条带模式(striped)：一份数据拆分成多份，分别写入该LV对应的每个PV中，所以读写性能较好，类似于RAID 0。</code></pre><p>尽管striped读写性能较好也不建议使用该模式，因为lvm的着重点在于弹性容量扩展而非性能，要实现性能应该使用RAID来实现，而且使用striped模式时要进行容量的扩展和收缩将比较麻烦。默认的是使用线性模式。</p>
+<h3 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h3><h4 id="raid-0"><a href="#raid-0" class="headerlink" title="raid 0"></a>raid 0</h4><p>代表了所有RAID级别中最高的存储性能</p>
+<h4 id="raid-1"><a href="#raid-1" class="headerlink" title="raid 1"></a>raid 1</h4><p>镜像冗余 ，原始数据繁忙时，可以直接从奖项拷贝中读取数据，RAID 1 可以提高读取性能</p>
+<p>在这里，需要注意的是，读只能在一块磁盘上进行，并不会进行并行读取，性能取决于硬盘中较快的一块。写的话通常比单块磁盘要慢，虽然是并行写，即对两块磁盘的写入是同时进行的，但因为要比较两块硬盘中的数据，所以性能比单块磁盘慢。</p>
+<h4 id="raid-5"><a href="#raid-5" class="headerlink" title="raid 5"></a>raid 5</h4><p>磁盘空间利用率：(N-1)/N，即只浪费一块磁盘用于奇偶校验。至少需要3块硬盘</p>
+<p>读性能：(n-1)*单块磁盘的读性能，接近RAID0的读性能。</p>
+<p>写性能：比单块磁盘的写性能要差（这点不是很明白，不是可以并行写入么？）</p>
+<p>冗余：只允许一块磁盘损坏。</p>
+<p>做raid 5阵列所有磁盘容量必须一样大，当容量不同时，会以最小的容量为准。 最好硬盘转速一样，否则会影响性能，而且可用空间=磁盘数n-1，Raid 5 没有独立的奇偶校验盘，所有校验信息分散放在所有磁盘上， 只占用一个磁盘的容量。</p>
+<h4 id="raid-10"><a href="#raid-10" class="headerlink" title="raid 10"></a>raid 10</h4><p>Raid10其实结构非常简单，首先创建2个独立的Raid1，然后将这两个独立的Raid1组成一个Raid0</p>
+<p>冗余：只要一对镜像盘中有一块磁盘可以使用就没问题</p>
+<h4 id="raid-6"><a href="#raid-6" class="headerlink" title="raid 6"></a>raid 6</h4><p>最少需要4个硬盘。同时两块磁盘损毁时，数据还是可以救回来。</p>
+<h2 id="SnapRAID"><a href="#SnapRAID" class="headerlink" title="SnapRAID"></a>SnapRAID</h2><p>后续补充</p>
+<hr>
+<p><strong>RAID不是备份，重要数据，请做好备份</strong></p>
+<p>这里是RAID5坏盘后数据恢复的成功率的讨论，感兴趣可以看看</p>
+<blockquote>
+<p><a href="https://www.zhihu.com/question/20164654" target="_blank" rel="noopener">https://www.zhihu.com/question/20164654</a></p>
+</blockquote>
+<p>RAID5现在来看也存在风险，一是校验算法导致存在“write hole”导致存在数据不一致的问题，二是3TB、4TB硬盘商用后使得重建时间较长，在其期间极易第二块硬盘损坏导致RAID5崩溃</p>
+<p>RAID5在如今已经没必要了，SSD的I/O秒杀机械盘，用SSD建RAID0，再加机械盘做RAID1同步。或者RAID1+SSD缓存</p>
+<p>raid5加hot spare也就是所说的raid5+1.一旦raid5里面某块盘宕机，热备盘就会立刻替换宕机的盘。</p>
+<p>4块盘做raid6基本相当于做raid1，不过比raid1更安全，同时允许任意两块盘宕机。</p>
+<hr>
+<p>一些文献把这两种 RAID 等级看作是等同的，本文认为是不同的。 RAID01 是先做条带化再作镜像，本质是对物理磁盘实现镜像；而 RAID10 是先做镜像再作条带化，是对虚拟磁盘实现镜像。相同的配置下，通常 RAID01 比 RAID10 具有更好的容错能力。</p>
+<p>RAID基础知识了解</p>
+<blockquote>
+<p><a href="https://wsgzao.github.io/post/raid/" target="_blank" rel="noopener">https://wsgzao.github.io/post/raid/</a></p>
+</blockquote>
+<p>-a(–add)，-d(–del),-r(–remove),-f(–fail)</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/GGxiaobai/article/details/59521459" target="_blank" rel="noopener">https://blog.csdn.net/GGxiaobai/article/details/59521459</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html</a><br>l</p>
+</blockquote>
+<p>mdadm 这套软件，这套软件会以 partition 或 disk 为磁盘的单位，也就是说，你不需要两颗以上的磁盘，只要有两个以上的分区 （partition） 就能够设计你的磁盘阵列了</p>
+<p>硬件磁盘阵列的设备文件名为 /dev/sd[a-p] ，因为使用到 SCSI 的模块之故。至于软件磁盘阵列则是系统仿真的，因此使用的设备文件名是系统的设备文件， 文件名为 /dev/md0, /dev/md1…，两者的设备文件名并不相同</p>
+<h4 id="鸟哥的linux"><a href="#鸟哥的linux" class="headerlink" title="鸟哥的linux"></a>鸟哥的linux</h4><blockquote>
+<p><a href="https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/126.html</a></p>
+</blockquote>
+<h4 id="查看硬盘-信息"><a href="#查看硬盘-信息" class="headerlink" title="查看硬盘 信息"></a>查看硬盘 信息</h4><blockquote>
+<p>hdparm -i /dev/sda</p>
+</blockquote>
+<h4 id="mdadm-参数"><a href="#mdadm-参数" class="headerlink" title="mdadm 参数"></a>mdadm 参数</h4><p>-a  检测设备名称<br>-n  指定设备数量<br>-l  指定RAID级别<br>-C  创建<br>-c  指定chunk大小，为2的整数次方，默认为64<br>-v  显示过程<br>-f  模拟设备损坏<br>-r  移除设备<br>-Q  查看摘要信息<br>-D  查看详细信息<br>-S  停止RAID磁盘阵列<br>-x  指定空闲盘的数量</p>
+<p>[root@study ~]# mdadm –manage /dev/md[0-9] [–add 设备] [–remove 设备] [–fail 设备]<br>选项与参数：<br>–add    ：会将后面的设备加入到这个 md 中！<br>–remove ：会将后面的设备由这个 md 中移除<br>–fail   ：会将后面的设备设置成为出错的状态</p>
+<h4 id="启动-RAID"><a href="#启动-RAID" class="headerlink" title="启动 RAID"></a>启动 RAID</h4><blockquote>
+<p>#  mdadm -A /dev/md0 /dev/sd[b-f]1  </p>
+</blockquote>
+<p><strong>注意，需要再次指定该raid中的设备成员，且和关闭前的成员一样，不能有任何不同</strong></p>
+<p>如果下次想直接使用-A参数激活，可以在停止RAID之前，扫描RAID，将结果保存到配置文件中，下次启动的时候直接读取配置文件即可</p>
+<blockquote>
+<p># mdadm -D –scan &gt;&gt; /etc/mdadm.conf</p>
+</blockquote>
+<p>如果不放在默认配置文件中，者装配的时候使用“-c”或“–config”选项指定配置文件即可</p>
+<blockquote>
+<p># mdadm -D –scan &gt;&gt; /tmp/mdadm.conf</p>
+</blockquote>
+<blockquote>
+<p># mdadm -A /dev/md0 -c /tmp/mdadm.conf</p>
+</blockquote>
+<p>重启raid mdadm -R /dev/md0</p>
+<p>mdadm –examine /dev/sdb</p>
+<p>** mdadm –manage /dev/md0 –add /dev/sdb ** </p>
+<p>组建raid阵列后，磁盘的物理插槽位置不能更改，不然阵列会出错</p>
+<h4 id="停止阵列："><a href="#停止阵列：" class="headerlink" title="停止阵列："></a>停止阵列：</h4><p><a href="https://blog.csdn.net/w849593893/article/details/82962322" target="_blank" rel="noopener">https://blog.csdn.net/w849593893/article/details/82962322</a></p>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7049501.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/7049501.html</a></p>
+<p><img src="pics/33.png" alt=""><br><img src="pics/34.png" alt=""></p>
+<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><p>在创建的时候，如果遇到坑，能Google解决最好，但是有些问题，没必要硬钻，不行的话，可以把整个测试环境重置，重头再来一遍，有时候，能有意外的收获。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E5%AD%98%E5%82%A8/">
+                                    <span class="chip bg-color">存储</span>
+                                </a>
+                            
+                                <a href="../../../../tags/Raid/">
+                                    <span class="chip bg-color">Raid</span>
+                                </a>
+                            
+                                <a href="../../../../tags/LVM/">
+                                    <span class="chip bg-color">LVM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../raid6-da-jian-cun-chu-huan-jing/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Raid6 搭建存储环境">
+                        
+                        <span class="card-title">Raid6 搭建存储环境</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            接上一个教程，重新部署磁盘存储环境
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/Raid/">
+                        <span class="chip bg-color">Raid</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../nfs-da-jian-shi-yong/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="NFS搭建使用">
+                        
+                        <span class="card-title">NFS搭建使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            因为搭建了一个PVE测试环境，所以，顺便搭了一个NFS服务器，这里记一下关键步骤。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E5%AD%98%E5%82%A8/">
+                        <span class="chip bg-color">存储</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

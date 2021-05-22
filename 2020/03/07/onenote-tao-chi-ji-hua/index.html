@@ -1,0 +1,1565 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="OneNote 逃离计划, 宅世界">
+    <meta name="description" content="接下来可能写几个文章整理我OneNote的笔记,OneNote编写方法对我这个用惯了MD的人,太不友好.那个服务器,也时不时抽风,因此打算逃离了...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>OneNote 逃离计划 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">OneNote 逃离计划</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-03-08
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="提取windows10锁屏壁纸"><a href="#提取windows10锁屏壁纸" class="headerlink" title="提取windows10锁屏壁纸"></a>提取windows10锁屏壁纸</h3><p>C:/User/Username/AppDate/Local/Packages/Microsoft.Windows.contentDeliveryManager_*/Localstate/Assets</p>
+<h3 id="锁屏后息屏时间设置"><a href="#锁屏后息屏时间设置" class="headerlink" title="锁屏后息屏时间设置"></a>锁屏后息屏时间设置</h3><p>打开注册表编辑器</p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\子项</p>
+<p>在7516b95f-f776-4464-8c53-06167f40cc99子项下，我们继续双击打开8EC4B3A5-6868-48c2-BE75-4F3044BE88A7子项，然后在其右侧页面中找到Attributes一项，双击打开该项目。</p>
+<p>在接下来打开的页面中，我们将其键值由1改为2，然后保存设置。在保存设置之后，我们就可以点击关闭注册表啦。</p>
+<p><a href="https://jingyan.baidu.com/article/a17d52851297e18099c8f270.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/a17d52851297e18099c8f270.html</a></p>
+<h3 id="如何为-Windows-10-UWP-应用设置代理"><a href="#如何为-Windows-10-UWP-应用设置代理" class="headerlink" title="如何为 Windows 10 UWP 应用设置代理"></a>如何为 Windows 10 UWP 应用设置代理</h3><p>UWP 是微软在 Windows 10 中引入的新概念，由于所有 UWP 应用均运行在被称为 App Container 的虚拟沙箱环境中，其安全性及纯净度远胜于传统的 EXE 应用。但 App Container 机制同时也阻止了网络流量发送到本机（即 loopback）， 使大部分网络抓包调试工具无法对 UWP 应用进行流量分析。同样的，该机制也阻止了 UWP 应用访问 localhost，即使你在系统设置中启用了代理，也无法令 UWP 应用访问本地代理服务器，十分恼人。</p>
+<p>其实 Windows 10 自带了一款名为 CheckNetIsolation.exe 的命令行工具可以帮助我们将 UWP 及 Windows 8 Metro 应用添加到排除列表，具体步骤如下：</p>
+<p>1.通过注册表获取应用的 SID<br>首先通过 Win + R 快捷键打开「运行」窗口，输入「Regedit」打开注册表编辑器，然后定位到 HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings，接着在左边的注册表项中找到你想解除网络隔离的应用，右边的 DisplayName 就是应用名称，而左边那一大串字符就是应用的 SID 值了。</p>
+<p>2.打开 CMD 面板<br>在终端中输入 CheckNetIsolation.exe loopbackexempt -a -p=SID，出现「完成」后就大功告成了。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/29989157" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29989157</a></p>
+<h3 id="卸载-Windows10-app"><a href="#卸载-Windows10-app" class="headerlink" title="卸载 Windows10 app"></a>卸载 Windows10 app</h3><pre><code>一次卸載所有app
+Get-AppxPackage -AllUsers | Remove-AppxPackage</code></pre><pre><code>一次卸載所有app(僅於當前使用帳戶)
+Get-AppxPackage -User | Remove-AppxPackage</code></pre><pre><code>卸载单独一个app
+Get-AppxPackage *Microsoft3DViewer* | Remove-AppxPackage</code></pre><p><a href="https://esisterebbb.blogspot.com/2017/06/windows-10-app.html" target="_blank" rel="noopener">https://esisterebbb.blogspot.com/2017/06/windows-10-app.html</a></p>
+<h3 id="批量更改文件后缀名"><a href="#批量更改文件后缀名" class="headerlink" title="批量更改文件后缀名"></a>批量更改文件后缀名</h3><p>ren *.gif *.jpg<br>将GIF 更改为jpg</p>
+<p>ren <em>.</em> *.gif<br>将所有文档更改为gif</p>
+<h3 id="驱动位置"><a href="#驱动位置" class="headerlink" title="驱动位置"></a>驱动位置</h3><p>32位: </p>
+<p>%systemroot%\system32\driverstore\filerepository</p>
+<p>%systemroot% 表示分区中的Windows 文件夹</p>
+<p>在64位 Windows10 中, 64位驱动程序存储位置与上面的相同, 但是64位 中的 32位 驱动程序则存储在以下位置:<br>%systemroot%\syswow64\driverstore\filerepository</p>
+<p>硬件设备驱动程序中的 inf 文件用于控制驱动程序的安装以及向注册表写入硬件设备的配置信息, 该文件还会标记在安装驱动程序时需要用到的相关文件. 在安装硬件设备的驱动程序时, 驱动程序都会有一个.sys 文件, 有些驱动程序还包含 .dll | .dat | .exe  等文件. </p>
+<p>%systemroot%\system32\drivers</p>
+<h3 id="Windows-備份驅動"><a href="#Windows-備份驅動" class="headerlink" title="Windows 備份驅動"></a>Windows 備份驅動</h3><p>PowerShell ：<br>dism /online /export-driver /destination:E:\temp<br>E:\temp  備份的驅動放置的文件夾</p>
+<p>恢復時在 <code>設備管理器</code>中 <code>更新驅動</code>,指定备份的目录<br>或<br>Dism /online /Add-Driver /Driver:D:\DriversBackup /Recurse</p>
+<h3 id="软件自启动目录"><a href="#软件自启动目录" class="headerlink" title="软件自启动目录"></a>软件自启动目录</h3><p>注：本教程适用于Win8、Win8.1和Win10系统</p>
+<p>首先，“启动”文件夹分为两种，一种是“系统启动文件夹”，Win10系统“启动”文件夹的路径为：<br>    X:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp<br>如果想要实现应用程序在所有的用户登录系统后都能自动启动，就把该应用程序的快捷方式放到“系统启动文件夹”里；</p>
+<p>另一种为“用户启动文件夹”，如果想要实现某个应用程序只在某个用户登录系统时自动启动，那么就把该应用程序的快捷方式放到这个用户的“启动”文件夹里。Windows10某个用户的“启动”文件夹路径为：<br>X:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</p>
+<ol>
+<li>打开“系统启动文件夹”的命令<br>shell:Common Startup</li>
+</ol>
+<p>2.打开“用户启动文件夹”的命令<br>shell:startup<br>打开“运行”对话框，输入以上命令，回车或点击“确定”即可打开“用户启动文件夹”。</p>
+<p>From <a href="https://www.windows10.pro/win10-startup-folder/" target="_blank" rel="noopener">https://www.windows10.pro/win10-startup-folder/</a> </p>
+<h3 id="只打开自己的USB设备"><a href="#只打开自己的USB设备" class="headerlink" title="只打开自己的USB设备"></a>只打开自己的USB设备</h3><p>设备管理中找到usb设备的ID</p>
+<p>之后Win+R组合键后输入gpedit.msc进入组策略，依次进入“计算机配置-管理模板-系统-设备安装-设备安装限制”，在右侧打开“允许安装与下列设备ID相匹配的设备”。</p>
+<p>双击打开后，点选“已启用”，并点击左下方的“显示”，在弹出对话框中把之前复制的硬件ID贴进去就好了。</p>
+<p>From <a href="http://www.cfan.com.cn/2018/0511/130790.shtml" target="_blank" rel="noopener">http://www.cfan.com.cn/2018/0511/130790.shtml</a> </p>
+<h3 id="清除小娜"><a href="#清除小娜" class="headerlink" title="清除小娜"></a>清除小娜</h3><p><a href="http://www.cfan.com.cn/2018/0515/130806.shtml" target="_blank" rel="noopener">http://www.cfan.com.cn/2018/0515/130806.shtml</a></p>
+<p>更快的方法是用LTSC吧!</p>
+<h3 id="组策略中的-管理模板"><a href="#组策略中的-管理模板" class="headerlink" title="组策略中的 管理模板"></a>组策略中的 管理模板</h3><p><code>管理模板</code> 是组策略的重要组成部分, 在 管理模板中修改的任何策略都会被保存到Windows系统的注册表中. [计算机配置]-&gt;[管理模板] 节点中的策略设置存在Windows 注册表的 HKEY_LOCAL_MACHINE  根键中,<br>[用户配置]-&gt;[管理模板] 节点中的策略设置存在Windows 注册表中的 HKEY_CURRENT_USER 根键中.</p>
+<p>管理模板文件基于XML, 文件扩展名为admx .</p>
+<p>除了<code>gpedit</code>之外,可以在  命令提示符中输入 <code>mmc</code> 进入 Microsoft管理控制台添加</p>
+<p>未配置: 策略处于未设置状态, 没有对策略进行任何设置, 对注册表没有进行任何修改. 这是所有策略的默认设置<br>已启用: 系统会将策略启用时的值写入注册表中.<br>已禁用:  策略处于禁用状态, 系统会将策略禁用时的值写入注册表中. [未配置]和[已禁用]两个选项通常产生相同的效果.</p>
+<p>gpupdate: 刷新组策略</p>
+<p>gpupdate /target:compter<br>gpupdate /target:user </p>
+<p>可以在控制台中<code>禁用</code>组配置, 而不需要删除</p>
+<h3 id="创建删除目录"><a href="#创建删除目录" class="headerlink" title="创建删除目录"></a>创建删除目录</h3><ul>
+<li><p>创建 md<br>如果创建的文件夹有空格, 需要用引号把文件夹名括起来.</p>
+<p>如果没有引号, 会同时新建 多个文件夹</p>
+<p><strong>md 可以很方便的创建中级目录:</strong><br>如: md a\b\c    </p>
+</li>
+<li><p>删除 rd<br>rd  /s /q<br>/s  遇到有子文件或子文件夹的时候可以直接删除.<br>/q  安静模式, 不会询问你是否删除</p>
+</li>
+</ul>
+<h3 id="快速启动设置命令"><a href="#快速启动设置命令" class="headerlink" title="快速启动设置命令"></a>快速启动设置命令</h3><table>
+<thead>
+<tr>
+<th>Settings page</th>
+<th>Uri</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Landing page for Settings</td>
+<td>ms-settings:</td>
+</tr>
+<tr>
+<td>About</td>
+<td>ms-settings:about</td>
+</tr>
+<tr>
+<td>Activation</td>
+<td>ms-settings:activation</td>
+</tr>
+<tr>
+<td>Apps &amp; features</td>
+<td>ms-settings:appsfeatures</td>
+</tr>
+<tr>
+<td>Apps for websites</td>
+<td>ms-settings:appsforwebsites</td>
+</tr>
+<tr>
+<td>App volume and device preferences (1903)</td>
+<td>ms-settings:apps-volume</td>
+</tr>
+<tr>
+<td>Software Center (SCCM)</td>
+<td>softwarecenter:</td>
+</tr>
+<tr>
+<td>AutoPlay</td>
+<td>ms-settings:autoplay</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>ms-settings:backup</td>
+</tr>
+<tr>
+<td>Recovery - Reset/Advanced startup</td>
+<td>ms-settings:recovery</td>
+</tr>
+<tr>
+<td>Battery Saver</td>
+<td>ms-settings:batterysaver</td>
+</tr>
+<tr>
+<td>Battery Saver - settings</td>
+<td>ms-settings:batterysaver-settings</td>
+</tr>
+<tr>
+<td>Battery Saver - usage</td>
+<td>ms-settings:batterysaver-usagedetails</td>
+</tr>
+<tr>
+<td>Bluetooth Devices</td>
+<td>ms-settings:bluetooth</td>
+</tr>
+<tr>
+<td>Shared experiences</td>
+<td>ms-settings:crossdevice</td>
+</tr>
+<tr>
+<td>Default apps</td>
+<td>ms-settings:defaultapps</td>
+</tr>
+<tr>
+<td>For developers</td>
+<td>ms-settings:developers</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>ms-settings:display</td>
+</tr>
+<tr>
+<td>Display Screen rotation</td>
+<td>ms-settings:screenrotation</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>ms-settings:storagesense</td>
+</tr>
+<tr>
+<td>Offline Maps</td>
+<td>ms-settings:maps</td>
+</tr>
+<tr>
+<td>Connected Devices</td>
+<td>ms-settings:connecteddevices</td>
+</tr>
+<tr>
+<td>Touchpad</td>
+<td>ms-settings:devices-touchpad</td>
+</tr>
+<tr>
+<td>Mouse &amp; Touchpad Devices</td>
+<td>ms-settings:mousetouchpad</td>
+</tr>
+<tr>
+<td>Typing</td>
+<td>ms-settings:typing</td>
+</tr>
+<tr>
+<td>Find My Device</td>
+<td>ms-settings:findmydevice</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>ms-settings:usb</td>
+</tr>
+<tr>
+<td>Airplane mode</td>
+<td>ms-settings:network-airplanemode</td>
+</tr>
+<tr>
+<td>Cellular Network</td>
+<td>ms-settings:network-cellular</td>
+</tr>
+<tr>
+<td>DirectAccess</td>
+<td>ms-settings:network-directaccess</td>
+</tr>
+<tr>
+<td>Dial-up Network</td>
+<td>ms-settings:network-dialup</td>
+</tr>
+<tr>
+<td>Ethernet Network</td>
+<td>ms-settings:network-ethernet</td>
+</tr>
+<tr>
+<td>Proxy (Network)</td>
+<td>ms-settings:network-proxy</td>
+</tr>
+<tr>
+<td>Network Status</td>
+<td>ms-settings:network-status</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>ms-settings:network-vpn</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>ms-settings:network-wifi</td>
+</tr>
+<tr>
+<td>Manage known Wi-Fi</td>
+<td>ms-settings:network-wifisettings</td>
+</tr>
+<tr>
+<td>Sync your settings</td>
+<td>ms-settings:sync</td>
+</tr>
+<tr>
+<td>Data Sense</td>
+<td>ms-settings:datausage</td>
+</tr>
+<tr>
+<td>Mobile Hotspot</td>
+<td>ms-settings:network-mobilehotspot</td>
+</tr>
+<tr>
+<td>Lock screen</td>
+<td>ms-settings:lockscreen</td>
+</tr>
+<tr>
+<td>Power &amp; sleep</td>
+<td>ms-settings:powersleep</td>
+</tr>
+<tr>
+<td>Multitasking</td>
+<td>ms-settings:multitasking</td>
+</tr>
+<tr>
+<td>Optional features</td>
+<td>ms-settings:optionalfeatures</td>
+</tr>
+<tr>
+<td>Personalization</td>
+<td>ms-settings:personalization</td>
+</tr>
+<tr>
+<td>Backgrounds</td>
+<td>ms-settings:personalization-background</td>
+</tr>
+<tr>
+<td>Colors</td>
+<td>ms-settings:personalization-colors</td>
+</tr>
+<tr>
+<td>Colors</td>
+<td>ms-settings:colors</td>
+</tr>
+<tr>
+<td>Start Menu</td>
+<td>ms-settings:personalization-start</td>
+</tr>
+<tr>
+<td>Taskbar</td>
+<td>ms-settings:taskbar</td>
+</tr>
+<tr>
+<td>Themes</td>
+<td>ms-settings:themes</td>
+</tr>
+<tr>
+<td>Printers</td>
+<td>ms-settings:printers</td>
+</tr>
+<tr>
+<td>Proximity</td>
+<td>ms-settings:proximity</td>
+</tr>
+<tr>
+<td>Email &amp; app accounts</td>
+<td>ms-settings:emailandaccounts</td>
+</tr>
+<tr>
+<td>Family &amp; other users</td>
+<td>ms-settings:otherusers</td>
+</tr>
+<tr>
+<td>Your workplace</td>
+<td>ms-settings:workplace</td>
+</tr>
+<tr>
+<td>Date &amp; Time</td>
+<td>ms-settings:dateandtime</td>
+</tr>
+<tr>
+<td>Region &amp; language</td>
+<td>ms-settings:regionlanguage</td>
+</tr>
+<tr>
+<td>Sign-in options</td>
+<td>ms-settings:signinoptions</td>
+</tr>
+<tr>
+<td>Speech</td>
+<td>ms-settings:speech</td>
+</tr>
+<tr>
+<td>Privacy</td>
+<td>ms-settings:privacy</td>
+</tr>
+<tr>
+<td>Account info (privacy)</td>
+<td>ms-settings:privacy-accountinfo</td>
+</tr>
+<tr>
+<td>Background apps (privacy)</td>
+<td>ms-settings:privacy-backgroundapps</td>
+</tr>
+<tr>
+<td>App diagnostics (privacy)</td>
+<td>ms-settings:privacy-appdiagnostics</td>
+</tr>
+<tr>
+<td>Call history (privacy)</td>
+<td>ms-settings:privacy-callhistory</td>
+</tr>
+<tr>
+<td>Calendar (privacy)</td>
+<td>ms-settings:privacy-calendar</td>
+</tr>
+<tr>
+<td>Contacts (privacy)</td>
+<td>ms-settings:privacy-contacts</td>
+</tr>
+<tr>
+<td>Email (privacy)</td>
+<td>ms-settings:privacy-email</td>
+</tr>
+<tr>
+<td>Feedback &amp; diagnostics (privacy)</td>
+<td>ms-settings:privacy-feedback</td>
+</tr>
+<tr>
+<td>Location (privacy)</td>
+<td>ms-settings:privacy-location</td>
+</tr>
+<tr>
+<td>Messaging (privacy)</td>
+<td>ms-settings:privacy-messaging</td>
+</tr>
+<tr>
+<td>Microphone (privacy)</td>
+<td>ms-settings:privacy-microphone</td>
+</tr>
+<tr>
+<td>Motion (privacy)</td>
+<td>ms-settings:privacy-motion</td>
+</tr>
+<tr>
+<td>Notifications and Actions</td>
+<td>ms-settings:notifications</td>
+</tr>
+<tr>
+<td>Notifications (privacy)</td>
+<td>ms-settings:privacy-notifications</td>
+</tr>
+<tr>
+<td>Other (privacy)</td>
+<td>ms-settings:privacy-customdevices</td>
+</tr>
+<tr>
+<td>Radio (privacy)</td>
+<td>ms-settings:privacy-radios</td>
+</tr>
+<tr>
+<td>Speech (privacy)</td>
+<td>ms-settings:privacy-speechtyping</td>
+</tr>
+<tr>
+<td>Tasks (privacy)</td>
+<td>ms-settings:privacy-tasks</td>
+</tr>
+<tr>
+<td>Webcam (privacy)</td>
+<td>ms-settings:privacy-webcam</td>
+</tr>
+<tr>
+<td>Your info (Microsoft account)</td>
+<td>ms-settings:yourinfo</td>
+</tr>
+<tr>
+<td>Closed Captioning</td>
+<td>ms-settings:easeofaccess-closedcaptioning</td>
+</tr>
+<tr>
+<td>High Contrast</td>
+<td>ms-settings:easeofaccess-highcontrast</td>
+</tr>
+<tr>
+<td>Keyboard</td>
+<td>ms-settings:easeofaccess-keyboard</td>
+</tr>
+<tr>
+<td>Magnifier</td>
+<td>ms-settings:easeofaccess-magnifier</td>
+</tr>
+<tr>
+<td>Mouse</td>
+<td>ms-settings:easeofaccess-mouse</td>
+</tr>
+<tr>
+<td>Narrator</td>
+<td>ms-settings:easeofaccess-narrator</td>
+</tr>
+<tr>
+<td>Other options</td>
+<td>ms-settings:easeofaccess-otheroptions</td>
+</tr>
+<tr>
+<td>Projecting to this PC</td>
+<td>ms-settings:project</td>
+</tr>
+<tr>
+<td>Tablet mode</td>
+<td>ms-settings:tabletmode</td>
+</tr>
+<tr>
+<td>Windows Defender</td>
+<td>ms-settings:windowsdefender</td>
+</tr>
+<tr>
+<td>Windows Insider Program (beta’s)</td>
+<td>ms-settings:windowsinsider</td>
+</tr>
+<tr>
+<td>Troubleshoot - Fix Windows Update</td>
+<td>ms-settings:troubleshoot</td>
+</tr>
+<tr>
+<td>Windows Update</td>
+<td>ms-settings:windowsupdate</td>
+</tr>
+<tr>
+<td>WinUpdate - Check for updates</td>
+<td>ms-settings:windowsupdate-action</td>
+</tr>
+<tr>
+<td>WinUpdate - Update history</td>
+<td>ms-settings:windowsupdate-history</td>
+</tr>
+<tr>
+<td>WinUpdate - Advanced options</td>
+<td>ms-settings:windowsupdate-options</td>
+</tr>
+<tr>
+<td>WinUpdate - Restart options</td>
+<td>ms-settings:windowsupdate-restartoptions</td>
+</tr>
+</tbody></table>
+<h3 id="关闭开机动画，加快开机"><a href="#关闭开机动画，加快开机" class="headerlink" title="关闭开机动画，加快开机"></a>关闭开机动画，加快开机</h3><p><img src="1.png" alt=""></p>
+<h3 id="打开回收站"><a href="#打开回收站" class="headerlink" title="打开回收站"></a>打开回收站</h3><p>explorer.exe ::{645FF040-5081-101B-9F08-00AA002F954E}</p>
+<h3 id="导入删除计划任务"><a href="#导入删除计划任务" class="headerlink" title="导入删除计划任务"></a>导入删除计划任务</h3><p>schtasks /create /ru %runasUsername% /rp %runasPassword% /tn %taskname% /xml %filename% </p>
+<p>其中 /ru 是运行这个任务时, 需要以这个账号运行<br>/tn 指定这个任务的名称 </p>
+<p>这个命令执行之后,会在计划任务的GUI里面显示刚才导入的任务</p>
+<p>schtasks /delete /tn  taskname</p>
+<h3 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h3><h4 id="runonce"><a href="#runonce" class="headerlink" title="runonce"></a>runonce</h4><p>同一台机器,不同用户的注册表, 有些地方是不一样的<br>比如, 你在 administrator 的<br>HKEY_CURRENT_USER/Software/Microsoft/Windows/CurrentVersion/RunOnce<br>下面添加东西<br>切换到  bin 这个账号,是看不到刚才在 administrator 添加的东西的</p>
+<p>也就是你不能在administrator账号下面添加 runonce 的项, 然后指望切换到 bin 账号让项生效</p>
+<p>HKEY_CURRENT_USER 代表当前用户，当前用户登录后才执行的操作。<br>HKEY_LOCAL_MACHINE 代表当前机器，所有操作在用户登录前就执行了。<br>Run 键值代表着开机启动项，也就是说在这个项下的键值会随着开机启动（这里的开机是指用户登录，也就是说只要有登录操作就会执行，注销然后登录，也会执行这个键值）。<br>RunOnce 键值类似于 Run 键值，唯一的区别在于，RunOnce 键值只执行一次，操作执行后会被自动删除。</p>
+<h4 id="uninstall"><a href="#uninstall" class="headerlink" title="uninstall"></a>uninstall</h4><p>32位：HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\</p>
+<p>64位：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstal</p>
+<h2 id="Softwares"><a href="#Softwares" class="headerlink" title="Softwares"></a>Softwares</h2><h3 id="NotePad-缓存文件的位置"><a href="#NotePad-缓存文件的位置" class="headerlink" title="NotePad++ 缓存文件的位置"></a>NotePad++ 缓存文件的位置</h3><p>C:\Users\Administrator\AppData\Roaming\Notepad++\session.xml</p>
+<p>C:\Users\Administrator\AppData\Roaming\Notepad++\backup<br>里面的文件就是你的自动保存的缓存文件。</p>
+<p>From <a href="https://blog.csdn.net/u010216716/article/details/49814283" target="_blank" rel="noopener">https://blog.csdn.net/u010216716/article/details/49814283</a> </p>
+<h3 id="静默安装"><a href="#静默安装" class="headerlink" title="静默安装"></a>静默安装</h3><p>大部分软件，其安装都具备一定的智能性，换句话说，许多软件的安装都能采取全自动或半自动的方式进行。</p>
+<h4 id="一、-Microsoft-Windows-Installer"><a href="#一、-Microsoft-Windows-Installer" class="headerlink" title="一、 Microsoft Windows Installer"></a>一、 Microsoft Windows Installer</h4><p>如果某个软件是用Windows Installer打包的，那你就应该能在文件夹中看到*.msi文件。</p>
+<p>这是最典型的特征，这些文件通常可以使用 /QB和 /QN参数进行自动安装</p>
+<p>/qb 会在窗口中显示一个基本的安装进程</p>
+<p>/qn 参数则不会显示任何窗口，直接在后台自动安装</p>
+<p>为了阻止某些程序安装成功后自动重启动（例如Kerio Personal Firewall 4），你可以在 /qn 或者 /qb参数后使用REBOOT=Suppress标记，例如：</p>
+<p>如安装虚拟光驱 DaemonTools：msiexec /i dtools.msi /qb REBOOT=SUPPRESS</p>
+<h4 id="二、-Windows-补丁包"><a href="#二、-Windows-补丁包" class="headerlink" title="二、 Windows 补丁包"></a>二、 Windows 补丁包</h4><p>有两种情况，一种是类似IE增量补丁包的那种安装文件，要使之静默安装，只需要在执行文件后加上　/q:a /r:n　参数即可；一种是　Windows　常用的补丁文件，一般情况下加上 /U /N /Z 即可实现静默安装。</p>
+<p>(对于新的系统补丁，也可使用 /passive /norestart)。这通用大部分情况，但某些特定的补丁不能用此法进行静默安装。</p>
+<h4 id="三、InstallShield"><a href="#三、InstallShield" class="headerlink" title="三、InstallShield"></a>三、InstallShield</h4><p>a.要使用静默安装的方式安装用InstallShield技术打包的程序，首先要在现有的操作系统中创建一个setup.iss文件。</p>
+<p>在命令行窗口中使用 -R 参数（大小写敏感）运行安装程序。</p>
+<p>例如：Setup.exe -R</p>
+<p>b. 接着会显示常见的安装屏幕，并且询问你一些问题，例如要安装的目录等有一点是很重要的，在安装结束后你不能选择“立刻重启动计算机”的选项。如果你选了，在批处理文件中的其他命令就会因为计算机重启动而无法执行。</p>
+<p>c. 在安装程序运行完毕后，打开你的C:/Windows（或者C:/WINNT）目录,然后找到setup.iss文件，把这个文件和你将要静默安装的程序setup.exe保存在同一个目录中</p>
+<p>d. 用以下命令进行静默安装：setup.exe -s [-sms]</p>
+<p>我怎么知道哪个程序是使用InstallShield技术打包的？</p>
+<p>大部分这类程序的安装文件都可以被压缩软件解压缩，安装文件setup.exe的属性对话框中应该有“InstallShield (R) Setup Launcher”或者其他类似的字样。</p>
+<p>最后，如果你在保存安装文件的文件夹中看到了一个setup.iss文件，那么毫无疑问这是用InstallShield打包了！</p>
+<h4 id="四、InstallShield-with-MSI"><a href="#四、InstallShield-with-MSI" class="headerlink" title="四、InstallShield with MSI"></a>四、InstallShield with MSI</h4><p>InstallShield with MSI 制作的安装文件，请使用类似：setup.exe /s /v”/qb” 来安装</p>
+<h4 id="五、WISE-Installer"><a href="#五、WISE-Installer" class="headerlink" title="五、WISE Installer"></a>五、WISE Installer</h4><p>用WISE技术打包的软件在安装的时候可以选择使用 /s参数进行自动安装：setup.exe /s</p>
+<h4 id="六、Inno-Setup"><a href="#六、Inno-Setup" class="headerlink" title="六、Inno Setup"></a>六、Inno Setup</h4><p>Inno Setup 制作的安装文件，请使用：setup.exe /sp- /silent /norestart</p>
+<p>我怎么知道哪个安装程序是用Inno 技术打包的？</p>
+<p>这种软件安装时第一个界面一般如下图所示</p>
+<p>在窗口标题栏左侧的图标上点击鼠标左键，然后再探出菜单上点击“About Setup”可以看见安装类型</p>
+<h4 id="七、NullSoft-Installation-System"><a href="#七、NullSoft-Installation-System" class="headerlink" title="七、NullSoft Installation System"></a>七、NullSoft Installation System</h4><p>使用 NSIS (NullSoft Installation System) 制作的安装文件，可用 /S （注意大写）来进行静默安装。示例：setup.exe /S</p>
+<p>使用NSIS 打包的安装文件可以用 /S参数进行自动安装（“S”是大小写敏感的）：</p>
+<p>Setup.exe /S</p>
+<p>你也可以用 /D参数选择将要安装的目标分区和文件夹：</p>
+<p>Setup.exe /S /D=E:/Software/CDex</p>
+<p>像Winamp 和CDex这类的软件都会在安装结束后显示一个确认屏幕（CDex）或者一个设置文件关联方式的结束安装屏幕（Winamp）</p>
+<p>我怎么知道哪个程序是使用NSIS技术打包的？</p>
+<p>很多用NSIS打包的程序在安装的时候都有类似这样的窗口，例如Winamp 和CDex </p>
+<h4 id="八、Wise-Installation-Professional"><a href="#八、Wise-Installation-Professional" class="headerlink" title="八、Wise Installation Professional"></a>八、Wise Installation Professional</h4><p>制作的安装文件，可用 /silent 参数进行静默安装。</p>
+<p>反正拿到一个安装程序，大家用各静默安装参数试试就知道了</p>
+<p>（[/s] [/S] [/silent [/noreboot]] [/verysilent [/sp-] [/norestart]] [/q] [/qn] [/qb] [REBOOT=SUPPRESS]   [/s /v/qn] [/q:a /r:n] [/u /n /z] [/quiet] [/SilentInstallNoSponsor] [/SilentInstall] [/s /qn] [/s /qd] [-s] [-q] 等）</p>
+<p>常用软件的静默安装参数参考</p>
+<p>winrar 静默参数 /s (大小写皆可)</p>
+<p>Windows Installer 3 (.msi)<br>msiexec /i x:/y/z.msi /qb(或qn) /norestart<br>获取安装参数：msiexec /help</p>
+<p>inno 的包 /verysilent 代替 /silent 也可</p>
+<p>From <a href="https://blog.csdn.net/lihongzhai/article/details/5048748" target="_blank" rel="noopener">https://blog.csdn.net/lihongzhai/article/details/5048748</a> </p>
+<h3 id="火狐软件问题"><a href="#火狐软件问题" class="headerlink" title="火狐软件问题"></a>火狐软件问题</h3><p><img src="2.png" alt=""></p>
+<p>设置出现这样的提示</p>
+<p>到注册表里面删除</p>
+<p><img src="3.png" alt=""></p>
+<p>把mozilla 目录下的 firefox 目录删除</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../20/youtube-dl-shi-yong-fang-fa/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Youtube-dl使用方法">
+                        
+                        <span class="card-title">Youtube-dl使用方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            方便自己用的时候能想起来怎么用
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../04/wmi-shi-yong-jie-shao/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="wmi使用介绍">
+                        
+                        <span class="card-title">wmi使用介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍VBS以及CMD下使用VMI的方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

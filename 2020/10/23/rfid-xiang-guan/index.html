@@ -1,0 +1,1334 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="RFID相关, 宅世界">
+    <meta name="description" content="没事开个新坑，总结各种射频卡的区别。当然，不玩玩PM3怎么说的过去(滑稽)">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>RFID相关 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/38.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">RFID相关</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E7%A0%B4%E8%A7%A3/">
+                                <span class="chip bg-color">破解</span>
+                            </a>
+                        
+                            <a href="../../../../tags/RFID/">
+                                <span class="chip bg-color">RFID</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-10-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-02-24
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.3k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>声明：本文仅作爱好研究使用，本人不对任何任何设备或软件使用后果负责</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="卡片的基本知识"><a href="#卡片的基本知识" class="headerlink" title="卡片的基本知识"></a>卡片的基本知识</h3><img src="10.jpg" width="50%" height="50%">
+
+<p><strong>卡的类型跟外观没有绝对关系的</strong>，下面两张卡都是IC卡(协议标准：ISO 14443A)</p>
+<img src="11.jpg" width="50%" height="50%">
+
+
+<p>目前我将卡的类型简单分为 IC(高频) 和 ID(低频) 卡。当然，卡的种类肯定比这个复杂，但是在日常中够用了。</p>
+<p>可以参考这个博客 <a href="https://lzy-wi.github.io/2018/07/26/proxmark3/" target="_blank" rel="noopener">Lzywi’Blog</a></p>
+<p>简单区分的方法：</p>
+<ul>
+<li>光照法<br>  看卡里面的线圈，圆形大多是ID卡，方形大多是IC卡</li>
+<li>NFC法<br>  拿一部带有NFC功能的手机打开NFC，卡片靠近手机会响的是IC卡，不会响的是ID卡</li>
+</ul>
+<p>当然，像挂钥匙扣那种的卡，我是直接怼到PM3上去辨别的</p>
+<h4 id="高频卡"><a href="#高频卡" class="headerlink" title="高频卡"></a>高频卡</h4><p>频率：13.56MHZ</p>
+<ul>
+<li><p>Mifare S50(简称M1)<br>  协议标准：ISO 14443A<br>  每张卡有独一无二的UID号，可保存修改数据,常见学生卡，饭卡，公交卡，门禁卡</p>
+<p>  M1卡科储存的数据大小为8k，分为<strong>16</strong>个扇区，每个扇区分<strong>4</strong>个块，每个块为16个字节，以块为存取单位。每个扇区都有独立的一组密码及访问控制，每张卡有唯一的一个32位的序列号。每个扇区的0,1,2块为数据块，用来存储数据，第3块为控制块，包括了密A、存取控制、密码B</p>
+<p>  <strong>每张卡的第0扇区的第0块用来存放厂商代码，不可更改</strong></p>
+<pre><code>  扇区0    
+  03332801198804008500b42ef0bb6aa8 块0         //厂商代码，不可更改
+  00000000000000000000000000000000 块1         //数据块
+  00000000000000000000000000000000 块2         //数据块
+  ffffffffffffff078069ffffffffffff 块3         //密码A（6字节），存储控制（4字节），密码B(6字节)
+
+  扇区1    
+  00000000000000000000000000000000 块4         //除了第0扇区稍有不同，其他15个扇区结构完全一样
+  00000000000000000000000000000000 块5
+  00000000000000000000000000000000 块6
+  ffffffffffffff078069ffffffffffff 块7
+              .
+              .
+              .   
+  扇区15    
+  00000000000000000000000000000000 块60
+  00000000000000000000000000000000 块61
+  00000000000000000000000000000000 块62
+  ffffffffffffff078069ffffffffffff 块63</code></pre></li>
+<li><p>Mifare UltraLight（简称M0）<br>  低成本卡，出厂固化UID，可储存修改数据，常见地铁卡，公交卡</p>
+</li>
+<li><p>Mifare UID（简称UID卡）<br>  M1卡的变异版本，可修改UID，国外叫做<code>中国魔术卡</code>，可以用来克隆<code>M1 S50</code>的数据。<em>一般S50卡是不允许修改卡号的，但是在我大天朝，还有什么不行，于是UID卡出现了</em></p>
+<p>  M1 UID卡是针对M1 S50卡特制的变种卡，用起来和M1 S50完全一样，只是多了一个功能，就是0扇区块的数据可以随意修改。因此UID号也可以随意修改，厂家信息也可以随意修改。UID卡修改0扇区0块数据是靠指令进入工厂模式，可以直接对全卡任何数据编辑，不需要密码即可读写卡，同时不怕写坏卡，即使写错0块，写坏扇区控制字，也可以随时修复回来，不影响后续使用。</p>
+</li>
+<li><p>FUID卡<br>  FUID卡是针对UID卡做的优化。新的读卡系统，通过检测卡片对特殊指令的回应，可以检测出UID卡，因此可以来拒绝UID卡的访问，来达到屏蔽复制卡的功能。FUID可以修改0块，但只可以修改一次，写错也没办法更改，也不能重复利用。修改后和M1卡完全一样，很难被屏蔽检测</p>
+</li>
+<li><p>CUID卡<br>  CUID卡是针对FUID卡做的优化。CUID卡可以重复修改0块，但是它和UID卡的区别是，UID卡是通过指令修改0块，CUID使用的是常规密码验证的方法写0块，其他扇区和标准M1卡相同。缺点是，还是有可能会被检测出来，而且如果不小心写错了UID号的校验位导致无法读卡，没办法修复只能报废。</p>
+</li>
+</ul>
+<h4 id="低频卡"><a href="#低频卡" class="headerlink" title="低频卡"></a>低频卡</h4><p>频率：125KHZ</p>
+<ul>
+<li>EM4XX（简称ID卡）<br>  常用固化ID卡，出厂固化ID，只能读不能写（低成本门禁卡，小区门禁卡，停车场门禁卡）<br>  ID卡是我们的俗称，内部芯片的全名叫做EM4100或EM41XX。每张卡出厂就有独一无二的ID号，不可改写。</li>
+</ul>
+<ul>
+<li><p>T5577（简称可修改ID卡）<br>  可用来克隆ID卡，出厂为空卡</p>
+<p>  T5577 卡是一种可以写入数据可以加密的低频卡。最特别之处是，写入ID号可以变身成为ID卡，写入HID号可以变身HID卡，写入Indala卡号，可以变身Indala卡。T5577一共有8个块，每个块只能存8位数。第0块是用来设置卡片类型和调制方式的，决定了卡片是ID卡还是HID卡，如果随意修改会导致读不到卡。<strong>第 7 块最后一个块，在没有加密时是数据区，加密后，其数据就变成了密码。</strong>结构如下</p>
+<pre><code>  0x00148040  00000000000101001000000001000000 [0]
+  0xFF94C004  11111111100101001100000000000100 [1]
+  0xA5464942  10100101010001100100100101000010 [2]
+  0xFFFFF808  11111111111111111111100000001000 [3]
+  0x0001C000  00000000000000011100000000000000 [4]
+  0x0001C000  00000000000000011100000000000000 [5]
+  0x0001C000  00000000000000011100000000000000 [6]
+  0x0001C000  00000000000000011100000000000000 [7]</code></pre><p>  0块: <code>00148040</code> 无密； <code>00148050</code> 加密；</p>
+</li>
+</ul>
+<ul>
+<li>HID ProxⅡ（简称HID卡）<br>  美国常用的低频卡，可擦写，不与其他卡通用<br>   0块: <code>00107060</code> 无密； <code>00107070</code> 加密；</li>
+</ul>
+<h3 id="Proxmark3"><a href="#Proxmark3" class="headerlink" title="Proxmark3"></a>Proxmark3</h3><p>关于 proxmark 的作用，自己 Google 一下就行，资料很多的。这个东西简称 <code>PM3</code></p>
+<h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><p>下图是<code>Proxmark3 Easy</code>, 读卡分为高频区和低频区<br><img src="1.jpg" width="40%" height="40%"></p>
+<p>高频卡推荐放设备后面：<br><img src="2.png" width="40%" height="40%"></p>
+<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><h5 id="Firmware-Client-Drive-下载"><a href="#Firmware-Client-Drive-下载" class="headerlink" title="Firmware + Client + Drive 下载"></a>Firmware + Client + Drive 下载</h5><p>访问下面的论坛，大神已经把东西准备好了，而且2020年还在更新，点赞！</p>
+<blockquote>
+<p><a href="http://www.proxmark.net/forum/viewtopic.php?id=3975" target="_blank" rel="noopener">http://www.proxmark.net/forum/viewtopic.php?id=3975</a></p>
+</blockquote>
+<p>Official 和 Iceman 都行(32和64我估计也是没有区别的)。挑自己喜欢的吧</p>
+<p><img src="5.png" alt=""></p>
+<p>东西是放在Google Drive的，准备好梯子。下载20几兆那个就行，挑日期最近的</p>
+<p><img src="6.png" alt=""></p>
+<p>下载后，驱动，固件，软件都在压缩包了。</p>
+<p>先更新驱动，一般Windows Update 能搞定，搞不定，自己在设备管理器里指定<code>inf</code>文件的位置即可。</p>
+<p>然后，升级固件</p>
+<h5 id="Windows-驱动安装"><a href="#Windows-驱动安装" class="headerlink" title="Windows 驱动安装"></a>Windows 驱动安装</h5><p>对于<code>Windows10</code>，无需自己手动安装驱动，Windows Update 会自动帮你搞定</p>
+<blockquote>
+<p>For windows 8 and above you are done, the auto installed Microsoft driver should be fine</p>
+</blockquote>
+<p>Windows 其他版本，请参考官方说明<del>(还在用Win7，是多大的情怀啊)</del></p>
+<blockquote>
+<p><a href="https://github.com/Proxmark/proxmark3/wiki/Windows" target="_blank" rel="noopener">https://github.com/Proxmark/proxmark3/wiki/Windows</a></p>
+</blockquote>
+<p>驱动安装好后，在设备管理器可以看到<code>COM5</code>(一般是这个)这个设备已经准备就绪</p>
+<p><img src="3.png" alt=""></p>
+<h5 id="更新PM3固件"><a href="#更新PM3固件" class="headerlink" title="更新PM3固件"></a>更新PM3固件</h5><blockquote>
+<p>After downloading and extracting a precompiled build you need to flash your Proxmark3 with the correct firmware. This is done by first adjusting the com port inside “FLASH - All.bat” and then running it.</p>
+</blockquote>
+<p>直接双击解压后的<code>FLASH - All.bat</code>文件。注意，不要中断PM3的连接，刷过机的都知道，有几率变砖的。。。。。。 看到提示“成功”字样的英文，那就是可以了</p>
+<img src="7.png" width="40%" height="40%">
+
+<p><img src="12.png" alt=""></p>
+<p>查看固件版本，固件版本是根据固件的日期来看的</p>
+<pre><code>hw version</code></pre><h5 id="测试PM3是否连接正常"><a href="#测试PM3是否连接正常" class="headerlink" title="测试PM3是否连接正常"></a>测试PM3是否连接正常</h5><p>请注意，如果你的设备管理器中PM3的COM口不是5，请在<code>Go.bat</code>文件中修改该端口，修改哪边都行，确保bat文件的COM口和设备管理器里的COM编号是一样的</p>
+<p><img src="4.png" alt=""></p>
+<p>直接双击<code>Go.bat</code>打开命令行终端。我这里是Iceman的固件，成功连接是有一大段提示的。如果有<code>failed</code>字样，再检查是不是哪里搞错了。</p>
+<p>放一张高频或低频卡在对应的读写区，然后<code>hf search</code> 或 <code>lf search</code>,测试连接的正确性</p>
+<p><img src="8.png" alt=""></p>
+<p>或者，测试高低频的电压(测试天线的谐振电压时，天线周围不能放置卡片或者金属，否则测量结果会偏低)<br>天线的电压丝毫不影响任何操作和功能，实际上高频超过 5V，低频超过 10V 就可以正常使用。只是电压越高读卡距离越远。</p>
+<p><img src="9.png" alt=""></p>
+<h3 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h3><h4 id="低频卡-1"><a href="#低频卡-1" class="headerlink" title="低频卡"></a>低频卡</h4><p>思路：低频卡一般是没有密码。直接拷贝复制就行</p>
+<h5 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h5><ul>
+<li><p>读取低频卡 ID<br>  <code>lf em4x em410xwatch</code>   OR<br>  <code>lf em em410xwatch</code><br>  <strong>专用读ID卡</strong>，灵敏度高，适合读不出ID的卡片。注意，这个指令会<strong>一直</strong>搜索卡片直到读出ID为止，如果没有放卡或者不是ID卡，会无法停止，需要重新插拔PM3<br>  <strong>先执行命令后放卡</strong>。记录 ID 的同时需要注意记录 clock rate 的值，一般都是 64。<br>  小知识：em4x 是大部分固定 ID 低频卡的芯片型号，一般卡片上印有一串数字的就是固定 ID 卡，出厂固化独一无二的 ID 号码，不可修改。</p>
+</li>
+<li><p>写<br>  写 ID卡 是单向的，无法得知是否成功<br>  <code>lf em4x em410xwrite 12345bcdef 1 64</code> OR<br>  <code>lf em em410xwrite 12345bcdef 1 64</code><br>  把 ID 号写入 T5577 卡中，长度是 10 位 hex ，示例中 12345bcdef 是 ID，后面“1”是 T55X7 的卡片类型，64 是 clock rate</p>
+</li>
+</ul>
+<h5 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2"></a>方法 2</h5><ul>
+<li><p>查看ID<br>  <code>lf search</code>，记下 <code>EM TAG ID</code><br>  这个可以找到固定ID的卡片类型，主要是 ID，HID，Indala这三种，如果是加密的5577还有加密的4305卡是读不到的。</p>
+</li>
+<li><p>复制<br>  <code>lf hid clone 0000001450</code></p>
+</li>
+</ul>
+<h5 id="5577-卡"><a href="#5577-卡" class="headerlink" title="5577 卡"></a>5577 卡</h5><p><code>lf t55xx detect</code> 检测卡片<br><code>lf t66xx dump</code>  读取卡片数据<br>注意，如果是加密 5577 是无法检测配置，或者读出的块全部都是一样的数据。</p>
+<p>取消5577卡的加密<br><code>lf t55xx wr 0 001480040 00000000</code><br>    0：代表写0块，0块是控制是否加密的控制块<br>    001480040： 这个是写入0块的信息，这个代码是不加密的意思<br>    00000000： 这个是卡片第7块的密码<br>写卡是单向的，无法看出是否成功</p>
+<h4 id="高频卡-1"><a href="#高频卡-1" class="headerlink" title="高频卡"></a>高频卡</h4><p>思路：一般要先知道16个扇区中的一个密码(一般是0扇区的密钥)，然后用漏洞获取全部扇区的密码和数据</p>
+<h5 id="求一密"><a href="#求一密" class="headerlink" title="求一密"></a>求一密</h5><ul>
+<li><p>用PM3内置的默认密码尝试破解<br>  <code>hf mf chk *1 ? t</code></p>
+</li>
+<li><p>不是默认密码可以尝试PRNG漏洞获取0扇区密钥，过程可能有点久。不一定能成功<br>  <code>hf mf mifare</code><br>  某些卡运行这个命令，运行结果每条都是 <code>Mifare: Can&#39;t select card</code> 这种提示，相当恶心，很大几率失败。偶尔过程中会提示英文“Can’tselect card” 这是 BUG 提示，请忽视。如果运行中 ABCD 在<strong>不断闪烁</strong>，表示可以破解，等待结果即可。对于不支持的卡片，无论如何调整卡片位置，LED <strong>都不会有变化</strong>，最终 PM3 会出现复位掉线。</p>
+</li>
+<li><p>上面两种方法都不行，那就用嗅探方法试试。<br>  <strong>需要去现场</strong>，把天线置于卡片和读卡机之间嗅探通讯数据，解出一个扇区密匙。<br>  嗅探获得密码不能指定，是读卡机访问了卡片的哪个扇区，才可以获得那个扇区的密码。在无法获得其他密码的时候，只需复制这几个扇区的数据即可使用，不需要复制整张卡片的数据。</p>
+<p>  M1 卡在读卡机和卡片交互数据和密码时，使用了 crapto1 算法。即便同一张卡，同样的密码，嗅探得到交互数据也是随机的，但是只要获得后面提到的四组随机数组，以及 UID，就可以反解出密匙。</p>
+<p>  <code>hf mf sniff</code></p>
+<p>  点击开始嗅探之后，PM3 高频读卡区夹在卡片和读卡机之间，然后刷卡。三者之间都不能贴的太近，两边不能有金属遮挡。<br>  <img src="17.png" alt=""></p>
+<p>  如上图，刷一次卡后，拿开等待几秒，电脑会返回嗅探到的数据。<br>  注意寻找 60 或者 61 开头的数据，60 含义是使用 A 密码访问，61 是使用 B 密码。<br>  开头是 RDR 的是读卡机发出的指令，TAG 则是卡片发出的指令。<br>  红圈中表示读卡机访问了第 21 个块。21 是十六进制，转换成十进制是 33 块<br>  第一个方框“b2a6de1d”是卡片 UID<br>  第二个方框“f80eee3c”是 tag challenge(卡片挑战数)<br>  第三个方框“4ec88403”是 reader challenge(读卡器挑战数)<br>  第四个方框“d2dd5180”是 reader respones(读卡器响应数)<br>  第五个方框“2bb17b5e”是 tag respones(卡片回应数)</p>
+<p>  然后，用<a href="crapto1gui.exe">这个软件</a>，计算出密码</p>
+<p>  <img src="18.png" alt=""></p>
+<p>  去现场嗅探，是迫不得已的情况下使用的。带着笔记本，连接PM3，然后在读卡机地点不停的尝试，保安不注意你都难。。。。<br>  PM3 有个<code>离线</code>嗅探的功能，能让PM3暂时断开笔记本的连接，然后进行嗅探</p>
+<pre><code>  hf 14a snoop
+  hf list 14a 
+
+  http://pm3.echo.cool/index.php/2018/08/21/pm3%E7%A6%BB%E7%BA%BF%E5%97%85%E6%8E%A2%E8%AF%B4%E6%98%8E/</code></pre><p>  （待续）</p>
+</li>
+</ul>
+<ul>
+<li><p>还有一种方法<br>  <strong>需要去现场</strong> ，把天线模拟成 M1 卡，诱发读卡机读卡，并且捕捉读卡机发出的验证密匙，不能离线操作，监听完按按钮退出。<br>  <code>hf mf eclr</code>清除缓存 在无卡监听读卡器之前，务必要清除缓存。<br>  <code>hf mf sim x</code> </p>
+<pre><code>  1.读卡器使用固定密码读取某一扇区
+
+  直接使用&quot;hf mf sim i x&quot;即可使PM3进入嗅探模式。当PM3采集了足够的数据之后即可自动计算出密码
+  2.读卡器通过UID实现一卡一密
+
+  使用&quot;hf mf sim u xxxxxxxx i x&quot;(xxxxxxxx此次使用的UID)来获得某一UID下的读卡密码。这样就可以进行选择明文攻击，对于破解一些简单的一卡一密算法还是很有帮助的
+
+  https://www.cnblogs.com/wh201906/p/12838573.html</code></pre><p>  （待续）</p>
+</li>
+</ul>
+<p><strong>验证检测出的密码正确性。现场嗅探之后，切记一定要用下面的命令检查密码的正确性。</strong> 别问为什么检查，问就是被坑过<br> <code>hf mf chk 0 A ffffffffffff</code> ， “ffffffffffff” 是检测出的密码</p>
+<p> 如果提示 <code>No valid keys found.</code>，有可能是破解出的密码错误，或者是 <code>存储控制</code> 不是默认的 <code>ff078069</code>。</p>
+<h5 id="知一密求全密"><a href="#知一密求全密" class="headerlink" title="知一密求全密"></a>知一密求全密</h5><p><code>hf mf nested 1 0 A ffffffffffff</code>     //使用 nested 时注意要选择正确的卡片容量。1代表1K卡，可选1-4K；0是0扇区，A密钥，然后加上上一步破解出的密码</p>
+<p><img src="13.png" alt=""></p>
+<p>看到这个结果，你就基本成功<del>可以偷笑</del>了</p>
+<p>RES 结果如果为1，代表密码正确； 如果是0，代表密码无效<br>一般B密码不正确不影响数据的读取，A密码不正确，则会影响。A密码不正确，可以再 nested 一遍<br>有极少的卡片不支持一密求多密的操作，需要依靠嗅探的步骤。</p>
+<h5 id="导出密码"><a href="#导出密码" class="headerlink" title="导出密码"></a>导出密码</h5><p>导出后会在根目录生成一个dumpkeys.bin的文件，里面存放了16个扇区的密钥（16进制）<br><code>hf mf nested 1 0 A ffffffffffff d</code></p>
+<p><img src="14.png" alt=""></p>
+<h5 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h5><p>上面只是导出密码而已，还有数据我们也要导出<br><code>hf mf dump</code></p>
+<p><img src="15.png" alt=""></p>
+<h5 id="转换成eml格式"><a href="#转换成eml格式" class="headerlink" title="转换成eml格式"></a>转换成eml格式</h5><p>生成的 <code>bin</code> 文件可以中支持十六进制的软件打开。<br><a href="BinaryViewer.7z">附一个二进制查看器下载</a></p>
+<p>而Proxmark3不能识别、使用bin文件，需要转换成eml格式。 eml格式的文件可以Notepad直接打开查看<br><code>script run dumptoemul.lua</code><br>命令运行后，会直接在根目录下生成一个 eml 文件</p>
+<h5 id="复制原卡数据到新的UID卡上"><a href="#复制原卡数据到新的UID卡上" class="headerlink" title="复制原卡数据到新的UID卡上"></a>复制原卡数据到新的UID卡上</h5><p><code>hf mf cload  84EAC416</code> ，84EAC416 是上面步骤生成的eml文件名称，不加后缀<br>兼容性好的UID卡，写入成功会返回消息<br>兼容性不好的，写入会有错误提示，但是不影响使用</p>
+<p><img src="16.png" alt=""></p>
+<p>写卡是没有回显的，只能通过读取的方式查看有没有读取成功，我是通过<code>hf search</code> 查看两张卡的UID，如果一致，那就是成功了。或者直接读取扇区的数据，查看是否一致。</p>
+<h3 id="修改IC卡数据"><a href="#修改IC卡数据" class="headerlink" title="修改IC卡数据"></a>修改IC卡数据</h3><p>先占个坑位，后续有时间补上</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><p>官方旧版GUI软件说明<br>  <img src="19.png" alt=""></p>
+</li>
+<li><p>固件版本<br>  固件从老到新排列：r486→756→816→848→852→1.0.0→2.0.0→2.5.0<br>  2.5 大概是15年的了<br>  现在2020已经到3.1了</p>
+</li>
+<li><p>修改 UID 卡的 UID<br>  <code>hf mf csetuid 1234bcdf</code><br>  修改 UID 卡的 UID 为 1234bcdf，UID 是四个字节。</p>
+</li>
+<li><p>复制5577卡后加密锁卡</p>
+<p>  <img src="20.jpg" alt=""></p>
+</li>
+<li><p>能看到最后，就放一个我的Clients，里面有几个GUI客户端。Windows Security 扫描过了，放心用。<br>  <a href="official-32-20200804.7z">下载</a><br>  <img src="21.png" alt=""></p>
+</li>
+<li><p>一些命令</p>
+</li>
+</ul>
+<pre><code>hf mf （MIFARE卡的相关命令...）
+help显示帮助
+dbg设置默认调试模式
+rdbl读取MIFARE classic卡的区块数据
+rdsc读取MIFARE classic卡的扇区数据
+dump导出MIFARE classic卡的数据到二进制文件
+restore从二进制文件恢复数据到空白的MIFARE classic卡
+wrbl改写MIFARE classic卡的区块数据
+chk测试MIFARE classic卡的各个区块KEY A/B
+mifare基于PRNG漏洞，执行mifare “DarkSide”攻击操作
+nested测试嵌套认证漏洞，基于一个已知Key，获取都有扇区Keys
+sniff嗅卡片与读写器之间的通讯(等同于hf 14a snoop)
+sim模拟一个MIFARE卡片
+eclr清除仿真内存的各区块数据
+eget获取仿真内存的各区块数据
+eset设置仿真内存的各区块数据
+eload从导出的文件加载仿真数据
+esave导出保存仿真数据到文件
+ecfill利用仿真器的keys来填补仿真内存
+ekeyprn打印输出仿真内存中的keys
+csetuid直接设置可改UID卡的UID
+csetblk把对应区块数据写入UID卡
+cgetblk读取UID卡对应区块数据
+cgetsc读取UID卡对应扇区数据
+cload写入dump数据到UID卡。注意
+csave保存UID卡数据到文件或者仿真内存</code></pre><h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="PM3-类型"><a href="#PM3-类型" class="headerlink" title="PM3 类型"></a>PM3 类型</h3><p>下面两篇文章写得很好，大家可以参考一下：</p>
+<blockquote>
+<p><a href="https://ulyc.github.io/2020/01/18/%E5%B8%B8%E8%A7%81RFID%E5%8D%A1%E7%89%87%E4%BB%8B%E7%BB%8D-%E7%A0%B4%E8%A7%A3%E6%80%9D%E8%B7%AF-%E5%8F%8A-Proxmark3%E7%AE%80%E4%BB%8B/" target="_blank" rel="noopener">https://ulyc.github.io/2020/01/18/%E5%B8%B8%E8%A7%81RFID%E5%8D%A1%E7%89%87%E4%BB%8B%E7%BB%8D-%E7%A0%B4%E8%A7%A3%E6%80%9D%E8%B7%AF-%E5%8F%8A-Proxmark3%E7%AE%80%E4%BB%8B/</a></p>
+</blockquote>
+<p>快照备份：<a href="1.htm.test">点我下载</a></p>
+<blockquote>
+<p><a href="https://www.wasyoung.com/2019/11/30/337/" target="_blank" rel="noopener">https://www.wasyoung.com/2019/11/30/337/</a></p>
+</blockquote>
+<p>快照备份：<a href="2.html.test">点我下载</a></p>
+<p>目前国内最常见的 Easy 的版本，但是大佬都在用最新的 rdv4，导致我后面编译和破解挖了不少坑，都是穷惹得祸。。。</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>最近要破解一张电梯 IC 卡，但是入门里面的方法不奏效，想去实地嗅探又没办法，于是有了这个 【进阶】的部分。（虽然最后还是没有搞出密码）</p>
+<p>这里我们尝试在 Kali 里编译冰人的 RRG 固件。Kali 是运行在虚拟机的。</p>
+<p>下面是 repo 的地址，里面的说明文档把基本的都提到了。</p>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3</a></p>
+</blockquote>
+<p>编译可以直接按照说明文档来。</p>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Installation_Instructions/Linux-Installation-Instructions.md" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Installation_Instructions/Linux-Installation-Instructions.md</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Use_of_Proxmark/0_Compilation-Instructions.md" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Use_of_Proxmark/0_Compilation-Instructions.md</a></p>
+</blockquote>
+<p>其实已经有开发者提供预先编译好的固件，但是我的设备是 Easy 版本，flash 只有 256k，预编译的不适合，刷不进去，然后一直是 Offline 状态。</p>
+<p><img src="23.png" alt=""></p>
+<p><strong>重要：如果你也是 256k 闪存的 PM3，在编译前要修改一下配置文件。</strong> 如下：</p>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Use_of_Proxmark/4_Advanced-compilation-parameters.md#256kb-versions" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/md/Use_of_Proxmark/4_Advanced-compilation-parameters.md#256kb-versions</a></p>
+</blockquote>
+<p>在 <code>Makefile.platform</code> 文件中， 添加如下内容</p>
+<pre><code>PLATFORM=PM3GENERIC
+PLATFORM_SIZE=256
+STANDALONE=
+SKIP_HITAG=1
+SKIP_FELICA=1</code></pre><p>然后，编译的命令不是简单的 <code>make</code> 或者 <code>make all</code>, 请使用 <code>make PLATFORM=PM3GENERIC</code>.<br>编译完成之后，就可以使用 flash 等命令刷入固件</p>
+<h3 id="无法连接情况的解决方法"><a href="#无法连接情况的解决方法" class="headerlink" title="无法连接情况的解决方法"></a>无法连接情况的解决方法</h3><p>有时候由于刷入错误的固件等原因，导致 PM3 连接电脑没有反应，识别不出。这时不要慌。<br>先把 USB 连接线断开，然后按住 PM3 上面的按钮，然后再接入 usb 线，按住按钮直到电脑识别出来。</p>
+<blockquote>
+<p><a href="https://forum.dangerousthings.com/t/proxmark3-easy-flash-issues/7889/9" target="_blank" rel="noopener">https://forum.dangerousthings.com/t/proxmark3-easy-flash-issues/7889/9</a></p>
+</blockquote>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>这里有所有命令的使用方法，这些命令跟官方的使用有些不同，遇到不确定的用法，后面加个 <code>-h</code> 参数来查看用法，很详细的。</p>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/commands.md" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3/blob/master/doc/commands.md</a></p>
+</blockquote>
+<p>但是我现在还没有找到官方固件中常用的 <code>mifare</code>、 <code>snoop</code> 等命令。后面再继续研究吧。</p>
+<h3 id="一种没有漏洞-IC-卡破解思路"><a href="#一种没有漏洞-IC-卡破解思路" class="headerlink" title="一种没有漏洞 IC 卡破解思路"></a>一种没有漏洞 IC 卡破解思路</h3><p>这张 IC 卡 只有 1，2 两个扇区加密，其他都是默认密码，用 nested 破解不出。于是试着从 windows 转战 Linux 平台。Windows 用官方的固件，到 Linux 用了 RRG 的固件。但是 Kali 里面也是一样破解不出，后来在 RRG 的 issues 里看到这个：</p>
+<blockquote>
+<p><a href="https://github.com/RfidResearchGroup/proxmark3/issues/133" target="_blank" rel="noopener">https://github.com/RfidResearchGroup/proxmark3/issues/133</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/Proxmark/proxmark3/issues/899" target="_blank" rel="noopener">https://github.com/Proxmark/proxmark3/issues/899</a></p>
+</blockquote>
+<p>作者是这样形容这种卡的</p>
+<blockquote>
+<p>There has been in the wild some clones, like Fudan and some uid changeable card which doesn’t have the NACK bug and they use somewhat odd a fixed nonce. Rendering all current Mifare classic attacks useless.</p>
+</blockquote>
+<p>如果你有幸遇到这种卡，用 <code>hf 14a info</code> 命令看是这样的：</p>
+<p><img src="24.png" alt=""></p>
+<p>作者为这种卡开发了一个新的命令来破解：<code>hf mf staticnested</code>。但在我的机器上也是破解不出，运气太不好了。</p>
+<h3 id="搞大事情"><a href="#搞大事情" class="headerlink" title="搞大事情"></a>搞大事情</h3><p>后面计划用树莓派安装 Kali，然后接上 PM3 来搞现场嗅探，就不用带笔记本这个笨大件了。<br>一个充电宝，一个派，一个PM3，然后 SSH 连接派来操作，想法可以。再挖个坑，后续更新</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E7%A0%B4%E8%A7%A3/">
+                                    <span class="chip bg-color">破解</span>
+                                </a>
+                            
+                                <a href="../../../../tags/RFID/">
+                                    <span class="chip bg-color">RFID</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../../11/12/adobe-wo-gen-ni-mei-wan/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/41.jpg" class="responsive-img" alt="Adobe 我跟你没完">
+                        
+                        <span class="card-title">Adobe 我跟你没完</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            这辈子不可能不用Adobe的软件。开源的又不会用，只有白嫖才能维持得了生活这样子。Creative Cloud 里面的软件个个都是神器，统一又好用，喔唷——超喜欢Adobe！
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%A0%B4%E8%A7%A3/">
+                        <span class="chip bg-color">破解</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../21/jia-zhuang-windows-zai-geng-xin/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/37.jpg" class="responsive-img" alt="假装Windows在更新">
+                        
+                        <span class="card-title">假装Windows在更新</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            瞎逛看到一个好玩的东西，修改了一下，摸鱼必备
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Html/">
+                        <span class="chip bg-color">Html</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

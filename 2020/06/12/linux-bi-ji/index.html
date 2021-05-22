@@ -1,0 +1,1393 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux笔记, 宅世界">
+    <meta name="description" content="这里汇总的是我以前的一些Linux笔记，太久了，重温一下">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Linux笔记 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/Linux.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-10-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    9.8k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="help-man-info"><a href="#help-man-info" class="headerlink" title="help | man | info"></a>help | man | info</h2><h3 id="help"><a href="#help" class="headerlink" title="help"></a>help</h3><p>指令 <code>-help</code> 用在协助你查询你曾经用过的指令所具备的选项与参数而已.<br>如果你要使用的是从来没有用过的指令,或者你要查询的根本就不是指令,而是文件的格式时,那就要用 <code>man</code> page.</p>
+<h3 id="man"><a href="#man" class="headerlink" title="man"></a>man</h3><p>空格键向下翻页, q 离开 man 环境</p>
+<p>man page：</p>
+<pre><code>NAME  简短的指令、数据名称说明
+SYNOPSIS  简短的指令下达语法（syntax）简介
+DESCRIPTION  较为完整的说明
+OPTIONS 针对SYNOPSIS部分中，有列举所有可用的选项说明
+FILES  这个程序或数据所使用或参考或连接到的某些文件
+SEE ALSO  可以参考的，跟这个指令或数据有相关的其他说明！
+EXAMPLE  一些可以参考的范例</code></pre><p>man 中数字的含义：</p>
+<pre><code>1 用户在shell 环境中可以操作的指令或可执行的文件
+2 系统核心可呼叫的函数与工具等
+3 一些常用的函数(function) 与函数库(library),大部分为C的函数库(libc)
+4 装置文件的说明,通常在/dev下的文件
+5  配置文件或者是某些文件的格式
+6 游戏
+7 惯例与协议等,例如linux文件系统 网络协议 ASCII code 等等的说明
+8 系统管理员可用的管理命令
+9 跟kernel 有关的文件</code></pre><p>在man page 中，输入/之后，光标就会移动到屏幕的最下面一行，等待你输入搜索的字符串了。<br><code>/</code> 关键字 向下搜寻<br><code>?</code> 关键字向上搜寻<br><code>n / N</code>  可以用n来搜索下一个，N是上一个</p>
+<p>man -f 关键字<br>man -k 关键字    含有关键字就会显示出来<br>whatis [指令或数据]  相当于 man -f  简单概述命令的作用。<br>apropos [指令或数据]   相当于 man -k 可以通过使用手册反查到某个命令</p>
+<p>whatis 和 apropos必须要有建立 whatis 数据库才行,这个数据库的建立需要以root的身份下达如下的指令:<br><code>mandb</code> </p>
+<h3 id="info"><a href="#info" class="headerlink" title="info"></a>info</h3><p>在所有的Unix Like系统当中,都可以利用man来查询指令或者是相关文件的用法; 在Linux里面则又额外提供了一种在线求助的方法,那就是info</p>
+<p>info与man的用途其实差不多,都是用来查询指令的用法或者是文件格式的. 但info page则是将文件数据拆成一个个段落,每个段落</p>
+<p>用法:    info 关键词<br>file: 代表这个info page 的资料是来自xxxx文件提供的<br>node: 代表目前的这个页面是属于xxx节点.意思是file内含有很多信息,而xxx仅是file文件内的一个节点内容而已</p>
+<p>next: 下一个节点,  可以按 N 到下个节点去<br>prev:  前一个节点,  可以按 P 到达<br>up: 回到上一层节点总览画面, 按 U<br>按下 H , 可以提供一些基本功能介绍</p>
+<p><strong>/usr/share/doc 这个目录有很多说明文件</strong></p>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p>格式化 ,其实应该称为 建置文件系统(make filesystem),所以可以使用指令mkfs来格式化fs.</p>
+<pre><code>mkfs.xfs [-b bsize] [-d parms] [-i parms] [-l parms] [-L label] [-f] [-r parms]  装置名称</code></pre><p>关于单位: 只要是数值,没有加单位则为<code>bytes</code>,也可以用 k,m,g,t,p (小写)等来解释. s 指的是<code>sector</code>的个数.<br>-b : 后面接block容量,可由512到64k,不过最大容量限制为linux的4k<br>-d : 后面接的是data section的相关参数值,</p>
+<p>*.sh : 脚本或批处理文件(scripts),因为批处理文件为使用shell写成的,所以扩展名就编成.sh</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><p>who 查看登录用户情况</p>
+</li>
+<li><p>ps -aux  后台执行程序</p>
+<p>  VSZ  进程占用的虚拟内存大小<br>  RSS  内存中页的数量 （页是管理内存到单位， 在PC上通常是4k）<br>  TTY  进程所在终端到ID 号</p>
+<p>  STAT 进程状态，常用字母代表的含义如下：<br>  R 正在运行/可运行<br>  D 睡眠中（不可唤醒，通常是在等待到I/O 设备）<br>  S 睡眠中（可以被唤醒）<br>  T 停止 （由于收到信号或被跟踪）<br>  Z  僵进程 （已经结束而没有被释放系统资源的进程）<br>  常用到附加标识有：<br>  &lt;  进程拥有比普通优先级高的优先级<br>  N   进程拥有比普通优先级低的优先级<br>  L  有些页面被锁在内存中<br>  s   会话的先导进程</p>
+<p>  TIME  进程已经占用的cpu 时间</p>
+</li>
+<li><p>top 用于即时跟踪当前系统中到进程的情况。命令显示到信息会占满一页，使用命令 q 退出程序</p>
+</li>
+<li><p>lsof 查看某个特定的文件正被哪些进程使用。 lsof 能够提供包括PID在内的各种进程信息。</p>
+</li>
+<li><p>kill -l  </p>
+<p>  显示所有信号及其编号  信号名的前缀 SIG 是可以省略到。<br>  0  EXIT  程序退出时收到该信号<br>  1  HUP   挂起<br>  2  INT    中断    CTRL + C<br>  3   QUIT   退出<br>  9  KILL   杀死<br>  11  SEGV  段错误<br>  15 TERM 软件终止<br>  ?(取决于硬件体系)  USR1  用户定义  </p>
+<p>  上述信号可能对某些软件不起作用。（除去9） 有一个信号永远不能被程序所捕捉和忽略，这就是KILL 信号。 可以在内核级别“杀死”一个进程。<br>  kill -KILL pid<br>  kill -SIGKILL PID<br>  kill -9   pid</p>
+<p>  有一些进程 连KILL 信号都不能影响到他们。 这些情况通常是由于一些退化到I/O 虚假锁定造成到。此时，重启系统是解决问题的唯一方法。</p>
+</li>
+<li><p>nice<br>  命令可以在启动程序时设置谦让度。高谦让度意味着低优等级。低谦让度（特别是那些谦让度为负）的程序能够占用更多的CPU时间。谦让度值在-20 ～ +19 之间。</p>
+<p>  nice -n 2 bc 设置bc程序 以谦让度 增量 为 2 启动<br>  不带-n 参数到nice 会将程序的谦让度增量设置为10</p>
+<p>  renice 命令可以在进程运行时调整其谦让度。</p>
+<p>  renice +12 -p  pid  （将 进程号为 pid 的程序 谦让度调整为 12）</p>
+<p>  nice 查看默认的 谦让度</p>
+</li>
+</ul>
+<ul>
+<li><p>sync 将数据同步写入硬盘中, 一般账号用户只能同步自己的数据,root 可以同步系统全部数据（一般关机前使用）</p>
+</li>
+<li><p>rm<br>rm -f   不提示　直接删除<br>rm -r　　　　递归删除目录下所有文件及目录</p>
+</li>
+<li><p>shutdown 关机<br>  shutdown -h now 现在关机<br>  shutdown -h 20:25<br>  shutdown -h +10 十分钟后关机<br>  shutdown -r now 现在重启<br>  shutdown -r +30 ‘the system will reboot’   再过30分钟重启,并显示后面的讯息给所有在线的使用者<br>  shutdown -k now ‘this system will reboot’  发出警告信息,但不会真的关机!</p>
+</li>
+<li><p>reboot  重启</p>
+</li>
+<li><p>cp 来源文件 目标文件     </p>
+<pre><code class="bash">cp .bashrc  .bashrc_test
+复制(cp)会复制执行者的属性和权限</code></pre>
+</li>
+<li><p>增加路径<br>  PATH=”${PATH}:路径”  </p>
+</li>
+<li><p>mkdir 建立新目录</p>
+</li>
+<li><p>权限<br>  chgrp : 改变文件所属群组<br>  chown : 改变文件拥有者<br>  chmod : 改变文件的权限</p>
+<p>  u (文件属主)<br>  g (group)<br>  o (other)<br>  a (all) </p>
+<p>  r, w, x  </p>
+<ul>
+<li>, - ，=  </li>
+</ul>
+</li>
+<li><p>basename +路径<br>  获取文件名<br>  dirname +路径<br>  获取目录名</p>
+</li>
+<li><p>cat 由第一行开始显示文件内容(concatenate)<br>  cat -n 显示行号</p>
+</li>
+<li><p>tac 从最后一行开始显示</p>
+</li>
+<li><p>more  一页一页 显示文件内容</p>
+</li>
+<li><p>less 与more类似,但比more更好,可以往前翻页<br>  less -M  显示文件信息　　<br>  空格: 下一页　　<br>  B: 上一页　　　<br>  ／：在　less 中查找</p>
+</li>
+<li><p>head  只有头几行</p>
+</li>
+<li><p>tail 末几行</p>
+</li>
+<li><p>od  以二进制方式读取文件内容</p>
+</li>
+<li><p>touch<br>  -a 仅更改access time;<br>  -c  仅修改文件的时间,若文件不存在则不建立新文件;<br>  -d  后面可以接欲修改的日期而不用目前的日期,也可以使用 –date=”日期或时间”<br>  -m  仅修改mtime;<br>  -t  后面可以接欲修改的时间而不是用目前的时间,格式为[YYYYMMDDhhmm]</p>
+<p>  touch 后面接有存在文件,则该文件的三个时间(atime/ctime/mtime)都会更新为目前的时间.若文件不存在,则会主动建立一个新的空文件.</p>
+<p>  复制一个文件时,复制所有属性,但也没有办法复制ctime这个属性.<br>  touch 只能修改mtime 和atime</p>
+</li>
+<li><p>umask 改变默认权限</p>
+</li>
+<li><p>df : 列出文件系统的整体磁盘使用量<br>  -a :　列出所有文件系统,包括系统特有的 /proc等文件系统;<br>  -k /m :　以KBytes/MBytes的容量显示各文件系统<br>  -h : 以GBytes,MBytes,KBytes等格式自行显示;<br>  -H : 以M=1000k 取代M=1024K的进位方式;<br>  -T :  连同该Partition 的filesystem 名称也列出来(如xfs);<br>  -i : 不用磁盘容量,而以inode的数量来显示;<br>  后面可以接路径,从而看清还有多少容量.  </p>
+<p>  df -hl 查看磁盘剩余空间</p>
+</li>
+<li><p>du: 评估文件系统是磁盘使用量<br>  -a 列出所有的文件与目录容量,因为默认仅统计目录底下的文件量而已<br>  -h  以(G/M)容量格式显示<br>  -s 列出总量而已,而不列出每个个别的目录占用容量.<br>  -S 不包括子目录下的总计,与-s有点差别</p>
+<p>  du -sh filename (= du -sh * )   显示当前目录下所有文件及其大小，如果要排序再再后面加上 | sort -n<br>  du -sm * | sort -n 统计当前目录大小并按大小排序  ， 返回该文件夹总M 数</p>
+</li>
+<li><p>lsblk [-dfimpt] [device]<br>  -d : 仅列出磁盘本身,不会列出该磁盘的分区数据<br>  -f : 同时列出该磁盘内的文件系统名称<br>  -i : 使用ASCII的线段输出,不要使用复杂的编码<br>  -m: 同时输出该装置在 /dev 底下的权限数据(rwx的数据)<br>  -p : 列出该装置的完整文件名,而不是仅列出最后的名字而已<br>  -t : 列出该磁盘装置的详细数据,包括磁盘阵列机制\预读写的数据量大小等.</p>
+</li>
+<li><p>iconv –list<br>  iconv -f 原编码 -t 新编码 filename [-o newfile]<br>  –list : 列出iconv 支持的语系数据<br>  -f : from,   后接原本的编码格式<br>  -t : to , 后面接新的编码格式<br>  -o file : 如果要保留原本的文件, 那么使用-o 新文件名,可以建立新的文件.</p>
+</li>
+<li><p>alias: 查看目前的命令的自定义<br>  可以直接下达来改动 :  alias lm=’ls -al’</p>
+</li>
+<li><p>type [-tpa] name<br>  : 不加任何选项与参数,type会显示name是外部指令还是bash内建指令<br>  -t : type会将name以底下这些字眼显示出他的意义:</p>
+<pre><code>file: 表示为外部指令;
+alias: 表示指令为命令别名所设定的名称;
+builtin: 表示该指令为bash内建的指令功能;</code></pre><p>  -p : 如果后面接的name为外部指令时,才会显示完整的文件名<br>  -a : 会由PATH变量定义的路径中,将所有含name的指令都列出来,包含alias.</p>
+</li>
+<li><p>histroy [n] : n为数字,列出最近n比命令<br>history [-c] : 将目前的shell中所有history内容全部清除<br>histroy [-raw] histfiles<br>  -a : 将目前新增的history指令新增入histfiles中,若没有加histfiles,则预设写入 ~/ .bash_history .<br>  -r : 将 history 等等内容读到目前这个shell的history 记忆中<br>  -w : 将目前的history记忆内容写入histfiles 中.</p>
+</li>
+</ul>
+<h2 id="输入-输出"><a href="#输入-输出" class="headerlink" title="输入 | 输出"></a>输入 | 输出</h2><p>标准输入 (stdin): 0，使用 &lt; 或 &lt;&lt;<br>标准输出 (stdout) : 1，使用 &gt; 或 &gt;&gt;<br>标准错误输出 (stderr) : 2， 使用2&gt;或2&gt;&gt;</p>
+<p>如: ll 路径 &gt; 路径/文件名<br>再用 cat 查看文件<br>ll 路径 &gt;&gt; 路径/文件名   在已存在的文件继续写入.</p>
+<p>/dev/null 可以屏蔽不想显示的信息,  如: find /home -name .bashrc 2&gt; /dev/null   </p>
+<p>将正确与错误的数据写入同一个文件.<br>find /home -name .bashrc &gt; list 2&gt; list  (错误,此时两种数据同时写入同一个文件,会交叉,造成次序错乱.)</p>
+<h2 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h2><p>file 查看文件类型<br>file 文件路径</p>
+<p>which 寻找执行档<br>which [-a] command</p>
+<p>文件名的搜寻<br>whereis  只找系统中某些特定目录底下的文件而已<br>locate 则是利用数据库来搜寻文件名,比较快,而find 速度慢,也耗硬盘.</p>
+<p>whereis [-bmsu] 文件或目录名<br>    -l :可以列出whereis 会去查询的几个主要目录而已<br>    -b: 只找binary格式的文件<br>    -m : 只找在说明文件manual 路径下的文件<br>    -s 只找source 来源文件<br>    -u 搜寻不在上述三个项目当中的其他特殊文件<br>whereis 只找几个特定的目录而已,并没有全系统去查询.whereis主要针对/bin/sbin底下的执行档,以及/usr/share/man 底下的 man page 文件.</p>
+<p>whereis -l 确认whereis 查看的目录</p>
+<p>local [-ir] keyword<br>    -i 忽略大小写的差异<br>    -c 不输出文件名,仅计算找到的文件数量<br>    -l  仅输出几行的意思,如五行, -l 5<br>    -S 输出locate 所使用的数据库文件的相关信息,包括该数据库记录的文件/目录数量等.<br>    -r  后面可接正规表示法的显示方式</p>
+<p>locate 寻找的数据是由已建立的数据库 /var/lib/mlocate/ 里面的数据所搜寻的,所有没有直接在硬盘搜寻.<br>有时会找不到文件,这是数据库没有更新,输入 <code>updatedb</code>, updatedb指令会去读取 /etc/updatedb.conf 这个配置文件的设定,然后再去硬盘里面进行搜寻文件名的动作, 此动作可能会耗时几分钟.</p>
+<p>find<br>与时间有关的选项:有-atime,-ctime,-mtime,以-mtime为例</p>
+<p>-mtime n: n为数字,意义为在n天之前的[一天之内]被更动过内容的文件;<br>-mtime +n : 列出在n 天之前(不含n天本身)被更动文件内容的文件名<br>-mtime -n: 列出在n天之内(含n天本身)被更动的文件<br>-newer file : file为一个存在的文件,列出比file还要新的文件名.</p>
+<p>如<br>    find / -mtime 0    (0代表目前的时间,所以,从现在开始到24小时前)<br>    find / -mtime 3  (三天前的24小时内)<br>    find /etc -newer /etc/passwd</p>
+<p>find 路径 -user name(指用户名)  找出此用户的所有文件</p>
+<p>-name filename :搜寻文件名为filename的文件<br>-size [+-]SIZE : 搜寻比SIZE还要大(+)或小(-)的文件,这个SIZE的规格有:  c:代表byte,   k :代表1024bytes. 所以,要找比50KB还要大的文件,就是  { -size +50k }<br>-type TYPE :  搜寻文件的类型为TYPE的,类型主要有:一般正规文件(f),装置文件(b,c),目录(d),链接文件(l),socket(s),FIFO(p).<br>-perm mode :搜寻文件权限等于mode的文件 ,mode类似chmod的属性值,如-rwsr-xr-x的属性为4755.<br>-perm -mode  : 搜寻文件权限必须要全部囊括mode的权限的文件,如:<br>-rwsr-xr-x包括-rwxr–r–.<br>-perm /mode   搜寻文件权限包含任一mode的权限的文件</p>
+<p>find / -name “<em>passwd</em>“   找出有含”passwd”词的文件<br>find /run -type s  </p>
+<p>b 块设备文件　<br>f 普通文件　　<br>c 字符设备文件　　<br>p 命名管道　　　<br>d 目录文件<br>l 符号链接</p>
+<ul>
+<li>ls -F  　<br>  目录后加<code>／</code>　<br>  可执行文件加<code>*</code><br>  在链接文件后加<code>＠</code></li>
+<li>ls<br>  目录为蓝色<br>  普通文件为黑色（白色）　<br>  可执行为绿色。</li>
+</ul>
+<h2 id="常用文件"><a href="#常用文件" class="headerlink" title="常用文件"></a>常用文件</h2><p>/etc/passwd   root 和其他使用者的账号相关的信息<br>/etc/shadow   记录个人密码<br>/etc/group   所有组</p>
+<p>/proc 目录下存放着内核有关系统状态到各种信息。在系统运行时，内核会随时向这个目录写入数据。这是操作系统向用户提供的一条通往内核到道路，用户甚至可以通过向/proc 目录下 文件 写入数据来修改操作系统参数。</p>
+<p><strong>在linux底下,文件能否执行,取决于是否具有X权限,跟文件后缀没有关系.</strong><br><strong>当你对一个文件具有W权限时,你可以具有写入/编辑/新增/文件内容的权限,但是并不具备有删除该文件本身的权限!</strong></p>
+<p>linux的文件是<strong>没有</strong>所谓的 扩展名 的</p>
+<p>-l 实体链接(hard link)<br>-s 符号链接(symbolic link)</p>
+<h3 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a>SUID</h3><p>当s这个标志出现在文件拥有者的x权限上时,此时就被称为 Set UID ,简称SUID.<br>SUID要求:<br>SUID 权限仅对二进制程序(binary program)有效;<br>执行者对于该程序需要有x的可执行权限;<br>仅在执行程序过程中有效;<br>执行者将具有该程序拥有者(owner)的权限</p>
+<p>SUID仅可用在binary program上,不能够用在shell script 上 , 这是因为shell script 只是将很多binary执行文件叫进来执行而已! SUID 对于目录也是无效的.</p>
+<p>当s标志在群组的x时称为Set GID,SGID. 可以针对文件或目录来设定!<br>SGID<br>SGID对二进制程序有用;<br>程序执行者对于改程序来说,需具备x权限;<br>执行者在执行的过程中将会获得该程序群组的支持!</p>
+<p>当一个目录设定SGID的权限之后,将具有以下功能:<br>用户若对此目录有r与x的权限时,该用户能够进入该目录;<br>用户在此目录下的有效群组(effective group)将会变成该目录的群组;<br>用途: 若用户在此目录下具有w的权限(可以新建文件),则使用者所建立的新文件,该新文件的群组与此目录的群组相同;</p>
+<p>Sticky Bit,SBIT目前只针对目录有效,对于文件已经无效.<br>作用如下: 当甲这个用户于A目录是具有群组或其他人的身份,并且拥有该目录w的权限,这表示甲用户对该目录内任何人建立的目录或文件均可进行”删除/更名/搬移”等操作.不过,如果将A目录加上了SBIT的权限项目时,则甲1只能针对自己建立的文件或目录进行删除之类的动作,而无法删除他人的文件.</p>
+<p>SUID 4<br>SGID 2<br>SBIT 1</p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>LVM 与 软件磁盘阵列(software raid),可以将一个分区盘格式化为多个文件系统,也能够将多个分区盘合成一个文件系统</p>
+<p>通常我们可以称呼一个可被挂载的数据为一个文件系统而不是一个分区盘</p>
+<p>较新的操作系统的文件数据除了文件实际内容外,通常含有非常多的属性.  文件系统通常会将这两部分的数据分别放在不同的区块,权限与属性放置到inode中,至于实际数据则放置到data block 区块中. 还有一个超级区块(superblock)会记录整个文件系统的整体信息,包括inode与block的总量\使用量\剩余量等.</p>
+<p>inode: 记录文件的属性,一个文件占用一个inode,同时记录此文件的数据所在的block号码;<br>block  : 实际记录文件的内容,若文件太大,会占用多个block</p>
+<p>文件系统一开始就将inode 与block规划好了,除非重新格式化(或者利用resize2fs 等指令变更文件系统的大小),否则inode 与block固定后就不再变动.</p>
+<p>文件系统一般有多个区块群组(block  group),每个区块群组都有独立的inode/block/superblock系统.</p>
+<p>inode记录的文件数据: 该文件的读取模式: 该文件的拥有者与群组;  该文件的容量;  该文件建立或状态改变的时间; 最近一次的读取时间:<br>最近修改的时间; 定义文件特性的旗标(flag),如 SetUID…;<br>该文件真正内容的指向(pointer);</p>
+<p>每个inode 大小均为固定为128bytes(新的ext4 与xfs可设定到256bytes)<br>每个文件都仅会占用一个inode而已<br>系统读取文件时需要找到inode,并分析inode所记录的权限与用户是否符合,若符合才能够开始实际读取block的内容.</p>
+<p>Superblock是记录整个filesystem相关信息的地方,主要记录<br>block 与inode的总量;<br>未使用与已使用的inode/block数量;<br>block 与inode的大小1(block 为1,2,4K,inode为128bytes或256bytes)<br>filesystem 的挂载时间\最近一次写入数据的时间\最近一次检验磁盘的时间等文件系统的相关信息<br>一个valid bit 数值,若此文件系统已被挂载,则valid bit 为0,若未被挂载,则valid bit 为 1.</p>
+<p>superblock 为1024bytes.  一个文件系统应该仅有一个superblock而已, 事实上除了第一个blockgroup 内会含有superblock之外,后续等等block group 不一定含有superblock,而若有superblock则该superblock主要是作为第一个block group 内superblock </p>
+<p>当我们在Linux下建立一个目录时,文件系统会分配一个inode与至少一块block给该目录.  其中,inode记录该目录的相关权限与属性,并可记录分配到的block号码;而block则是纪录在这个目录下的文件名与该文件名占用的inode号码数据.</p>
+<p>用 <code>ll /</code>时,出现的目录几乎都是1024的倍数,,因为每个block的数量都是1K,2K,4K!</p>
+<p>在目录底下的文件数如果太多而导致一个block无法容纳下面所有的档名与inode对照表,linux会给予该目录多一个block.</p>
+<p>我们将inode table 与 data block 称为数据存放区域, 至于其他如superblock\block bitmap\inode bitmap 等区段就被称为metadata(中介资料).</p>
+<p>传统文件系统 : ext2/ minix /MS-DOS / FAT(用vfat模块) /iso9660;<br>日志式文件系统:  ext3/ ext4 /ReiserFS / Windows’NTFS /IBM’s JFS/<br>SGI’s XFS / ZFS<br>网络文件系统 :　NFS / SMBFS</p>
+<p>查看linux 支持的文件系统有哪些: ls -l  /lib/modules/$(uname -r)/kernel/fs</p>
+<p>系统目前已加载到内存中的支持的文件系统有:  cat /proc/filesystems</p>
+<p>xfs 在资料的分布上,主要划分为三个部分,资料区(data section)\一个文件系统活动登录区(log section)以及一个实时运作区(realtime section).</p>
+<p>与ext不同的是,xfs的block与inode 有多种不同的容量可供设定,block容量可由512bytes-64K调配,不过,Linux的环境下,由于内存控制的关系(页面文件pagesize的容量之故),因此最高可以使用的block大小为4K.至于inode容量可由256bytes到2M.</p>
+<p>xfs 的数据区的存储区群组(allocation groups, AG),可以认为相当与ext的block群组(block groups) ,只是inode与block是动态产生.</p>
+<p>当有文件要被建立时,xfs会在这个区段里面找一个到数个的extent区块,将文件放置在这个区块内,等到分配完毕后,再写入到data section 的inode与block. .这个extent区块的大小得要在格式化的时候就先指定,为4K-1G.一般非磁盘阵列默认64k容量,而具有类似磁盘阵列的stripe情况下,则建议extent设定为与stripe一样大最好,</p>
+<p>UUID : 全局单一标识符(universally unique identifier) ,Linux 会将系统内所有的装置都给予一个独一无二的标识符,这个标识符可以拿来作为挂载或者是使用这个装置/文件系统用了.</p>
+<blockquote>
+<p>blkid : 显示UUID</p>
+</blockquote>
+<blockquote>
+<p>parted device_name print : 列出磁盘信息</p>
+</blockquote>
+<p>hard link :如果将任何一个文件名删除,其实inode与block都还是存在的.  无论使用哪个文件名来编辑,最终的结果都会写入到相同的inode与block中,均能进行数据的修改.</p>
+<p>hard link 仅能在单一文件系统中进行,不能跨文件系统, 也不能link 目录</p>
+<p>ln [-sf] 来源文件 目标文件<br>-s 如果不加任何参数就进行连接,那就是hard link ,加 -s 就是symbolic link .<br>-f  如果目标文件 存在时, 就主动的将目标文件直接移除后再建立.</p>
+<h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><p>gdisk 新建分区  ,文件系统ID , 一般Linux是8200/8300/8e00 三种, windows几乎都用0700 .<br>可以在gdisk内 输入[ L ]来显示文件系统ID.</p>
+<p>partprobe : 更新Linux核心的分区表信息</p>
+<p>MBR 分区表请使用fdisk分区,GPT分区表请使用gdisk分区.不要在MBR分区上使用gdisk,也不要在GPT上面使用fdisk!!!!</p>
+<p>gdisk 装置名称     如: gdisk /dev/vda</p>
+<p>格式化,也称 建置文件系统(make filesystem), 所以使用指令mkfs,以格式化fs<br>xfs 用 mkfs.xfs    ext4 用 mkfs.ext4</p>
+<p>mkfs.xfs [-b bsize] [-d parms] [-i parms] [-l parms] [-L label] [-f] [-r parms] 装置名称<br>(底下只要涉及数值是,默认单位bytes,可以用k,m,g,t,p(小写)来解释),而s表示是sector的个数)<br>    -b :　后面接的是block容量,可由512到64k,不过linux最大限制4k.<br>    -d : 后面接data section 的相关参数值,主要有:<br>    agcount = :设定需要几个存储群组的意思(AG),通常与CPU有关<br>    agsize = : 每个AG设定为多少容量的意思<br>    file : 指的是 格式化的装置是个文件而不是个装置<br>    size : data section的容量<br>    su : 当有RAID 时,stripe数值的意思,与sw搭配使用<br>    sw : 当有RAID是,用于存储数据磁盘数量<br>    sunit : 与su相当,不过单位使用的是 几个sector<br>    swidth : su*sw的数值,但是以几个sector大小来设定<br>    -f 如果装置内已经有文件系统,只需要-f 来强制格式化<br>    -i : 与inode 有较相关的设定,主要有<br>        size : 最小 256bytes,最大2k ,一般256就足够了<br>        internal=[0/1] : log装置是否为内建? 预设为1 内建<br>        logdev=device : log装置为后面接的那个装置,需设定internal =0<br>        size : 指定这块登录区的容量,通常最小512,通常2M以上<br>    -L : 后面接这个文件系统的标头名称 Label name<br>    -r : 指定realtime section的相关设定值,<br>        extsize: extent数值,一般不须设定,但有RAID时,最好设定与swidth的数值相同,最小为4k ,最大为1G</p>
+<p>磁盘阵列(RAID)就是通过将文件先细分为数个小型的分区区块(stripe)之后,然后将众多的stripes分别放到磁盘阵列里面的所有磁盘,所以一个文件时被同时被到多个磁盘去.<br>为了文件的完整性,所以在这些磁盘里面,会保留数个(与磁盘阵列的规划有关)备份磁盘(parity disk),以及可能会保留一个以上的备用磁盘(spare disk), 这些区块基本会占用掉磁盘阵列的总容量,<br>stripe 的大小大多介于4k 到1m之间,这与你磁盘阵列卡支持的项目有关.当系统大多是大型文件时,stripe可以设定大一些,这样磁盘阵列读/写的频率会减低,效能会提升.如果用于系统,那么小文件比较多的情况下,sripe建议大约在64K左右,</p>
+<p>mkfs.ext4 [-b size] [-L label] 装置名称<br>-b : 设定block大小,有1k ,2k , 4k 的容量.<br>-L : 后面接这个装置的名称</p>
+<p>xfs_respair [-fnd] 装置名称<br>-f : 后面的装置其实是个文件而不是实体装置<br>-n: 只检查并不修改文件系统的任何数据<br>-d : 通常用在单人维护模式底下,针对根目录进行检查与修复的动作,很危险.</p>
+<p>xfs_repair 可以检查/修复文件系统,但是修复时该文件系统不能被挂载.但是根目录无法被卸载,如果根目录出现问题,这时得进入单人维护或者救援模式,然后透过-d 这个选项来处理</p>
+<p>fsck.ext4 是个综合指令,如果针对ext4 ,建议直接使用fsck.ext4来检查</p>
+<p>fsck.ext4 [-pf] [-b superblock] 装置名称<br>-p : 当文件系统在修复时,若有需要回复Y的动作时,自动执行Y<br>-f : 强制检查!  一般来说,如果fsck没有发现任何unclean 的旗标,不会主动进入细部检查的,<br>-D : 针对文件系统下的目录进行优化配置<br>-b : 后面接superblock 的位置, 一般来说这个选项用不到,但是如果你的superblock因故损毁是,透过这个参数即可利用文件系统内备份的superblock来尝试救援.一般来说,superblock 备份在: 1k block放在8193,<br>2k放在16384, 4k block 放在32768</p>
+<p>单一文件系统不应该被重复挂载在不同的挂载点(目录)中;<br>单一目录不应该重复挂载多个文件系统<br>要作为挂载点的目录,理论上应该都是空目录才是.</p>
+<p>如果你要用来挂载的目录里并不是空的,那么挂载了文件之后,原目录下的东西就会暂时的消失.</p>
+<p>mount -a 依照配置文件/etc/fstab的数据将所有未挂载的磁盘都挂载上来<br>mount  -l   只输入mount会显示目前挂载的信息.加上 -l 可增列label名称!<br>-t : 可以加上文件系统种类来指定欲挂载的类型.<br>-o: 后面可以接一些挂载是额外加上的参数:<br>    async,sync:此文件系统是否使用同步写入(sync)或异步(async)的内存机制,预设为async.<br>    atime,noatime:是否修订文件的读取时间(atime).为了效能,某些时刻可使用noatime<br>    ro,rw: 挂载文件系统成为只读(ro),或可擦写(rw)<br>    auto,noauto : 允许此filesystem被以mount -a 自动挂载(auto)<br>    dev,nodev : 是否允许此filesystem上,可建立装置文件<br>    suid, nosuid : 是否允许filesystem含有suid/sgid 的文件格式<br>    exec,noexec : 是否允许此filesystem上拥有可执行binary文件<br>    user,nouser : 是否允许此filesystem上任何使用者执行mount.一般来说,mount仅有root可以执行,但下达user参数,则可让一般user也能够对此partition进行mount.<br>    defaults : 默认值为: rw ,suid , dev, exec,auto,nouser,async<br>    remount : 重新挂载</p>
+<p>Linux  中有两类设备文件：字符设备文件和块设备文件。字符设备又称 顺序访问设备  ，如：磁带，串行电路。<br>块设备又称 随机访问设备，如：磁盘。</p>
+<p>拥有某个设备文件并不意味一定有一个相对应的硬件设备存在，只是表明Linux有处理设备的“潜能”.<br>设备文件可以用 mknod 命令来创建</p>
+<p>umount [-fn] 装置文件或挂载点<br>    -f : 强制卸除,可用在类似网络文件系统(NFS)无法读取的情况下;<br>    -l : 立刻卸载文件系统,比-f还强<br>    -n : 不更新/etc/mtab 情况下卸除</p>
+<p>mknod 装置文件名 [bcp] [Major] [Minor]<br>-b : 设定装置名称为一个周边存储设备文件,如硬盘<br>-c: 设定装置名称为一个周边输入设备文件,如鼠标<br>-p: 设定装置名称为一个FIFO文件;<br>Major : 主要装置代码<br>Minor: 次要装置代码</p>
+<p>xfs_admin [-lu] [-L label] [-U uuid] 装置文件名<br>-l : 列出这个装置的label name<br>-u: 列出这个装置的UUID<br>-L: 设定这个装置的Label name<br>-U: 设定这个装置的UUID</p>
+<p>tune2fs [-l] [-L Label] [-U uuid] 装置文件名<br>-l : 类似dumpe2fs -h 的功能 , 将superblock内的数据读出来<br>-L : 修改LABEL name<br>-U: 修改UUID </p>
+<p>系统挂载的一些限制:<br>根目录/ 是必须挂载的 , 而且一定要先于其他 mount point 被挂载进来.</p>
+<p>其他 mount point 必须 为已建立的目录,可任意指定,但一定要遵守必须的系统目录架构原则(FHS)</p>
+<p>所有mount point 在同一时间内,只能挂载一次</p>
+<p>所有partition在同一时间内,只能挂载一次</p>
+<p>如若进行卸载,你必须先将工作目录移到 mount point(及其子目录)之外</p>
+<p>/etc/fstab (filesystem table) 就是利用mount指令进行挂载是 , 将所有的选项与参数写入到这个文件中.</p>
+<p>remount: 重新挂载,在系统出错,或重新更新参数时.</p>
+<p>文件系统或磁盘的装置文件名,如 /dev/vda2<br>文件系统的UUID名,如UUID =xxx<br>文件的LABEL 名称 ,如 LABEL =xxx</p>
+<p>mount -o loop /<strong>/</strong>/**.iso(iso文件路径) 挂载路径<br>可以透过loop来挂载iso文件.</p>
+<p>parted [装置] [指令 [参数]]<br>新增分区: mkpart [primary | logical | extended] [ext4 | vfat | xfs] 开始 结束<br>显示分区: print<br>删除分区: rm [partition]</p>
+<p>parted [装置] mklabel gpt      转化分区表格式</p>
+<h2 id="压缩相关"><a href="#压缩相关" class="headerlink" title="压缩相关"></a>压缩相关</h2><p>*.Z   compress 程序压缩的文件<br>*.zip  zip程序压缩的文件<br>*.gz    gzip程序压缩的文件<br>*.bz2   bzip2程序压缩的文件<br>*.xz   xz 程序压缩的文件<br>*.tar    tar程序打包的数据,并没有压缩过<br>*tar.gz    tar程序打包过得文件,其中并且经过gzip的压缩<br>*tar.bz2   tar程序打包过的文件,经过bzip2的压缩<br>*tar.xz  tar程序的包的文件,经过xz的压缩</p>
+<p>gzip [-cdtv#] 文件名<br>    -c : 将压缩的数据显示在屏幕上, 可透过数据流重导向来处理;<br>    -d : 解压缩的参数;<br>    -t : 可以用来检验压缩文件的一致性,看文件有无错误;<br>    -v : 可以显示出原文件/压缩文件的压缩比等信息<br>    -#:  #为数字, 代表压缩等级, -1最快,但是压缩比最差,-9最慢,但是压缩比最好.预设是-6.</p>
+<p>在预设的状态下原本的文件会被压缩为.gz的文件,源文件就不在存在.<br>gzip压缩的文件,在windows中,可以被WinRAR/7zip等软件解压缩.</p>
+<p>与gzip相反,gzip -z会将原本的.gz删除,恢复到原本的文件.</p>
+<p>保留源文件<br>gzip -c  文件名 &gt; 文件名.gz</p>
+<p>zcat 压缩文件  (查看压缩的文本文档)<br>zgrep -n ‘keyword’   压缩文件.gz     在压缩文件中查找关键词</p>
+<p>使用znew 可以将.Z的文件转成gzip的格式</p>
+<p>bzip2 [-cdkzv#] 文件名<br>    -c:将压缩的过程产生的数据显示到屏幕.<br>    -d : 解压缩的参数<br>    -k: 保留源文件,而不会删除<br>    -z: 压缩的参数(默认值,可以不加)<br>    -v: 可以显示源文件/压缩文件的压缩比等信息.<br>    -#: 与gzip同样,都是在计算压缩的参数,-9最佳,-1最快</p>
+<p>对于大文件,bzip2压缩时间比gzip要久的多.</p>
+<p>xz [-dtlkc#] 文件名<br>-d : 解压缩<br>-t: 测试压缩文件的完整性,<br>-l : 列出压缩文件的相关信息<br>-k : 保留原来的文件不删除<br>-c : 就是将数据输出到屏幕<br>-#: </p>
+<p>windows 中的 WinRAR 支持 . tar.gz 文件的解压缩</p>
+<p>tar [-z| -j| -J] [cv] [-f 待建立的新文件名] 要被压缩打包的目录或文件       (打包与压缩)<br>tar [-z | -j | -J] [tv] [-f 已有的tar文件名]          (查看档名)<br>tar [-z | -j | -J] [xv] [-f 已有的tar文件名] [-C 目录]    (解压缩)</p>
+<p>-c : 建立打包文件<br>-t : 查看打包文件的内容含有哪些文件<br>-x : 解打包或解压缩, 可以搭配 -C 在特定的目录解开</p>
+<p>(-c , -t , -x 不可同时出现在一串指令中.)</p>
+<p>-z : 透过gzip 进行压缩/解压缩,此时文件名最好为*.tar.gz  .<br>-j : 透过bzip2 进行        , *.tar.bz2<br>-J : 透过xz      ,    * .tar.xz<br>(-z , -j , -J 不可同时出现在同一指令列中.)</p>
+<p>-v : 在压缩/解压缩的过程中,将正在处理的文件名显示出来.<br>-f filename : -f 后面要接被处理的文件名<br>-C : 在解压缩是,要在特定的目录解压缩.</p>
+<p>-p : 保留备份数据的原本权限与属性<br>-P :保留绝对路径</p>
+<p>压缩 : tar -jcv -f filename.tar.bz2 要被压缩的文件或目录名称<br>查询 : tar -jtv -f  filename.tar.bz2<br>解压缩 : tar -jxv -f filename.tar.bz2 -C 要解压缩的目录<br>filename.tar.bz2是自己取得名字, tar并不会自动产生文件名.如果不加[-z | -j | -J ] 的话,文件名最好取 *.tar . </p>
+<p>解压文件中的一个文件:<br>tar -jxv -f 压缩文件名.tar.bz2  待解压的文件</p>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>vim 中忽略 查找字符大小写<br>:set ignorecase<br>重新开启大小写敏感<br>:set noignorecase</p>
+<p>：syntax on  打开语法高亮功能。</p>
+<p>:set autoindent   自动缩进</p>
+<p>一个TAB 键 缩进 8 个空格数  （也就是一个制表符代表8个空格）， 可以通过 set shiftwidth  , 改变空格数<br>如：   ：set shiftwidth=4.</p>
+<p>vim 的配置文件叫做vimrc, 通常位于/etc/vim 目录下。 </p>
+<p>vim 中文乱码<br>1.Linux默认支持的语言数据,这与 /etc/locale.conf有关;<br>2.你的终端界面(bash)的语言,这与LANG,LC_ALL这几个变量有关:<br>3.你的文件原本的编码;<br>4.开启终端机的软件,例如在GNOME底下的窗口接口;</p>
+<h2 id="FHS"><a href="#FHS" class="headerlink" title="FHS"></a>FHS</h2><p><a href="FHS.pdf">点击下载</a></p>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><h3 id="IP-设置-配置文件"><a href="#IP-设置-配置文件" class="headerlink" title="IP 设置 配置文件"></a>IP 设置 配置文件</h3><blockquote>
+<p> /etc/network/interfaces</p>
+</blockquote>
+<pre><code>auto eth0
+iface eth0 inet static/dhcp
+address 192.168.0.116
+gateway 192.168.0.1
+netmask 255.255.255.0
+</code></pre><h3 id="DNS-配置文件"><a href="#DNS-配置文件" class="headerlink" title="DNS 配置文件"></a>DNS 配置文件</h3><blockquote>
+<p>/etc/resolv.con</p>
+</blockquote>
+<pre><code>nameserver 8.8.8.8
+nameserver 114.114.114.114
+</code></pre><h3 id="临时IP地址（电脑重启后失效）"><a href="#临时IP地址（电脑重启后失效）" class="headerlink" title="临时IP地址（电脑重启后失效）"></a>临时IP地址（电脑重启后失效）</h3><p>自动获取IP</p>
+<blockquote>
+<p>dhclient eth0</p>
+</blockquote>
+<p>手动获得IP</p>
+<blockquote>
+<p>ifconfig eth0 192.168.1.10/24</p>
+</blockquote>
+<h2 id="重启网络"><a href="#重启网络" class="headerlink" title="重启网络"></a>重启网络</h2><blockquote>
+<p>service networking restart</p>
+</blockquote>
+<blockquote>
+<p>systemctl restart networking.service </p>
+</blockquote>
+<h3 id="network-manager"><a href="#network-manager" class="headerlink" title="network-manager"></a>network-manager</h3><p>这是一套网络管理软件</p>
+<pre><code>`sudo apt install networkmanager`
+安装NetworkManager包后，命令行中多出两个命令，一个是nmcli纯命令的网络配置工具，一个是nmtui的终端图形配置工具。
+
+确定在文件/etc/network/interfaces中没有手动配置过网络,如果有，里面的内容应该删掉
+
+nmtui打开图形界面，直接配置就好，当然也可以在这里设置无线连接的。
+
+sudo systemctl restart NetworkManager.service 重启服务</code></pre><h3 id="无线网络"><a href="#无线网络" class="headerlink" title="无线网络"></a>无线网络</h3><h4 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h4><blockquote>
+<p> vim /etc/network/interfaces</p>
+</blockquote>
+<pre><code>auto wlan0
+iface wlan0 inet dhcp
+pre-up ip link set wlan0 up
+pre-up iwconfig wlan0 essid ssid
+wpa-ssid ssid
+wpa-psk password</code></pre><blockquote>
+<p><a href="https://wenqixiang.com/linux-wireless-configuration-in-terminal-command-line/" target="_blank" rel="noopener">https://wenqixiang.com/linux-wireless-configuration-in-terminal-command-line/</a></p>
+</blockquote>
+<p>而Debian系列的系统现在已经没有/etc/wpa.conf文件了，配置这个文件并不能生效还会照成网卡无法使用，折腾了老半天才知道应该配置的是/etc/wpa_supplicant/wpa_supplicant.conf</p>
+<h4 id="静态ip"><a href="#静态ip" class="headerlink" title="静态ip"></a>静态ip</h4><blockquote>
+<p>vim /etc/network/interfaces</p>
+</blockquote>
+<pre><code># 第一个网卡
+auto wlan0
+allow-hotplug wlan0           # 允许热插拔（非必须配置） 
+iface wlan0 inet static       # 采用静态IP分配的方式
+address  192.168.199.249      # 为树莓派设置的ip （详见下面介绍）
+netmask  255.255.255.0        # 子网掩码 （详见下面介绍）
+gateway  192.168.199.1        # 网关地址 （详见下面介绍）
+wpa-ssid  yourssid            # 你要连接的wifi名称
+wpa-psk   yourpassword        # 你要连接的wifi密码
+
+作者：fangle
+链接：https://juejin.im/post/592259d72f301e006b18584e
+来源：掘金</code></pre><h4 id="多个网络"><a href="#多个网络" class="headerlink" title="多个网络"></a>多个网络</h4><blockquote>
+<p>vim /etc/wpa_supplicant/wpa_supplicant.conf</p>
+</blockquote>
+<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CN</code></pre><pre><code># 第一个无线连接
+network={
+    ssid=&quot;xxxx&quot;      # wifi 名称
+    psk=&quot;xxxx&quot;       # wifi 密码
+    key_mgmt=WPA-PSK # 加密方式
+}
+
+# 第二个无线连接
+network={
+    ssid=&quot;xxxx&quot;
+    psk=&quot;xxxx&quot;
+    key_mgmt=WPA-PSK 
+}</code></pre><pre><code>priority=999  # priority指连接优先级，数字越大优先级越高（不可以是负数）
+scan_ssid=1  # 如果你的无线接入点是隐藏的，该配置就是必须的</code></pre><h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><blockquote>
+<p>ifup wlan0</p>
+</blockquote>
+<blockquote>
+<p>ifdown wlan0</p>
+</blockquote>
+<blockquote>
+<p>iwlist wlan0 scan </p>
+</blockquote>
+<blockquote>
+<p>iwlist wlan0 scan | grep ESSID</p>
+</blockquote>
+<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><p>很多新版本系统都没有rc.local文件了，比如Debian 9、Ubuntu 17.10、Ubuntu 18.04。这时候就需要我们手动设置下。</p>
+<blockquote>
+<p><a href="https://www.moerats.com/archives/623/" target="_blank" rel="noopener">https://www.moerats.com/archives/623/</a></p>
+</blockquote>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../vmware-xi-lie/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="VMware系列">
+                        
+                        <span class="card-title">VMware系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                        <span class="chip bg-color">虚拟化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../05/25/manjaro-shi-yong-chu-shi-hua/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/Manjaro.jpg" class="responsive-img" alt="Manjaro 使用初始化">
+                        
+                        <span class="card-title">Manjaro 使用初始化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            向Linux的世界前进!!!
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

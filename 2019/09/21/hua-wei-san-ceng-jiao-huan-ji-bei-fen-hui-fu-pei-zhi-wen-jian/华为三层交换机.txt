@@ -1,0 +1,189 @@
+华为交换机
+
+接口分类
+* 管理接口：可以用来管理设备，不承担业务传输
+* 物理业务接口：分为 LAN侧接口 和 WAN侧接口
+*逻辑接口：能够实现数据交换功能，但物理上不存在，需要通过配置创建的接口，承担业务传输
+
+
+管理接口
+* Console 口： 参考链接： https://blog.csdn.net/ChenYuJin1314520/article/details/51221893
+https://blog.51cto.com/gongsunming/1130663
+
+* MEth 口：
+
+
+
+物理接口
+* 百兆（100Mbit/s）
+* 千兆 （1000Mbit/s）【GE（Gigabit Ethernet）】
+* 万兆	（10000Mbit/s）【10GE】
+* 4万兆	（40000Mbit/s）
+
+
+逻辑接口
+* Eth-Trunk接口：具有二层特性和三层特性的逻辑接口，把多个以太网接口在逻辑上等同于一个逻辑接口，比以太网接口具有更大的带宽和更高的可靠性。
+* Tunnel接口：具有三层特性的逻辑接口，隧道两端的设备利用Tunnel接口发送报文、识别并处理来自隧道的报文
+
+* VLAMIF接口： 具有三层特性的逻辑接口，通过配置VLANIF接口的IP地址，实现Vlan间互访
+
+* 子接口：子接口就是在一个主接口上配置出来的虚拟接口，主要用于实现与多个远端进行通信
+
+* Loopback接口：主要应用其接口状态永远是UP和可以配置32位子网掩码的特性
+
+* NULL接口：因为任何送到改接口的网络数据报文都会被丢弃，主要用于路由过滤等特性
+
+
+物理接口编号规则：
+
+非堆叠 ，采用“槽位号/子卡号/接口序号”规制 ， 如 0/0/2 ，表示交换机第二个LAN口
+* 槽位号：表示当前交换机的槽位，取值为0.
+* 子卡号：表示业务接口板支持的子卡号
+* 接口序号：表示设备上各接口的编排顺序号
+
+默认情况下，所有交换机端口都属于vlan1
+
+<> system-view 			//进入系统视图
+[] vlan 10 				//创建 vlan10
+[] quit 	
+[] display vlan 		
+
+将端口加入vlan -- 方法一 
+[] int gigabitethernet  0/0/1  //进入端口配置模式
+[] port link-type access  //设定端口模式，默认为trunk，需要将端口划入VLAN前，先把端口类型改为 access
+[] port default vlan 10 // 将端口加入vlan
+[] dis this  //显示当前端口信息
+
+
+将端口加入vlan -- 方法二
+<> system-view
+[] vlan 10 
+[] port gigabitethernet 0/0/3 (连续多个端口，用 xx to xx ， 如 port giga 0/0/5 to 0/0/10）
+[] quit
+
+设置Trunk ， 两台相连的交换机都要设置
+<> system-view
+[] interface gigabitethernet 0/0/23
+[] port link-type trunk 
+[] port trunk allow-pass vlan 10 121 //将 vlan 10 ，vlan 121 设置处于UP 的状态
+
+
+VLANIF 接口
+<> system-view
+[] interface vlanif 121
+[] ip address 192.168.0.253 255.255.255.0
+[] shutdown 
+[] undo shutdown 
+
+
+删除Vlan 
+[] undo vlan 10
+[] display vlan
+
+
+配置临时端口组：
+[] port-group group-member gigabitethernet 0/0/1 to gigabitethernet 0/0/10  // 将接口GE 0/0/1 - 0/0/10 加入到临时端口组， 此步骤等同于执行命令 interface range gigabitethernet 0/0/1 to gigabitethernet 0/0/10
+
+配置永久端口组：
+[] port-group portgroup1  // 创建 名为 portgroup1 的永久端口组
+[] group-member  gigabitethernet 2/0/1  to gigabitethernet 2/0/10
+[] port link-type access  // 永久端口组视图中配置需要批量下发的命令
+[] quit 
+
+
+查看永久端口组的成员接口：
+display port-group [all | port-group-name]
+
+批量清除一个接口的所有配置：
+[] interface gigabitethernet 0/0/1
+[] clear configuration this  
+
+端口限速
+[] int giga 0/0/2
+[] qos lr outbound cir 1024 cbs 204800      // 默认单位：KB， 1024表示1M的带宽，理论下载速度就是 128KB/S， cbs代表突发信息速率，cir表示承诺信息速率
+[] undo qos lr outbound   //取消限速
+
+
+开启dhcp
+[] dhcp enable 
+
+[] ip pool 10  // 创建 名为 10 的地址池，如果已存在，则进入其视图
+[] network 192.168.10.0 mask 255.255.255.0
+[] excluded-ip-address 192.168.10.250 192.168.10.254 (地址范围 ，start_ip - end_ip)
+[] dns-list 202.103.24.68 (DNS 地址）
+[] gateway-list 192.168.10.1 ( 出口网关）
+[] lease day 10 (租期 10）
+[] quit 
+
+
+验证方式：
+* passowrd 验证：登录用户需要输入争取的口令
+* AAA本地认证：登录用户需要输入正确的用户名和口令
+* 不验证：登录用户不需要输入用户名或口令
+
+
+
+[Quidway] display version         显示VRP版本号，以及运行时间
+
+[Quidway] display cpu-usage         显示CPU信息
+
+[Quidway] display memory-usage              显示内存占用情况
+
+[Quidway] display device                          显示设备信息
+
+
+[Quidway] display current-configuration     显示系统运行配置信息
+[Quidway] display saved-configuration       显示保存的配置信息
+[Quidway] display interfaces brief             显示接口配置信息
+
+[Quidway] display history-command          显示历史命令记录
+
+[Quidway-GigabitEthernet0/0/1] display this     显示该接口的所有配置     
+
+
+ 管道过滤
+
+[Quidway] display xxx | { include | exclude | begin }  strings 
+
+# 注意第一个 | 是管道, 那么之后的 | 都不认为是管道，而是正则表达式的运算符
+
+# 命令是不区分大小写的，但是 strings 是区分的。
+
+
+交换机端口有三种工作模式，分别是Access ，Hybrid ，Trunk
+
+Access 类型的端口只能属于一个VLAN，一般用于连接计算机的端口
+Trunk 类型的端口可以允许多个VLAN通过，可以接收和发送多个VLAN的报文，一般用于交换机之间连接的端口
+Hybrid 类型的端口可以允许多个VLAN通过，可以接收和发送多个Vlan的报文，可以用于交换机之间的连接，也可以用于连接用户的计算机
+
+Hybrid端口和Trunk端口在接收数据时，处理方法是一样的，唯一不同之处在于发送数据时：Hybrid端口可以允许多个VLAN的报文发送时不打标签，而Trunk端口只允许缺省VLAN的报文发送时不打标签。
+
+untag就是普通的ethernet报文，普通PC机的网卡是可以识别这样的报文进行通讯； 
+tag报文结构的变化是在源mac地址和目的mac地址之后，加上了4bytes的vlan信息，也就是vlan tag头；一般来说这样的报文普通PC机的网卡是不能识别的  
+
+vlanif 创建三层接口，虚拟接口，可以配置ip 地址（可以有多个） ， vlan 属于二层vlan id 标识符。
+
+
+更改设备名
+sysname ****
+
+查看 用户
+dis local-user
+dis access-user
+
+
+0参观级
+网络诊断工具命令（ping、tracert）、从本设备出发访问外部设备的命令（Telnet客户端）、部分display命令等。
+1监控级
+用于系统维护，包括display等命令。
+说明：
+并不是所有display命令都是监控级，比如display current-configuration命令和display saved-configuration命令是3级管理级。
+2配置级
+业务配置命令，包括路由、各个网络层次的命令，向用户提供直接网络服务。
+3～15管理级
+用于系统基本运行的命令，对业务提供支撑作用，包括文件系统、FTP、TFTP下载、命令级别设置命令以及用于业务故障诊断的debugging命令等。
+--------------------- 
+作者：co_wait 
+来源：CSDN 
+原文：https://blog.csdn.net/ma199003/article/details/12746483 
+版权声明：本文为博主原创文章，转载请附上博文链接！

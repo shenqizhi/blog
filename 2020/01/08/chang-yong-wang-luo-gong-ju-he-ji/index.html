@@ -1,0 +1,1330 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="常用网络工具合集, 宅世界">
+    <meta name="description" content="包含netcat,netstat,traceroute以及Linux里的ip工具">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>常用网络工具合集 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">常用网络工具合集</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-08
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-02-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>名称</th>
+<th>协议举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>应用层</td>
+<td>比如: HTTP DNS FTP SMTP POP3 SSH…(这一层的协议非常多,与用户直接打交道,大多在这层)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>表示层</td>
+<td>(这一层的协议比较少见)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>会话层</td>
+<td>Sock5 PPTP NetBIOS 管道命名(常用于:进程间通讯)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>传输层</td>
+<td>TCP(传输控制协议) UDP(数据报协议)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>网络层</td>
+<td>IP(互联网协议) ICMP(互联网控制消息协议) IGMP(互联网组管理协议) IPsec(常用于VPN)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>链路层</td>
+<td>MAC ARP&amp;RARP SLIP&amp;PPP&amp;PPPOE(常用于拨号上网) L2TP</td>
+</tr>
+<tr>
+<td>1</td>
+<td>物理层</td>
+<td>USB协议 蓝牙协议 RS-232(串口标准协议)</td>
+</tr>
+</tbody></table>
+<h2 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h2><h3 id="netcat-简介"><a href="#netcat-简介" class="headerlink" title="netcat 简介"></a>netcat 简介</h3><p>简称 <code>nc</code> , 俗称网猫, 英文全称为 network communication </p>
+<p>nc 本身很小,所以有一些衍生的版本,比如”OpenBSD netcat” ,很多主流的linux 发行版自带这个工具<br><strong>以下的教程均以这个衍生版作为介绍</strong></p>
+<h3 id="命令简介"><a href="#命令简介" class="headerlink" title="命令简介"></a>命令简介</h3><blockquote>
+<p>nc 命令选项 主机 端口</p>
+</blockquote>
+<ul>
+<li>命令选项:这部分有很多个选项</li>
+<li>主机:可以没有,可能以”点分十进制”形式表示,也可能以”域名”形式表示</li>
+<li>端口:这部分可能没有,可能是单个端口,也可能是端口范围(端口范围如右表示:  1-1024)</li>
+</ul>
+<h3 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h3><p>nc 提供了一大堆【命令行选项】，分别对应它提供的功能。每个选项都是“单字母”滴。有些选项需要带【选项值】，有些不需要。<br>你要使用的选项都放在 nc 这个命令之后，每个选项前面要有一个【半角减号】，选项之间以空格分开。</p>
+<p>在下面这个例子中，分别用到了三个选项（l、p、v），其中 12345 是选项 p 所带的【选项值】</p>
+<blockquote>
+<p>nc -l -p 12345 -v</p>
+</blockquote>
+<p>可以使用 <code>nc -h</code> 来查看所有的命令选项</p>
+<ul>
+<li>h: 输出帮助信息</li>
+<li>v: 显示详细的信息输出</li>
+<li>n: 对命令行中的”主机”,<strong>不</strong>进行域名解析 ,只对”点分格式”的ip起作用,对域名的形式,<strong>不能</strong>使用该选项</li>
+<li>p: 指定”端口号”</li>
+<li>l: 开启”监听模式”,nc作为**服务端”.如不使用该选项,nc默认作为客户端</li>
+<li>u: 使用UDP协议,如不加该选项,nc默认使用TCP</li>
+<li>w: 设置连接的超时间隔(N秒)</li>
+<li>q: 让nc 延时(N秒)再退出</li>
+<li>z: 开启”zero-I/O模式”,该选项仅用于”端口扫描”</li>
+<li>k: 配合 -l 选项使用,可以重复接受客户端连接</li>
+<li>X: 指定代理的类型</li>
+<li>x: 以 IP:port的格式指定代理的位置</li>
+<li>e: 启动某个进程,把该进程的”标准输入输出”与网络通讯对接</li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="网络诊断-测试某个远程主机的【监听】端口是否可达"><a href="#网络诊断-测试某个远程主机的【监听】端口是否可达" class="headerlink" title="(网络诊断)测试某个远程主机的【监听】端口是否可达"></a>(网络诊断)测试某个远程主机的【监听】端口是否可达</h4><p>经常有这种需求，要判断某个主机的监听端口是否能连上。<br>导致监听端口【无法】，通常有两种原因：</p>
+<ul>
+<li>其一，这个监听端口根本就【没开启】；</li>
+<li>其二，监听端口虽然开启，但是被防火墙阻拦了。<br>　　对第1个原因，（如果你能在该主机上运行命令）可以直接用 netstat 这个命令查看监听端口是否开启<br>　　但对于第2个原因，netstat 就用不上了。这时候就可以用 nc 来帮你搞定。</li>
+</ul>
+<p>用如下命令可以测试某个 IP 地址（x.x.x.x）上的某个监听端口（xx）是否开启。</p>
+<blockquote>
+<p>nc -nv x.x.x.x xx</p>
+</blockquote>
+<p>在测试链接的时候，如果你【没】使用 -w 这个超时选项，默认情况下 nc 会等待很久，然后才告诉你连接失败。<br>如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加“-w选项”，设置一个比较小的超时值。在下面的例子中，超时值设为3秒。</p>
+<blockquote>
+<p>nc -nv -w 3 x.x.x.x xx</p>
+</blockquote>
+<p>只需再上面的命令添加<code>-u</code>选项,即可测试UDP的环境</p>
+<h4 id="网络诊断-判断防火墙是否“允许-or-禁止”某个端口"><a href="#网络诊断-判断防火墙是否“允许-or-禁止”某个端口" class="headerlink" title="(网络诊断)判断防火墙是否“允许 or 禁止”某个端口"></a>(网络诊断)判断防火墙是否“允许 or 禁止”某个端口</h4><p>前一个章节（招数1）的场景是——已经有某个网络软件开启了监听端口，然后用 nc 测试端口是否可达。<br>　　现在换另一个场景：<br>　　假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何【验证】自己的配置是 OK 滴？<br>　　更进一步说：如果当前【没有】任何软件开启 8080 这个监听端口，你如何判断：该端口号是否会被防火墙阻拦？<br>　　为了叙述方便，设想如下场景：<br>有两台主机——“主机C”充当客户端，“主机S”充当服务端。<br>然后要判断“主机S”上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
+<p>在“主机S”上运行 nc，让它在 8080 端口，命令如下：</p>
+<blockquote>
+<p>nc -lv -p 8080</p>
+</blockquote>
+<p>然后在“主机C”上运行 nc，测试“主机S”上的 8080 端口是否可达(参考上一节)</p>
+<p>在默认情况下，nc 开启 listen 模式充当服务端，在接受【第一次】客户端连接之后，就会把监听端口关闭。<br>为啥会这样捏？因为当年设计 nc 更多的是作为某种网络诊断/配置工具，并【不是】真拿它当服务端软件来用的。<br>如果你想要让 nc 始终监听模式，使之能【重复】接受客户端发起的连接，可以追加 -k 选项。</p>
+<h4 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h4><p>不论是 TCP 还是 UDP，协议规定的【有效】端口号范围都是：1 ~ 65535</p>
+<blockquote>
+<p>nc -znv x.x.x.x 1-1024</p>
+</blockquote>
+<p> <code>-z</code>参数意思是：开启“zero-I/O 模式”。该模式指的是：nc 只判断某个监听端口是否能连上，连上后【不】与对端进行数据通讯。</p>
+<blockquote>
+<p>nc -znv x.x.x.x 1-1024  2&gt;&amp;1 | grep succeeded</p>
+</blockquote>
+<p>由于“-v 选项”产生的输出位于【stderr】，上述命令中的 2&gt;&amp;1 用来把【stderr】合并到【stdout】<br>grep 命令用来进行【过滤】。对于 Windows 系统，默认【没有】grep 命令，需改用 find 命令过滤。</p>
+<p><strong>同时运行多个 nc，分别扫描不同的端口范围。可以提高效率</strong></p>
+<h4 id="通过代理"><a href="#通过代理" class="headerlink" title="通过代理"></a>通过代理</h4><p>nc -X 5 -x 127.0.0.1:9050 -q 3 -v program-think.blogspot.com 443</p>
+<p><code>-X</code> : 代理的类型(5: Socks5; 4: socks4; connect:connect型的HTTP代理)<br><code>-x</code> : 代理的地址和端口</p>
+<h4 id="信息收集-用-nc-探测“服务器类型”和“软件版本”（以-SSH-为例）"><a href="#信息收集-用-nc-探测“服务器类型”和“软件版本”（以-SSH-为例）" class="headerlink" title="(信息收集)用 nc 探测“服务器类型”和“软件版本”（以 SSH 为例）"></a>(信息收集)用 nc 探测“服务器类型”和“软件版本”（以 SSH 为例）</h4><blockquote>
+<p>echo “EXIT” | nc -vq 5 服务器域名 22</p>
+</blockquote>
+<h4 id="获取网页代码"><a href="#获取网页代码" class="headerlink" title="获取网页代码"></a>获取网页代码</h4><blockquote>
+<p>echo -e “GET /index.html HTTP/1.0\r\n\r\n” | nc-tor -vq 5 服务器域名 端口</p>
+</blockquote>
+<p>可以把 nc 抓下来的 HTML 源代码，（在命令行中用“大于号”）重定向到某个 HTML 文件，然后就可以用你本机的浏览器阅读之。</p>
+<h4 id="系统管理-用-nc-传输文件"><a href="#系统管理-用-nc-传输文件" class="headerlink" title="(系统管理)用 nc 传输文件"></a>(系统管理)用 nc 传输文件</h4><p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
+<p>　　你先在【接收端】（B 主机）运行如下命令（其中的 xxx 是端口号)</p>
+<blockquote>
+<p>nc -l -p xxx &gt; file2</p>
+</blockquote>
+<p>然后在【发送端】（A 主机）运行如下命令</p>
+<blockquote>
+<p>nc x.x.x.x xxx &lt; file1</p>
+</blockquote>
+<p>第二条命令中的 xxx 是端口号，要与第一条命令中的端口号相同；第二条命令中的 x.x.x.x 是【主机 B】的 IP 地址。</p>
+<h4 id="使用nc-复制整个硬盘"><a href="#使用nc-复制整个硬盘" class="headerlink" title="使用nc 复制整个硬盘"></a>使用nc 复制整个硬盘</h4><p>假设你要把 A 主机 /dev/sda 磁盘的【原始数据】整个复制到 B 主机的 /dev/sdb 磁盘。</p>
+<p>你先在【接收端】（B 主机）运行如下命令（其中的 xxx 是端口号）</p>
+<blockquote>
+<p>nc -l -p xxx | dd of=/dev/sdb</p>
+</blockquote>
+<p>然后在【发送端】（A 主机）运行如下命令</p>
+<blockquote>
+<p>dd if=/dev/sda | nc x.x.x.x xxx</p>
+</blockquote>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>请查看源博客</p>
+<blockquote>
+<p><a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html" target="_blank" rel="noopener">https://program-think.blogspot.com/2019/09/Netcat-Tricks.html</a></p>
+</blockquote>
+<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><h3 id="查看打开的端口"><a href="#查看打开的端口" class="headerlink" title="查看打开的端口"></a>查看打开的端口</h3><p>看到本机开启的【所有】监听端口,Windows执行下方命令</p>
+<blockquote>
+<p>netstat -an | find “LISTEN”</p>
+</blockquote>
+<blockquote>
+<p>netstat -ano | find “LISTEN”</p>
+</blockquote>
+<p><code>-o</code> 选项可以看到是哪个进程开启的, 如果使用不了,可以用<code>findstr</code> 代替 <code>find</code>.或者在 powershell 里面运行</p>
+<p>对于Linux,可以把 find 替换成  grep ,也是一样的</p>
+<h3 id="windows-命令下的端口转发"><a href="#windows-命令下的端口转发" class="headerlink" title="windows 命令下的端口转发"></a>windows 命令下的端口转发</h3><blockquote>
+<p>netsh interface portproxy add v4tov4 listenport=新开的监听端口 listenaddress=新开端口的绑定地址 connectaddress=要转发的地址 connectport=要转发的端口 protocol=tcp</p>
+</blockquote>
+<blockquote>
+<p>netsh interface portproxy delete v4tov4 listenport=新开的监听端口 listenaddress=新开端口的绑定地址</p>
+</blockquote>
+<p>命令举例<br>　　比方说，俺本地已经运行了 Tor，端口是 8118，绑定在 127.0.0.1<br>　　如果俺希望建立一个新的端口，端口号是 12345（这个端口号是俺随手编的，你也可以用其它端口号），绑定在 0.0.0.0 上，那么就执行如下命令。然后，发往 12345 端口的数据流就会被转发到 8118 端口。</p>
+<blockquote>
+<p>netsh interface portproxy add v4tov4 listenport=12345 listenaddress=0.0.0.0 connectaddress=127.0.0.1 connectport=8118 protocol=tcp</p>
+</blockquote>
+<h2 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>linux系统中是 traceroute,在MS Windows中为tracert。traceroute通过发送小数据包到目的主机直到其返回，来测量其耗时。一条路径上的每个设备traceroute要测3次。输出结果中包括每次测试的时间(ms)和设备的名称及其IP地址。</p>
+<pre><code>traceroute [-dFlnrvx][-f&lt;存活数值&gt;][-g&lt;网关&gt;...][-i&lt;网络界面&gt;][-m&lt;存活数值&gt;][-p&lt;通信端口&gt;][-s&lt;来源地址&gt;][-t&lt;服务类型&gt;][-w&lt;超时秒数&gt;][主机名称或IP地址][数据包大小]</code></pre><pre><code>-d 使用Socket层级的排错功能。
+-f 设置第一个检测数据包的存活数值TTL的大小。
+-F 设置勿离断位。
+-g 设置来源路由网关，最多可设置8个。
+-i 使用指定的网络界面送出数据包。
+-I 使用ICMP回应取代UDP资料信息。
+-m 设置检测数据包的最大存活数值TTL的大小。
+-n 直接使用IP地址而非主机名称。可以加快运行速度
+-p 设置UDP传输协议的通信端口。
+-r 忽略普通的Routing Table，直接将数据包送到远端主机上。
+-s 设置本地主机送出数据包的IP地址。
+-t 设置检测数据包的TOS数值。
+-v 详细显示指令的执行过程。
+-w 设置等待远端主机回报的时间。
+-x 开启或关闭数据包的正确性检验。
+-q 默认数值是3 , 表示向目标发送3个数据包.</code></pre><ul>
+<li>一台主机有时会看到一些行以星号表示，出现这样的情况，可能是防火墙封掉了ICMP的返回信息，所以得不到什么相关的数据包返回数据。</li>
+</ul>
+<h2 id="Linux-iproute-工具"><a href="#Linux-iproute-工具" class="headerlink" title="Linux iproute 工具"></a>Linux iproute 工具</h2><p><img src="1.png" alt=""></p>
+<p>iproute2套件里提供了许多增强功能的命令，ip命令即是其中之一。</p>
+<h3 id="help-说明"><a href="#help-说明" class="headerlink" title="help 说明"></a>help 说明</h3><pre><code>Usage: ip [ OPTIONS ] OBJECT { COMMAND | help }
+
+where  OBJECT := { link | address | addrlabel | route | rule | neigh | ntable |
+                   tunnel | tuntap | maddress | mroute | mrule | monitor | xfrm |
+                   netns | l2tp | fou | macsec | tcp_metrics | token | netconf | ila |
+                   vrf | sr }
+       OPTIONS := { -V[ersion] | -s[tatistics] | -d[etails] | -r[esolve] |
+                    -h[uman-readable] | -iec | -j[son] | -p[retty] |
+                    -f[amily] { inet | inet6 | ipx | dnet | mpls | bridge | link } |
+                    -4 | -6 | -I | -D | -M | -B | -0 |
+                    -l[oops] { maximum-addr-flush-attempts } | -br[ief] |
+                    -o[neline] | -t[imestamp] | -ts[hort] | -b[atch] [filename] |
+                    -rc[vbuf] [size] | -n[etns] name | -a[ll] | -c[olor]}
+</code></pre><p>常用OBJECT的取值含义如下：<br>    link：网络设备<br>    address：设备上的协议（IP或IPv6）地址<br>    addrlabel：协议地址选择的标签配置<br>    route：路由表条目<br>    rule：路由策略数据库中的规则</p>
+<p>常用OPTIONS的取值含义如下：<br>    -V，-Version：显示指令版本信息<br>    -s，-stats，statistics：输出详细信息<br>    -h，-human，-human-readable：输出人类可读的统计信息和后缀<br>    -o，-oneline：将每条记录输出到一行，用‘\’字符替换换行符</p>
+<p>command设置针对指定对象执行的操作，它和对象的类型有关。一般情况下，ip支持对象的增加(add)、删除(delete)和展示(show或list)。有些对象不支持这些操作，或者有其它的一些命令。对于所有的对象，用户可以使用help命令获得帮助。这个命令会列出这个对象支持的命令和参数的语法。如果没有指定对象的操作命令，ip会使用默认的命令。一般情况下，默认命令是list，如果对象不能列出，就会执行help命令。</p>
+<p>arguments是命令的一些参数，它们倚赖于对象和命令。ip支持两种类型的参数：flag和parameter。flag由一个关键词组成；parameter由一个关键词加一个数值组成。为了方便，每个命令都有一个可以忽略的默认参数。例如，参数dev是ip link命令的默认参数，因此ip link ls eth0等于ip link ls dev eth0。命令的默认参数将使用default标出。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><blockquote>
+<p>ip -4 a<br>    只查看ipv4的信息</p>
+</blockquote>
+<blockquote>
+<p>ip -4 a show wlan0</p>
+</blockquote>
+<blockquote>
+<p>ip link ls up<br>    查看启动的网卡</p>
+</blockquote>
+<blockquote>
+<p>ip link set eth0 up<br>    说明：启用被禁用的网卡</p>
+</blockquote>
+<blockquote>
+<p>ip link set eth0 down<br>    说明：禁用网卡</p>
+</blockquote>
+<blockquote>
+<p>ip link set mtu 9000 dev eth0</p>
+</blockquote>
+<blockquote>
+<p> ip addr add 2.2.2.2/16 dev eth0<br>    给网卡增加一个地址</p>
+</blockquote>
+<blockquote>
+<p>ip route show</p>
+</blockquote>
+<pre><code>输出内容第一条是默认的路由，我们可以根据我们的需要改动它
+metric 1002：跳跃计数，确定网关的优先级，默认20，数值越小优先级越高
+proto kernel：该路由的协议，主要有redirect，kernel，boot，static，ra等，其中kernel指的是直接由核心判断自动设定</code></pre><blockquote>
+<p>ip route add default via 192.168.0.150/24<br>    说明：所有的网络数据包都通过192.168.0.150来转发，而不是以前的默认路由</p>
+</blockquote>
+<blockquote>
+<p>ip route add 172.16.32.32 via 192.168.0.150/24 dev enp0s3<br>    说明：修改特定网卡的默认路由 </p>
+</blockquote>
+<blockquote>
+<p>ip route del 172.17.160.0/20<br>    说明：删除路由</p>
+</blockquote>
+<blockquote>
+<p>ip route add 192.168.1.0/24 dev eth0<br>    * 要路由的所有流量从 eth0 网卡的192.168.1.254网关通过</p>
+</blockquote>
+<blockquote>
+<p>ip route flush cache<br>    说明：刷新路由表</p>
+</blockquote>
+<blockquote>
+<p>ip -s link</p>
+</blockquote>
+<pre><code>说明:反应网络通信的质量
+输出重点内容详解：
+RX：表示接收
+TX：表示发送
+bytes：接收/发送的字节数
+packets：接收/发送的包数
+errors：接收/发送的带有错误的包总数
+dropped：由于处理资源不足导致接收/发送的丢弃的包数
+overrun：因接收溢出（环形缓冲区）导致丢失的包；通常如果接口溢出，则表示内核中存在严重问题，或者说服务器上该网络设备的处理设备太慢
+mcast：接收到的多播包数
+carrier：因数据链路错误导致发送失败的包数
+collsns：因在网络上发送冲突而导致的失败数</code></pre><ul>
+<li>ip link不支持tab键补齐 </li>
+</ul>
+<blockquote>
+<p>ip route add 目标主机 via 网关</p>
+</blockquote>
+<pre><code>1）添加到达目标主机的路由记录</code></pre><blockquote>
+<p>ip route add 目标网络/掩码 via 网关</p>
+</blockquote>
+<pre><code> 2）添加到达网络的路由记录</code></pre><p>作用域</p>
+<pre><code>    &gt; scope {global|link|host}]：指明作用域
+
+    - global: 全局可用，即两个接口进来的数据我都可以响应。是默认状态。
+
+    - link: 仅链接可用，进来的数据只有直接相连的那个接口能够响应
+
+    - host: 本机可用，即只能自己访问</code></pre>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../09/nmap-bi-ji/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Nmap笔记">
+                        
+                        <span class="card-title">Nmap笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            nmap使用方法, 涉及端口扫描
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">安全</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../../2019/10/15/vbs-ru-men/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="VBS 入门">
+                        
+                        <span class="card-title">VBS 入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些基本的语法，进阶可以看本博客的 "VBS 实战"
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>

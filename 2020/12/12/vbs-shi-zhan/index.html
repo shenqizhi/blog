@@ -1,0 +1,1296 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="VBS 实战, 宅世界">
+    <meta name="description" content="VBS的进阶，参考微软Office team的脚本。我把它解析了。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>VBS 实战 | 宅世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial"" style="zoom: 0.6;"></i>
+      
+      <span>实验室</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial""></i>
+			
+			实验室
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '../../../../index.html';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/45.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">VBS 实战</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-12-16
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>会有今天这篇文章，就要说起 <code>Microsoft Support for Office Deployment</code> 写的这个一万多行的VBS脚本。本来想自己写一个统计Office 版本的脚本，但是网上搜了一圈，都无法判断出2016和365的，只能看版本号。。。咬牙继续搜，就看到这个玩意。慢慢解剖分析消化吧</p>
+<blockquote>
+<p><a href="https://gallery.technet.microsoft.com/office/68b80aba-130d-4ad4-aa45-832b1ee49602" target="_blank" rel="noopener">https://gallery.technet.microsoft.com/office/68b80aba-130d-4ad4-aa45-832b1ee49602</a></p>
+</blockquote>
+<p>我把VBS复制下来，有需要可以直接下载：</p>
+<p><a href="Robust_Office_Inventory_Scan_Tool.vbs">点我下载</a></p>
+<p>然后，介绍一个网站，可以查一些函数，方法的介绍。输入关键词就行</p>
+<blockquote>
+<p><a href="https://www.devguru.com/content/site/search.html" target="_blank" rel="noopener">https://www.devguru.com/content/site/search.html</a></p>
+</blockquote>
+<h2 id="一些总结"><a href="#一些总结" class="headerlink" title="一些总结"></a>一些总结</h2><p>这些是对上面那个脚本的一些分析，我做了截取分析，添加了一些备注，可以下来运行一下。(中文乱码请<code>下载</code>后用UTF-8打开)</p>
+<p><a href="checkIfFolderExist.vbs">判断Folder是否存在</a><br><a href="checkScriptRunMultiTime.vbs">判断同一个脚本是否重复运行</a><br><a href="getDesktopPath.vbs">获取当前用户的桌面路径</a><br><a href="getRegKeyValue.vbs">获取某个注册表Key的Value</a><br><a href="getThisScriptName.vbs">获取当前运行脚本的名称(文件名)</a><br><a href="reg_key_IF_boolean.vbs">判断注册表Key是否存在</a></p>
+<hr>
+<p>下面这些是以前的借鉴的一些脚本，也放上来备份吧。给大家一些建议，重要的东西记得备份好，不然哪天突然消失了，后悔都来不及；可执行程序不要随便命名。 <del>（说的就是用test做文件名的我。整理的时候，误点了test.vbs，整个文件夹都没了。MD，里面有 rm 命令。。。）</del></p>
+<p>放张图压压惊</p>
+<p><img src="1.png" alt=""></p>
+<h2 id="excel操作"><a href="#excel操作" class="headerlink" title="excel操作"></a>excel操作</h2><ul>
+<li><p>对象 (class):</p>
+<ul>
+<li>Application (Excel应用程序本身)</li>
+<li>Workbooks</li>
+<li>Worksheets</li>
+<li>Range (单元格)</li>
+</ul>
+</li>
+<li><p>方法 (members):</p>
+<ul>
+<li>Open</li>
+<li>Close</li>
+</ul>
+</li>
+<li><p>属性: </p>
+<ul>
+<li>Author</li>
+</ul>
+</li>
+</ul>
+<pre><code>Dim (Dimension 尺寸)
+Dim i As Integer &#39;整数类型变量
+Dim i As String
+Dim i As Range &#39;单元格对象
+Dim i As Workbook &#39;工作簿
+Dim i As Worksheet &#39;工作表</code></pre><p>Workbooks：所有excel当前打开的工作簿（即所有打开的excel文件）<br>Workbook：Workbooks的成员<br>ActiveWorkbook：当前工作簿<br>ThisWorkbook：当前VB正在运行的工作簿<br>Worksheets：所有工作表。</p>
+<p>可以通过下标或者名字引用Worksheet<br>例如引用第一个：<code>Worksheets(1)</code>，最后一个: <code>Worksheets.Count</code>，引用指定的：<code>Worksheets(&quot;shee1&quot;)</code></p>
+<p>Worksheet：Worksheets的成员<br>ActiveWorksheet：当前worksheet</p>
+<p><code>Cells：Cells(row,column)</code>代表单个单元格。</p>
+<p>例如Cells(1,1),Cells(10,4)分别代表A1,D10</p>
+<pre><code>获取单元格的行号,列号(待测试)
+    Cells(1, 1) = Selection.Row
+    Cells(1, 2) = Selection.Column 
+    selection = Range(&#39;b2&#39;).row</code></pre><p>ActiveCell：活动工作簿的活动单元格，或指定工作表的活动单元格<br>Range：指定区域，例如Range(“A1:H8”)</p>
+<p>或者[A1],[A1:C5]的中括号形式</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="获取外网IP地址-并邮件通知"><a href="#获取外网IP地址-并邮件通知" class="headerlink" title="获取外网IP地址,并邮件通知"></a>获取外网IP地址,并邮件通知</h3><p>这个脚本产生的背景是这样的:有一个条网线,有外网地址,但是不是固定.想要远程回里面内网的PC,于这个脚本产生了,让它定时提醒新的IP地址</p>
+<pre><code class="VB">    &#39;Set Wshshell = CreateObject(&quot;Wscript.shell&quot;)
+    times = 1
+Do
+    Set ie=CreateObject(&quot;InternetExplorer.Application&quot;)
+    ie.Visible=false
+    ie.navigate &quot;http://ip.cn/&quot; &#39;从ip.cn获取IP地址信息
+
+    Do
+        WSH.Sleep 500
+    Loop Until ie.readyState=4
+
+    str = replace(ie.Document.getElementByID(&quot;result&quot;).innertext,vbCrLf,&quot; &quot;)
+    &#39;msgbox str
+    Set reg = New RegExp &#39;这里设置一个正则,用来提取出ip.cn返回信息中的ip地址
+    reg.Pattern = &quot;(\d+\.){3}\d+&quot;
+    ip = reg.Execute(str)(0)
+    &#39;CreateObject(&quot;wscript.Shell&quot;).run &quot;mshta vbscript:ClipBoardData.setData(&quot;&quot;Text&quot;&quot;,&quot;&quot;&quot;&amp;ip&amp;&quot;&quot;&quot;)(window.close)&quot;, 0, true &#39;这里是将ip地址复制到剪贴板,这里并不需要
+    &#39;msgbox  &quot;IP: &quot; &amp; ip &amp; &quot; Copy to Clipboard done!&quot;
+    ie.quit &#39;这里退出前面打开的ie
+
+    ipTemp = &quot;127.0.0.1&quot;
+    if ip &lt;&gt; ipTemp then 
+        call sendMail()
+    end if 
+
+    ipTemp = ip
+
+    WScript.Sleep 18800000
+
+    times = times + 1
+
+Loop Until times &gt; 1000
+
+function sendMail ()
+
+    Set objEmail      = CreateObject(&quot;CDO.Message&quot;)
+    objEmail.From     = &quot;xxxx@outlook.com&quot;
+    objEmail.To       = &quot;xxxx@gmail.com&quot;
+    objEmail.Subject  = &quot;The External IP had been changed!&quot;
+    sendmsg = &quot;New IP: &quot; &amp; ip &amp; chr(13) &amp; _ 
+            &quot;&lt;br/&gt; Update Time: &quot; &amp; now()
+
+    objEmail.Htmlbody = sendmsg  &#39;htmlbody 是发送HTML格式的文本. 
+
+    &#39;下面是配置smtp服务器的信息,这里我以outlook为例.(默默说一句,微软对自家的东西兼容真心laji)
+
+    with objEmail.Configuration.Fields
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/sendusing&quot;)        = 2
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/smtpserver&quot;)       = &quot;smtp.office365.com&quot;
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/smtpserverport&quot;)   = 25
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/smtpauthenticate&quot;) = 1
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/sendusername&quot;)     = &quot;xxxx@outlook.com&quot;
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/sendpassword&quot;)     = &quot;xxxxx&quot;
+     &#39;.Item (&quot;http://schemas.microsoft.com/cdo/configuration/sendtls&quot;)          = True
+     .Item (&quot;http://schemas.microsoft.com/cdo/configuration/smtpconnectiontimeout&quot;) = 60
+     .Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpusessl&quot;) = True
+     .Update
+    end with
+    objEmail.Send
+
+end function
+    &#39;vbs 目前 outlook 账号只能用ssl, 现在没有找到问题所在. 但是再outlook app 里面,可以指定使用 STARTTL,端口为587,所以上面那个tls注释掉了
+
+    &#39;https://www.tachytelic.net/2018/12/email-vbscript-vba-office-365/</code></pre>
+<h3 id="Outlook-自动发送邮件"><a href="#Outlook-自动发送邮件" class="headerlink" title="Outlook 自动发送邮件"></a>Outlook 自动发送邮件</h3><pre><code class="VB">&#39;sdt 为今日日期的字符串，比如 &#39;2010-12-9&#39;，可用于附件名字里
+sdt = FormatDateTime(Date)
+
+&#39; 注意：以单引号&#39;开头的行为注释
+&#39; receiptions 为收件人列表，多个收件人之间用分号隔开
+&#39; Subject 为邮件标题
+&#39; Body 为邮件正文
+&#39; Attachments 为附件列表，每个附件都需附带路径。
+&#39; autoSend 设置是否直接发送，设置为False时将停留在最后窗口，需手动按Outlook的发送按钮进行发送
+
+receiptions = &quot;xxxx@xxx.com; xxxx@gmail.com&quot; &#39;接收人
+Subject = &quot;This is a auto send email test &quot; &amp; sdt
+Body = &quot;Hi, team &lt;br/&gt;&quot; &amp;  _   
+ &quot;&amp;emsp; This is  another line! &lt;br/&gt;&quot; &amp; _   
+ &quot;another line&quot; &#39;&lt;br/&gt; 换行   &amp;emsp 空格
+
+
+&#39;Attachments = Array(&quot;D:\report &quot; &amp; sdt &amp; &quot;.docx&quot;, &quot;D:\report &quot; &amp; sdt &amp; &quot;.pdf&quot;)
+autoSend = False
+
+
+&#39; 以下代码无需修改
+Dim xOutLook
+Dim xMail
+
+On Error Resume Next
+Set xOutLook = GetObject(, &quot;Outlook.Application&quot;)
+If xOutLook Is Nothing Then
+    Set xOutLook = CreateObject(&quot;Outlook.Application&quot;)
+End If
+Set xMail = xOutLook.CreateItem(olMailItem)
+With xMail
+    .Display
+    Dim signature
+    signature = .HTMLBody
+    .To = receiptions
+    .Subject = Subject
+    .HTMLBody = Body
+    .Importance = olImportanceNormal    &#39; 设置优先级, olImportanceHigh为高优先级
+
+
+    If IsArray(Attachments) Then
+        Dim attachment
+        For Each attachment In Attachments
+            .Attachments.Add attachment
+        Next
+    End If
+
+&#39;-----------------------------------------------------------------------
+    &#39;添加附件的其他演示
+
+    set ofs = createobject(&quot;scripting.filesystemobject&quot;)
+    set ofolder = ofs.getfolder(&quot;C:\Users\bingfeng\Pictures\test&quot;)
+
+    set ofiles = ofolder.files
+     for each ofile in ofiles
+
+
+        &#39;ofile = chr(34) &amp; ofiles(i) &amp; chr(34)
+        msgbox ofile.path  
+        xmail.Attachments.Add ofile.path &#39;一定要加 path 属性
+
+    next 
+
+&#39;-----------------------------------------------------------------------
+
+    .HTMLBody = .HTMLBody &amp; signature
+
+    If autoSend Then
+        .Send
+    Else
+        .Display
+    End If
+End With</code></pre>
+<h3 id="判断用户是否有管理员权限"><a href="#判断用户是否有管理员权限" class="headerlink" title="判断用户是否有管理员权限"></a>判断用户是否有管理员权限</h3><pre><code class="VB">call checkIFAdmin()
+msgbox checkifadmin()
+
+Function checkIFAdmin()
+    On Error Resume Next
+    set wshshell = createobject(&quot;wscript.shell&quot;)
+    set fso = wscript.createobject(&quot;scripting.filesystemobject&quot;)
+    mySystemRoot = wshShell.ExpandEnvironmentStrings(&quot;%SystemRoot%&quot;)
+
+    testFolder = mySystemRoot &amp; &quot;\test&quot; 
+    &#39;msgbox testfolder
+    Fso.CreateFolder(testFolder) 
+    Wscript.sleep 2000
+    if fso.FolderExists(testFolder) then
+        checkIFAdmin = true        
+        fso.deletefolder(testFolder)
+
+    else
+
+        checkIFAdmin = false 
+
+    end if
+
+End Function</code></pre>
+<h3 id="创建快捷方式"><a href="#创建快捷方式" class="headerlink" title="创建快捷方式"></a>创建快捷方式</h3><pre><code class="VB">set WshShell=WScript.CreateObject(&quot;WScript.Shell&quot;) &#39;第一行创建了一个Windows脚本宿主壳对象,
+strDesktop=WshShell.SpecialFolders(&quot;AllUsersStartup&quot;) &#39;第二行获取到桌面路径，
+set oShellLink=WshShell.CreateShortcut(strDesktop &amp; &quot;\myShortCut.lnk&quot;) &#39;第三行创建快捷方式lnk文件，
+oShellLink.TargetPath=&quot;C:\temm\sum.vbs&quot; &#39;第四行设定快捷方式的目标路径，
+&#39;oShellLink.WindowStyle=1 &#39;第五行设定快捷方式打开窗口的风格，
+&#39;oShellLink.Hotkey=&quot;CTRL+SHIFT+E&quot;  &#39;第六行设定该快捷方式的快捷键，
+&#39;oShellLink.IconLocation=&quot;c:\mydocumentfolder\icon.ico,0&quot; &#39;第七行设定快捷方式的图标，
+&#39;oShellLink.Description=&quot;my shortcut descriptiion&quot; &#39;第八行设定快捷方式的描述信息，
+&#39;oShellLink.WorkingDirectory=strDesktop &#39;第九行设定快捷方式的工作路径，
+oShellLink.Save  &#39;第十行保存快捷方式。
+
+&#39;https://blog.csdn.net/MAILLIBIN/article/details/47110843
+</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'WuhAzlfLle9QnejVfhVJn3eg-MdYXbMMI',
+        appKey: 'r0btSoHpzUv0WcNlFYweyR8e',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下个足迹嘛!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="../../../../2021/01/23/zui-jin-zhuang-ji-zhe-teng/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/46.jpg" class="responsive-img" alt="最近装机折腾">
+                        
+                        <span class="card-title">最近装机折腾</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            又折腾了一把
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%A1%AC%E4%BB%B6/">
+                        <span class="chip bg-color">硬件</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../07/uwp-chi-xian-an-zhuang/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/44.jpg" class="responsive-img" alt="UWP 离线安装">
+                        
+                        <span class="card-title">UWP 离线安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在线安装什么的，真受不了
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <style>
+    canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    }
+</style>
+
+<footer class="page-footer bg-color">
+   
+    <div class="container row center-align" style="margin-bottom">
+        
+        <div class="col s12 m8 l8 copy-right">
+           
+            <br>
+            Copyright&nbsp;&copy;
+            <a href="https://blog.bingfengs.xyz" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://google.com" target="_blank">备案,不存在的!</a>
+            </span>
+            <br>
+            <br>
+            苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。
+            <br>可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。
+        </div>
+        
+            
+        <div id="jsi-flying-fish-container" class="col s12 m4 l4 "></div>
+        
+       
+
+       
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <script src="/js/cursor.js"></script>
+    <script src="/js/fish.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+
+
+
+
+</body>
+
+</html>
